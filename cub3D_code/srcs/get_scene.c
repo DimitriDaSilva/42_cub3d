@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:52:12 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/28 20:25:10 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/01/28 23:46:39 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	get_scene(int fd, t_scene *scene)
 	{
 		if (is_map(line))
 		{
-			get_map(line, &scene);
-			break ;
+			get_map(fd, line, scene);
+			return ;
 		}
 		strs = ft_split(line, " \n\t\v\f\r");
 		get_data(strs, scene);
@@ -50,9 +50,95 @@ static int	is_map(char *line)
 	return (check);
 }
 
-static void	get_map(line, int **map)
+static void	get_map(int fd, char *line, t_scene *scene)
 {
+	char	**strs;
+	size_t	width;
+	size_t	height;
+	int		i;
+	int		j;
 
+	strs = cpy_map(fd, line);
+	width = get_width(strs);
+	height = get_height(strs);
+	printf("Width: \"%ld\"\n", width);
+	printf("Height: \"%ld\"\n", height);
+	i = 0;
+	while (strs[i])
+	{
+		j = 0;
+		while (strs[i][j])
+		{
+			// if (strs[i][j] == '\t')
+			// {
+			// 	while ()
+			// }
+			j++;
+		}
+		i++;
+	}
+	unload_strs(strs);
+	free(strs);
+}
+
+static char	**cpy_map(int fd, char *line)
+{
+	char	**strs;
+	int		i;
+
+	i = 0;
+	if (!(strs = malloc((i + 2) * sizeof(char *))))
+		exit(EXIT_FAILURE);
+	strs[i++] = ft_strdup(line);
+	free(line);
+	while (get_next_line(fd, &line))
+	{
+		if (!(strs = ft_realloc(strs,
+								(i + 1) * sizeof(char *),
+								(i + 2) * sizeof(char *))))
+			exit(EXIT_FAILURE);
+		strs[i++] = ft_strdup(line);
+		free(line);
+	}
+	free(line);
+	strs[i] = 0;
+	return (strs);
+}
+
+static size_t	get_width(char **strs)
+{
+	size_t	max_length;
+	size_t	length;
+
+	max_length = 0;
+	while (*strs)
+	{
+		length = 0;
+		while (**strs)
+		{
+			if (*(*strs++) == '\t')
+				length += 4;
+			else
+				length++;
+		}
+		if (length > max_length)
+			max_length = length;
+		strs++;
+	}
+	return (max_length);
+}
+
+static size_t	get_height(char **strs)
+{
+	size_t	length;
+
+	length = 0;
+	while (*strs)
+	{
+		strs++;
+		length++;
+	}
+	return (--length);
 }
 
 static void	get_data(char **strs, t_scene *scene)
