@@ -15,7 +15,7 @@ INCS			=		$(addprefix $(PATH_INC)/, *.h)
 
 # Commands of compilation
 COMP			=		gcc
-COMP_FLAG		= 		-Wall -Wextra -Werror -ggdb -fsanitize=address -fno-omit-frame-pointer
+COMP_FLAG		= 		-Wall -Wextra -Werror -ggdb -fsanitize=address -fno-omit-frame-pointer -g
 COMP_ADD		=		-I$(PATH_INC)
 
 # Others commands

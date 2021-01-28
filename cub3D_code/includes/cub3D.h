@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:29:17 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/28 16:39:55 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/01/28 19:07:27 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct	s_scene
 	char		*east_texture;
 	char		*sprite_texture;
 	int			floor_color[3];
-	int			ceiling_color[3];
+	int			ceilling_color[3];
 	int			**map;
 }				t_scene;
 
@@ -54,6 +54,7 @@ typedef struct	s_scene
 
 void	get_scene(int fd, t_scene *scene);
 void	is_file_valid(char *file);
-void	render_game(void);
+void	render_scene(void);
+void	free_scene(t_scene *scene);
 
 #endif

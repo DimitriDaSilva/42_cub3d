@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_game.c                                      :+:      :+:    :+:   */
+/*   render_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 19:18:43 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/28 11:41:47 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/01/28 19:07:05 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-int		close_window(int keycode, t_mlx *mlx);
-int		resize_window(int keycode, t_mlx *mlx);
+#include "render_scene.h"
 
-void	render_game(void)
+void	render_scene(void)
 {
 	t_mlx	mlx;
 	int		count_h;

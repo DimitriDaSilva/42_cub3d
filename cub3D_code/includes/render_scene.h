@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_file_valid.c                                    :+:      :+:    :+:   */
+/*   render_scene.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/28 17:01:17 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/01/28 19:06:13 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/01/28 19:06:44 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef RENDER_SCENE_H
+# define RENDER_SCENE_H
+
 #include "cub3D.h"
 
-void	is_file_valid(char *file)
-{
-	int		fd;
-	char	*line;
+int		close_window(int keycode, t_mlx *mlx);
+int		resize_window(int keycode, t_mlx *mlx);
 
-	line = 0;
-	if ((fd = open(file, O_RDONLY)) == -1)
-	{
-		ft_printf("Error\nWrong file path or file corrupted.\n");
-		exit(EXIT_FAILURE);
-	}
-	while (get_next_line(fd, &line))
-	{
-		printf("%s\n", line);
-		free(line);
-	}
-	if (close(fd) == -1)
-	{
-		ft_printf("Error\nCould not close open file.\n");
-		exit(EXIT_FAILURE);
-	}
-}
+#endif
