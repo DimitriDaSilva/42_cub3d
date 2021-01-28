@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 18:13:05 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/26 19:18:16 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/01/28 15:10:24 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,26 @@ int my_key_func(int keycode, void *param)
 
 int		main(int argc, char *argv[])
 {
-	char *file;
+	int		fd;
+	t_map	map;
 
 	if (argc != 2)
 	{
 		ft_printf("Scene description file missing\n");
 		exit(EXIT_FAILURE);
 	}
-	file = argv[1];
-	if (!is_file_valid(file))
+	if ((fd = open(argv[1], O_RDONLY)) == -1)
+	{
+		ft_printf("Error\nCould not open file %s.\n", argv[1]);
 		exit(EXIT_FAILURE);
-	render_game();
+	}
+	get_map(fd, &map);
+	if (close(fd) == -1)
+	{
+		ft_printf("Error\nCould not close file %s.\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+	// is_map_valid(&map);
+	// render_game();
 	return (0);
 }

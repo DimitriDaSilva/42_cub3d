@@ -1,3 +1,5 @@
 cub3d
 *.o
 *.a
+command_vcxsrv.sh
+command_export.sh

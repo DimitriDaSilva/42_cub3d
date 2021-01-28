@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 17:58:57 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/26 19:02:00 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/01/27 20:38:08 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		add_shade(double distance, int color)
 int		get_opposite(int color)
 {
 	return (create_trgb(get_t(color),
-				255 - get_r(color),
-				255 - get_g(color),
-				255 - get_b(color)));
+				get_r(0xFF0000) - get_r(color),
+				get_g(0x00FF00) - get_g(color),
+				get_b(0x0000FF) - get_b(color)));
 }

@@ -31,8 +31,6 @@ _SUCCESS		=		[$(_GREEN)SUCCESS$(_RESET)]
 # Functions
 all:					init $(NAME)
 						@ echo "$(_SUCCESS) Compilation done"
-						@ export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0.0
-						@ export LIBGL_ALWAYS_INDIRECT=1
 
 init:
 						@ echo "$(_INFO) Initialize $(NAME)"
@@ -41,7 +39,7 @@ init:
 						@ make -C $(PATH_LIBMLX)
 
 $(NAME): 				$(OBJS) $(INCS)
-						@ $(COMP) $(COMP_FLAG) $(COMP_ADD) -o $(NAME) $(OBJS) -Llibft -lft -Llibmlx -lmlx -lX11 -lbsd -lm -lXext -lz
+						@ $(COMP) $(COMP_FLAG) $(COMP_ADD) -o $(NAME) $(OBJS) -Llibft -lft -Llibmlx -lmlx -lX11 -lbsd -lm -lXext
 
 $(PATH_OBJ)/%.o: 		$(PATH_SRC)/%.c $(INCS)
 						@ $(COMP) $(COMP_FLAG) $(COMP_ADD) -c $< -o $@
