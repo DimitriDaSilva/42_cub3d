@@ -1,4 +1,4 @@
-cub3d
+cub3D
 *.o
 *.a
 command_vcxsrv.sh

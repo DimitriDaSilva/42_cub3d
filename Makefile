@@ -1,10 +1,10 @@
 # Name of the program built
-NAME			=		cub3d
+NAME			=		cub3D
 
 # Name directory
-PATH_SRC		=		cub3d_code/srcs
-PATH_OBJ		=		cub3d_code/objs
-PATH_INC		=		cub3d_code/includes
+PATH_SRC		=		cub3D_code/srcs
+PATH_OBJ		=		cub3D_code/objs
+PATH_INC		=		cub3D_code/includes
 PATH_LIBFT		=		libft
 PATH_LIBMLX		=		libmlx
 
@@ -15,7 +15,7 @@ INCS			=		$(addprefix $(PATH_INC)/, *.h)
 
 # Commands of compilation
 COMP			=		gcc
-COMP_FLAG		= 		-Wall -Wextra -Werror 
+COMP_FLAG		= 		-Wall -Wextra -Werror -ggdb -fsanitize=address -fno-omit-frame-pointer
 COMP_ADD		=		-I$(PATH_INC)
 
 # Others commands
@@ -58,10 +58,10 @@ fclean:					clean
 re:						fclean all
 
 normH:					all
-						~/.norminette/norminette.rb ./$(PATH_INC)/*.h
+						~/.norminette/norminette.rb *.h
 
 normC:					all
-						~/.norminette/norminette.rb $(SRCS) $(PATH_SRC)/cub3d.c
+						~/.norminette/norminette.rb *.c
 
 norm:					normH normC
 

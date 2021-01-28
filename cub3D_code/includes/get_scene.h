@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map.c                                          :+:      :+:    :+:   */
+/*   get_scene.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/28 14:52:12 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/28 15:12:50 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/01/28 16:17:30 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/01/28 16:39:33 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef GET_SCENE_H
+# define GET_SCENE_H
 
-int		ft_isspace(char c)
-{
-	return (c == ' ' || (9 <= c && c <= 13));
-}
+# include "cub3d.h"
 
-void	get_map(int fd, t_map *map)
-{
-	char	*line;
-	int		i;
+static int	is_map(char *line, t_map *map);
+static void	get_data(char **strs, t_map *map);
+static void	unload_strs(char **strs);
 
-	line = 0;
-	i = 0;
-	while (get_next_line(fd, &line))
-	{
-		while (*line[i] && ft_isspace(line[i]))
-			i++;
-		if (line[i] == 'F')
-			get_resolution(line + i);
-		free(line);
-	}
-}
+#endif

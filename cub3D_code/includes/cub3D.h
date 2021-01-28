@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:29:17 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/28 15:10:58 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/01/28 16:39:55 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct	s_mlx
 	t_img		img;
 }				t_mlx;
 
-typedef struct	s_map
+typedef struct	s_scene
 {
 	int			resolution[2];
 	char		*north_texture;
@@ -42,7 +42,7 @@ typedef struct	s_map
 	int			floor_color[3];
 	int			ceiling_color[3];
 	int			**map;
-}				t_map;
+}				t_scene;
 
 # include <stdio.h>
 # include <fcntl.h>
@@ -52,7 +52,7 @@ typedef struct	s_map
 # include "utils_colors.h"
 
 
-void	get_map(int fd, t_map *map);
+void	get_scene(int fd, t_scene *scene);
 void	is_file_valid(char *file);
 void	render_game(void);
 
