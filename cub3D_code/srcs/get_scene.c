@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:52:12 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/28 19:40:33 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/01/28 20:25:10 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	get_scene(int fd, t_scene *scene)
 	{
 		if (is_map(line))
 		{
-			// get_map(line, &scene->map);
+			get_map(line, &scene);
 			break ;
 		}
-		strs = ft_split_chars(line, " \n\t\v\f\r");
+		strs = ft_split(line, " \n\t\v\f\r");
 		get_data(strs, scene);
 		unload_strs(strs);
 		free(strs);
@@ -50,10 +50,10 @@ static int	is_map(char *line)
 	return (check);
 }
 
-// static void	get_map(line, int ***map)
-// {
+static void	get_map(line, int **map)
+{
 
-// }
+}
 
 static void	get_data(char **strs, t_scene *scene)
 {
@@ -82,11 +82,18 @@ static void	get_data(char **strs, t_scene *scene)
 
 static void get_color(char *str, int arr[])
 {
-	arr[0] = ft_atoi(str);
-	str = ft_strchr(str, ',') + 1;
-	arr[1] = ft_atoi(str);
-	str = ft_strchr(str, ',') + 1;
-	arr[2] = ft_atoi(str);
+	int		i;
+	char	**strs;
+
+	strs = ft_split(str, ",");
+	i = 0;
+	while (i < 3)
+	{
+		arr[i] = ft_atoi(strs[i]);
+		i++;
+	}
+	unload_strs(strs);
+	free(strs);
 }
 
 static void	unload_strs(char **strs)
