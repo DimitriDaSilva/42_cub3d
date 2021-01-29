@@ -1,10 +1,10 @@
 R 1920 1080
-NO ./assets/textures/bookshelf.png
-SO ./assets/textures/Ice.png
-WE ./assets/textures/Stone.png
-EA ./assets/textures/Mud.png
+NO ./../../assets/textures/bookshelf.png
+SO ./path_to_the_south_texture
+WE ./path_to_the_west_texture
+EA ./path_to_the_east_texture
 
-S ./assets/textures/Gold1.png
+S ./path_to_the_sprite_texture
 F 220,100,0
 C 225,30,0
 

@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:52:12 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/29 12:40:30 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/01/29 18:24:24 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,24 @@ void	get_data(char **strs, t_scene *scene)
 {
 	if (strs[0] == 0)
 		return ;
-	else if (!ft_strcmp(strs[0], "R"))
+	else if (!ft_strcmp(strs[0], "R") && strs[3] == 0)
 	{
 		scene->resolution[0] = ft_atoi(strs[1]);
 		scene->resolution[1] = ft_atoi(strs[2]);
 	}
-	else if (!ft_strcmp(strs[0], "NO"))
+	else if (!ft_strcmp(strs[0], "NO") && strs[2] == 0)
 		scene->north_texture = ft_strdup(strs[1]);
-	else if (!ft_strcmp(strs[0], "SO"))
+	else if (!ft_strcmp(strs[0], "SO") && strs[2] == 0)
 		scene->south_texture = ft_strdup(strs[1]);
-	else if (!ft_strcmp(strs[0], "WE"))
+	else if (!ft_strcmp(strs[0], "WE") && strs[2] == 0)
 		scene->west_texture = ft_strdup(strs[1]);
-	else if (!ft_strcmp(strs[0], "EA"))
+	else if (!ft_strcmp(strs[0], "EA") && strs[2] == 0)
 		scene->east_texture = ft_strdup(strs[1]);
-	else if (!ft_strcmp(strs[0], "S"))
+	else if (!ft_strcmp(strs[0], "S") && strs[2] == 0)
 		scene->sprite_texture = ft_strdup(strs[1]);
-	else if (!ft_strcmp(strs[0], "F"))
+	else if (!ft_strcmp(strs[0], "F") && strs[2] == 0)
 		get_color(strs[1], scene->floor_color);
-	else if (!ft_strcmp(strs[0], "C"))
+	else if (!ft_strcmp(strs[0], "C") && strs[2] == 0)
 		get_color(strs[1], scene->ceilling_color);
 }
 
@@ -83,9 +83,17 @@ void	get_color(char *str, int arr[])
 	int		i;
 	char	**strs;
 
-	strs = ft_split(str, ",");
+	if (arr[0] != -1)
+	{
+		arr[0] = -1;
+		return ;
+	}
+	if (ft_strchr_freq(str, ',') != 2)
+		return ;
+	if (!(strs = ft_split(str, ",")))
+		return ;
 	i = 0;
-	while (i < 3)
+	while (strs[i] && ft_strisdigit(strs[i]))
 	{
 		arr[i] = ft_atoi(strs[i]);
 		i++;
