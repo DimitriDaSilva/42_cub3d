@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.c                                            :+:      :+:    :+:   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 18:13:05 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/28 20:06:29 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/01/29 12:45:23 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
-int my_key_func(int keycode, void *param)
+int		my_key_func(int keycode, void *param)
 {
 	(void)param;
 	ft_printf("Keycode: %d\n", keycode);
@@ -20,7 +20,6 @@ int my_key_func(int keycode, void *param)
 	{
 		exit(EXIT_SUCCESS);
 	}
-
 	return (1);
 }
 
@@ -53,6 +52,10 @@ int		main(int argc, char *argv[])
 	printf("Ceilling_color[0] = %d\n", scene.ceilling_color[0]);
 	printf("Ceilling_color[1] = %d\n", scene.ceilling_color[1]);
 	printf("Ceilling_color[2] = %d\n", scene.ceilling_color[2]);
+	for (int i = 0; scene.map[i]; i++)
+	{
+		printf("%s\n", scene.map[i]);
+	}
 	if (close(fd) == -1)
 	{
 		ft_printf("Error\nCould not close file %s.\n", argv[1]);
@@ -64,11 +67,13 @@ int		main(int argc, char *argv[])
 	return (0);
 }
 
-void		free_scene(t_scene *scene)
+void	free_scene(t_scene *scene)
 {
 	free(scene->north_texture);
 	free(scene->south_texture);
 	free(scene->west_texture);
 	free(scene->east_texture);
 	free(scene->sprite_texture);
+	unload_strs(scene->map);
+	free(scene->map);
 }

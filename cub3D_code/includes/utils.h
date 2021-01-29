@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_file_valid.c                                    :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/29 12:36:20 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/01/29 08:44:13 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/01/29 12:38:43 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "is_file_valid.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-void	is_file_valid(char *file)
-{
-	int		fd;
-	char	*line;
+# include "cub3d.h"
 
-	line = 0;
-	if ((fd = open(file, O_RDONLY)) == -1)
-	{
-		ft_printf("Error\nWrong file path or file corrupted.\n");
-		exit(EXIT_FAILURE);
-	}
-	while (get_next_line(fd, &line))
-	{
-		printf("%s\n", line);
-		free(line);
-	}
-	if (close(fd) == -1)
-	{
-		ft_printf("Error\nCould not close open file.\n");
-		exit(EXIT_FAILURE);
-	}
-}
+void	unload_strs(char **strs);
+
+#endif

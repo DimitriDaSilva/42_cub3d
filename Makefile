@@ -57,11 +57,13 @@ fclean:					clean
 
 re:						fclean all
 
-normH:					all
-						~/.norminette/norminette.rb *.h
+normH:
+						~/.norminette/norminette.rb $(INCS)
+						@ make -C $(PATH_LIBFT) normH
 
-normC:					all
-						~/.norminette/norminette.rb *.c
+normC:
+						~/.norminette/norminette.rb $(SRCS)
+						@ make -C $(PATH_LIBFT) normC
 
 norm:					normH normC
 

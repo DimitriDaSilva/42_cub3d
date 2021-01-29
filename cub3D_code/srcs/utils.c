@@ -1,36 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_file_valid.c                                    :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/29 12:36:20 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/01/29 08:43:45 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/01/29 12:45:49 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "is_file_valid.h"
+#include "utils.h"
 
-void	is_file_valid(char *file)
+void	unload_strs(char **strs)
 {
-	int		fd;
-	char	*line;
-
-	line = 0;
-	if ((fd = open(file, O_RDONLY)) == -1)
-	{
-		ft_printf("Error\nWrong file path or file corrupted.\n");
-		exit(EXIT_FAILURE);
-	}
-	while (get_next_line(fd, &line))
-	{
-		printf("%s\n", line);
-		free(line);
-	}
-	if (close(fd) == -1)
-	{
-		ft_printf("Error\nCould not close open file.\n");
-		exit(EXIT_FAILURE);
-	}
+	while (*strs)
+		free(*strs++);
 }

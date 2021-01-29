@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 19:18:43 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/28 19:07:05 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/01/29 12:41:46 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	render_scene(void)
 		}
 	}
 	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, mlx.img.img_ptr, 0, 0);
-	mlx_hook(mlx.win, 2, 1L<<0, close_window, &mlx);
+	mlx_hook(mlx.win, 2, 1L << 0, close_window, &mlx);
 	mlx_loop(mlx.mlx_ptr);
 }
 
