@@ -1,0 +1,11 @@
+R 1920 1080
+NO ./assets/textures/bookshelf.png
+SO ./assets/textures/Ice.png
+WE ./assets/textures/Stone.png
+EA ./assets/textures/Mud.png
+
+S ./assets/textures/Gold1.png
+F 220,100,0
+C 225,30,0
+
+1

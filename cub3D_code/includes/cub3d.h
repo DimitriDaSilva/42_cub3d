@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:33:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/29 17:31:32 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/01/29 20:47:15 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 600
+# define VALID_CHARS "012NSEW "
 
 /*
 ** To delete

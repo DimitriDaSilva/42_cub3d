@@ -3,4 +3,3 @@ cub3D
 *.a
 command_vcxsrv.sh
 command_export.sh
-tester_maps/

@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 18:13:05 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/29 18:20:15 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/01/29 21:15:02 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,14 @@ void	print_scene(t_scene *scene)
 	printf("Ceilling_color[0] = %d\n", scene->ceilling_color[0]);
 	printf("Ceilling_color[1] = %d\n", scene->ceilling_color[1]);
 	printf("Ceilling_color[2] = %d\n", scene->ceilling_color[2]);
-	for (int i = 0; scene->map[i]; i++)
+	int i = 0;
+	while (scene->map[i] != 0)
 	{
 		printf("%s\n", scene->map[i]);
+		i++;
 	}
+	// for (int i = 0; scene->map[i]; i++)
+	// {
+	// 	printf("%s\n", scene->map[i]);
+	// }
 }

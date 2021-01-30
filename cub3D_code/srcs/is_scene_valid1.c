@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_scene_valid.c                                   :+:      :+:    :+:   */
+/*   is_scene_valid1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/29 18:02:20 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/01/30 10:16:41 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	is_scene_valid(t_scene *scene, char *file)
 {
-	(void)scene;
 	check_cub_extention(file);
+	check_resolution(scene->resolution);
 	check_texture(scene->north_texture, "north texture");
 	check_texture(scene->south_texture, "south texture");
 	check_texture(scene->west_texture, "west texture");
@@ -23,6 +23,16 @@ void	is_scene_valid(t_scene *scene, char *file)
 	check_texture(scene->sprite_texture, "sprite texture");
 	check_color(scene->floor_color, "floor color");
 	check_color(scene->ceilling_color, "ceilling color");
+	check_map(scene);
+}
+
+void	check_resolution(int arr[])
+{
+	if (arr[0] == -1 || arr[1] == -1 || arr[0] == 0 || arr[1] == 0)
+	{
+		ft_printf("Error\nInvalid resolution.\n");
+		exit(EXIT_SUCCESS);
+	}
 }
 
 void	check_cub_extention(char *file)
