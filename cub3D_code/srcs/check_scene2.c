@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_scene_valid2.c                                  :+:      :+:    :+:   */
+/*   check_scene2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/30 09:38:26 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/01/30 16:09:16 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "is_scene_valid.h"
+#include "check_scene.h"
+
+/*
+** @param:	- [t_scene *] a struct that holds the data used to render the game
+*/
 
 void	check_map(t_scene *scene)
 {
@@ -30,6 +34,23 @@ void	check_map(t_scene *scene)
 		exit(EXIT_SUCCESS);
 	}
 }
+
+/*
+** A valid maps needs to be bordered with 1 representing the walls
+** @param:	- [char **] array of strings representing the map.
+**                      All string have the same length
+**			- [int] height of the map
+**			- [int] width of the map
+** @return:	[int] true or false
+** Line-by-line comments:
+** @11		We are parsing the map stopping each time we find a non-1
+**			characters and check the 2 cases for which it could me the map
+**			is not enclosed
+**			The order of these 2 checks is important. The opposite could lead
+**			to SEGFAULT in some cases where we are in the borders of the map
+** @12-13	Case: the non-1 characters is positioned on the edges of the map
+** 14-18	Case: there is a space on one of the 8 boxes around that position
+*/
 
 int		is_map_enclosed(char **map, int height, int width)
 {
@@ -57,6 +78,15 @@ int		is_map_enclosed(char **map, int height, int width)
 	return (1);
 }
 
+/*
+** To be valid the map needs to have exactly one start position
+** @param:	- [char **] array of strings representing the map.
+**                      All string have the same length
+** @return:	[int] true or false
+** Line-by-line comments:
+** @16		If count == 1 is true, then 1 is returned. Else, 0
+*/
+
 int		has_one_start_position(char **map)
 {
 	int count;
@@ -68,7 +98,6 @@ int		has_one_start_position(char **map)
 	while (map[++i])
 	{
 		j = -1;
-		// printf("Map[i]: \"%s\"\n", map[i]);
 		while (map[i][++j])
 		{
 			if (ft_strchr("NSEW", map[i][j]))
