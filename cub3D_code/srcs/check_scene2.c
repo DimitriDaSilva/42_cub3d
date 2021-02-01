@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/30 16:09:16 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/01 09:09:12 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 /*
 ** @param:	- [t_scene *] a struct that holds the data used to render the game
+** Line-by-line comments:
+** @16		Once I'm sure the map is correct I extract the start position
 */
 
 void	check_map(t_scene *scene)
@@ -33,6 +35,7 @@ void	check_map(t_scene *scene)
 		ft_printf("Error\nThe map has 0 or more than 1 start position.\n");
 		exit(EXIT_SUCCESS);
 	}
+	get_start_position(scene->map, scene->start_position);
 }
 
 /*
@@ -63,7 +66,7 @@ int		is_map_enclosed(char **map, int height, int width)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (map[i][j] != '1')
+			if (map[i][j] != '1' && map[i][j] != ' ')
 			{
 				if (i == 0 || j == 0 || i == height - 1 || j == width - 1)
 					return (0);
@@ -105,4 +108,34 @@ int		has_one_start_position(char **map)
 		}
 	}
 	return (count == 1);
+}
+
+/*
+** Gets start_position in the map. Stores it in an array of 3 ints:
+** [0]: spawning orientation in ASCII value
+** [1]: x position in the map (yes x = j)
+** [2]: y position in the map (yes y = i)
+** @param:	- [char **] array of strings reprensenting the map
+**			- [int *] start_position with 3 ints allocated
+*/
+
+void	get_start_position(char **map, int start_position[])
+{
+	int i;
+	int j;
+
+	i = -1;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if (ft_strchr("NSEW", map[i][j]))
+			{
+				start_position[0] = map[i][j];
+				start_position[1] = j;
+				start_position[2] = i;
+			}
+		}
+	}
 }

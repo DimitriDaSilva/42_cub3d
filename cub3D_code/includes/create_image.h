@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_scene.h                                     :+:      :+:    :+:   */
+/*   create_image.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/28 19:06:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/01 18:31:39 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/02/01 17:30:46 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/02/01 18:52:15 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_SCENE_H
-# define RENDER_SCENE_H
+#ifndef CREATE_IMAGE_H
+# define CREATE_IMAGE_H
 
-# include "cub3d.h"
+# include "render_scene.h"
 
-void	render_scene(t_scene *scene);
-void	create_window(t_mlx *mlx);
-int		render_next_frame(void *my_struct);
+void	create_new_image(t_mlx *mlx);
 
 #endif

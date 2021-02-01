@@ -6,22 +6,11 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 18:13:05 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/30 12:22:21 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/01 19:23:22 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int		my_key_func(int keycode, void *param)
-{
-	(void)param;
-	ft_printf("Keycode: %d\n", keycode);
-	if (keycode == 65307)
-	{
-		exit(EXIT_SUCCESS);
-	}
-	return (1);
-}
 
 int		main(int argc, char *argv[])
 {
@@ -46,7 +35,7 @@ int		main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	check_scene(&scene, argv[1]);
-	// render_scene(&map);
+	render_scene(&scene);
 	free_scene(&scene);
 	return (0);
 }
@@ -62,4 +51,19 @@ void	init_scene(t_scene *scene)
 	ft_memset(scene->floor_color, -1, 3 * sizeof(int));
 	ft_memset(scene->ceilling_color, -1, 3 * sizeof(int));
 	scene->map = 0;
+	ft_memset(scene->start_position, -1, 3 * sizeof(int));
+}
+
+void	free_scene(t_scene *scene)
+{
+	free(scene->north_texture);
+	free(scene->south_texture);
+	free(scene->west_texture);
+	free(scene->east_texture);
+	free(scene->sprite_texture);
+	if (scene->map)
+	{
+		unload_strs(scene->map);
+		free(scene->map);
+	}
 }

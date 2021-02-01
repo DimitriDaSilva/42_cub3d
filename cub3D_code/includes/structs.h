@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:30:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/29 12:31:01 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/01 18:02:34 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,6 @@ typedef struct	s_img {
 	int			endian;
 }				t_img;
 
-typedef struct	s_mlx
-{
-	void		*mlx_ptr;
-	void		*win;
-	t_img		img;
-}				t_mlx;
-
 typedef struct	s_scene
 {
 	int			resolution[2];
@@ -41,6 +34,15 @@ typedef struct	s_scene
 	char		**map;
 	int			map_width;
 	int			map_height;
+	int			start_position[3];
 }				t_scene;
+
+typedef struct	s_mlx
+{
+	void		*mlx_ptr;
+	void		*win;
+	t_scene		*scene;
+	t_img		img;
+}				t_mlx;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 08:21:33 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/30 16:11:29 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/01 19:25:36 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ char	**convert_tabs_to_spaces(char **strs, t_scene *scene)
 				ft_memmove(&strs[i][j + 4], &strs[i][j + 1], len - j + 2);
 				ft_strncpy(&strs[i][j], "    ", 4);
 			}
-			else if (!ft_strchr(VALID_CHARS, strs[i][j]))
+			else if (!ft_strchr(VALID_CHARS, strs[i][j]) || strs[i][j] == 0)
 				strs[i][j] = ' ';
 		}
 		strs[i][j] = '\0';
