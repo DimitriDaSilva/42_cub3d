@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_image.h                                     :+:      :+:    :+:   */
+/*   utils_graph.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/01 17:30:46 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 11:31:08 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/02/02 16:44:53 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/02/02 16:45:28 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CREATE_IMAGE_H
-# define CREATE_IMAGE_H
+#ifndef UTILS_GRAPH_H
+# define UTILS_GRAPH_H
 
-# include "render_scene.h"
+# include "cub3d.h"
 
-void	create_new_image(t_mlx *mlx, t_res *res);
+void	draw_rect(t_rect *rect, int	*img, int res_width);
 
 #endif

@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_scene.c                                     :+:      :+:    :+:   */
+/*   render_game.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/26 19:18:43 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 11:39:37 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/01/28 19:06:13 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/02/02 16:51:14 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render_scene.h"
+#ifndef RENDER_GAME_H
+# define RENDER_GAME_H
 
-void	render_scene(t_game *game)
-{
-	create_window(&game->mlx, &game->scene.res);
-	mlx_loop_hook(game->mlx.mlx_ptr, render_next_frame, game);
-	mlx_loop(game->mlx.mlx_ptr);
-}
+# include "cub3d.h"
+
+void	create_window(t_mlx *mlx, t_res *res);
+int		render_next_frame(void *my_struct);
+void	get_empty_img(t_mlx *mlx, t_res *res);
+void	draw_mini_map(t_game *game);
+void	draw_background(t_game *game);
+
+#endif
+

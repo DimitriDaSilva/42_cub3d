@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:33:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 11:37:06 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/02 16:57:24 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define CUB3D_H
 
 # define VALID_CHARS "012NSEW "
-# define TILE_SIZE 32
-// # define M_PI 3.14159265358979323846
+# define TILE_SIZE 30
+# define PIXEL_OFFSET 10
 
 /*
 ** To delete
@@ -33,11 +33,11 @@
 # include "structs.h"
 # include "utils.h"
 # include "utils_colors.h"
+# include "utils_graph.h"
 
 void	get_scene(int fd, t_scene *scene);
 void	check_scene(t_scene *scene, char *file);
 void	init_player(t_player *player, char **grid);
-void	render_scene(t_game *game);
-// void	free_scene(t_scene *scene);
+void	render_game(t_game *game);
 
 #endif

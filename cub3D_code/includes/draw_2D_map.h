@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_window.h                                    :+:      :+:    :+:   */
+/*   draw_2D_map.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/01 08:52:44 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 16:31:42 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/02/01 17:30:46 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/02/02 16:45:31 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CREATE_WINDOW_H
-# define CREATE_WINDOW_H
+#ifndef DRAW_2D_MAP_H
+# define DRAW_2D_MAP_H
 
 # include "cub3d.h"
 
-void	create_window(t_mlx *mlx, t_res *res);
-int		close_window_esc(int keycode, t_mlx *mlx);
-int		close_window_cross(int keycode, t_mlx *mlx);
+int		get_fill_color(char grid_item);
 
 #endif
