@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 19:18:43 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 16:51:24 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/02 20:15:14 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	render_game(t_game *game)
 {
 	create_window(&game->mlx, &game->scene.res);
+	set_event_hooks(game);
 	mlx_loop_hook(game->mlx.mlx_ptr, render_next_frame, game);
 	mlx_loop(game->mlx.mlx_ptr);
 }
@@ -49,7 +50,7 @@ void	draw_background(t_game *game)
 	rect.y = 0;
 	rect.width = game->scene.res.width;
 	rect.height = game->scene.res.height;
-	rect.stroke_width = 0;
-	rect.fill_color = 0x00FF0000;
+	rect.border_width = 0;
+	rect.fill_color = 0x00f1faee;
 	draw_rect(&rect, game->mlx.img.data, game->scene.res.width);
 }

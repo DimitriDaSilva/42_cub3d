@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:30:46 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 16:51:51 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/02 18:47:31 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "cub3d.h"
 
-void	draw_rect(t_rect *rect, int	*img, int res_width);
+void	draw_map(t_game *game);
+void	draw_player(t_game *game);
 int		get_fill_color(char grid_item);
 
 #endif

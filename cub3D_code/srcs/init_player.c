@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:41:14 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 11:38:33 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/02 21:51:26 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@
 
 void	init_player(t_player *player, char **grid)
 {
-	player->radius = 4;
+	player->radius = 7;
 	player->walk_direction = 0;
-	player->move_speed = 3.0;
+	player->move_speed = 0.2;
 	player->turn_direction = 0;
-	player->rotation_speed = deg_to_rad(3);
+	player->rotation_speed = deg_to_rad(8);
 	get_start_position(player, grid);
 }
 
@@ -74,12 +74,12 @@ double	get_starting_orientation(char orientation)
 
 	radian = 0;
 	if (orientation == 'N')
-		deg_to_rad(270);
+		radian = deg_to_rad(270);
 	else if (orientation == 'S')
-		deg_to_rad(90);
+		radian = deg_to_rad(90);
 	else if (orientation == 'E')
-		deg_to_rad(360);
+		radian = deg_to_rad(360);
 	else if (orientation == 'W')
-		deg_to_rad(180);
+		radian = deg_to_rad(180);
 	return (radian);
 }

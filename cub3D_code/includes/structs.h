@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:30:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 15:39:22 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/02 21:35:05 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef struct	s_player
 	double		y;
 	double		radius;
 	int			walk_direction;
-	float		move_speed;
+	double		move_speed;
 	int			turn_direction;
 	double		rotation_angle;
 	double		rotation_speed;
@@ -82,6 +82,9 @@ typedef struct	s_game
 	t_player	player;
 }				t_game;
 
+/*
+** Structs used by utils_graph
+*/
 typedef struct	s_rect
 {
 	int		x;
@@ -89,8 +92,28 @@ typedef struct	s_rect
 	int		width;
 	int		height;
 	int		fill_color;
-	int		stroke_color;
-	int		stroke_width;
+	int		border_color;
+	int		border_width;
 }				t_rect;
+
+typedef struct s_circle
+{
+	int		x;
+	int		y;
+	double	radius;
+	int		fill_color;
+	int		border_color;
+	int		border_width;
+}				t_circle;
+
+typedef struct s_line
+{
+	int		begin_x;
+	int		begin_y;
+	int		end_x;
+	int		end_y;
+	int		color;
+	int		width;
+}				t_line;
 
 #endif
