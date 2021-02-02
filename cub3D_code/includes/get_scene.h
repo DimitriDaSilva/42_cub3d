@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 16:17:30 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/30 10:45:58 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/02 11:32:31 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,22 @@
 
 # include "cub3d.h"
 
+/*
+** get_scene1.c file
+*/
 void	get_scene(int fd, t_scene *scene);
-int		is_map(char *line);
+void	init_scene(t_scene *scene);
 void	get_data(char **strs, t_scene *scene);
-void	get_resolution(char **strs, int arr[]);
-void	get_color(char *str, int arr[]);
-void	get_map(int fd, char *line, t_scene *scene);
-char	**cpy_map(int fd, char *line);
-char	**convert_tabs_to_spaces(char **strs, t_scene *scene);
+void	get_resolution(char **strs, t_res *res);
+void	get_color(char *str, t_color *color);
+
+/*
+** get_scene2.c file
+*/
+int		is_map(char *line);
+void	get_map(int fd, char *line, t_map *map);
+char	**cpy_map(int fd, char *line, int *width);
 size_t	get_width(char **strs);
-size_t	get_height(char **strs);
+char	**convert_tabs_to_spaces(char **strs, int width, int height);
 
 #endif

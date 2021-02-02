@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:52:12 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/01 08:23:59 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/02 11:33:34 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	get_scene(int fd, t_scene *scene)
 	char	*line;
 	char	**strs;
 
+	init_scene(scene);
 	line = 0;
 	while (get_next_line(fd, &line))
 	{
@@ -44,37 +45,27 @@ void	get_scene(int fd, t_scene *scene)
 			free(line);
 		}
 		else
-			get_map(fd, line, scene);
+			get_map(fd, line, &scene->map);
 	}
 	free(line);
 }
 
-/*
-** Check if the line follows the pattern of a new line
-** @param:	- [char *] a line read from the .cub file
-** @return:	[int] 1 if follows the pattern. Else 0
-** Line-by-line comments:
-** @6-7		The list of valid characters will change if we add more features
-**			to the game (e.g. ammo, treasures). Although a valid first line
-** 			for a map can't contain characters other than 1 and space, we are
-**			including them to provide more accurate error message
-** @8-9		Only one 1 is enough to follow the correct map pattern
-*/
-
-int		is_map(char *line)
+void	init_scene(t_scene *scene)
 {
-	int	check;
-
-	check = 0;
-	while (*line)
-	{
-		if (!ft_strchr("012NSEW \n\t\v\f\r", *line))
-			return (0);
-		else if (*line == '1')
-			check = 1;
-		line++;
-	}
-	return (check);
+	scene->res.width = 0;
+	scene->res.height = 0;
+	scene->no_texture = 0;
+	scene->so_texture = 0;
+	scene->we_texture = 0;
+	scene->ea_texture = 0;
+	scene->sprite_texture = 0;
+	scene->floor.r = -1;
+	scene->floor.g = -1;
+	scene->floor.b = -1;
+	scene->ceilling.r = -1;
+	scene->ceilling.g = -1;
+	scene->ceilling.b = -1;
+	scene->map.grid = 0;
 }
 
 /*
@@ -105,21 +96,21 @@ void	get_data(char **strs, t_scene *scene)
 	if (strs[0] == 0)
 		return ;
 	else if (!ft_strcmp(strs[0], "R"))
-		get_resolution(strs, scene->resolution);
+		get_resolution(strs, &scene->res);
 	else if (!ft_strcmp(strs[0], "NO") && strs[2] == 0)
-		scene->north_texture = !scene->north_texture ? ft_strdup(strs[1]) : 0;
+		scene->no_texture = !scene->no_texture ? ft_strdup(strs[1]) : 0;
 	else if (!ft_strcmp(strs[0], "SO") && strs[2] == 0)
-		scene->south_texture = !scene->south_texture ? ft_strdup(strs[1]) : 0;
+		scene->so_texture = !scene->so_texture ? ft_strdup(strs[1]) : 0;
 	else if (!ft_strcmp(strs[0], "WE") && strs[2] == 0)
-		scene->west_texture = !scene->west_texture ? ft_strdup(strs[1]) : 0;
+		scene->we_texture = !scene->we_texture ? ft_strdup(strs[1]) : 0;
 	else if (!ft_strcmp(strs[0], "EA") && strs[2] == 0)
-		scene->east_texture = !scene->east_texture ? ft_strdup(strs[1]) : 0;
+		scene->ea_texture = !scene->ea_texture ? ft_strdup(strs[1]) : 0;
 	else if (!ft_strcmp(strs[0], "S") && strs[2] == 0)
 		scene->sprite_texture = !scene->sprite_texture ? ft_strdup(strs[1]) : 0;
 	else if (!ft_strcmp(strs[0], "F") && strs[2] == 0)
-		get_color(strs[1], scene->floor_color);
+		get_color(strs[1], &scene->floor);
 	else if (!ft_strcmp(strs[0], "C") && strs[2] == 0)
-		get_color(strs[1], scene->ceilling_color);
+		get_color(strs[1], &scene->ceilling);
 	else if (strs[0][0] != '\n')
 	{
 		ft_printf("Error\nUnknown identifier: %s", strs[0]);
@@ -140,14 +131,14 @@ void	get_data(char **strs, t_scene *scene)
 **			3 numbers or more OR 2 numbers and no-space characters)
 */
 
-void	get_resolution(char **strs, int arr[])
+void	get_resolution(char **strs, t_res *res)
 {
 	if (!ft_strisdigit(strs[1]) || !ft_strisdigit(strs[2]))
 		return ;
 	if (strs[3] != 0)
 		return ;
-	arr[0] = ft_atoi(strs[1]);
-	arr[1] = ft_atoi(strs[2]);
+	res->width = ft_atoi(strs[1]);
+	res->height = ft_atoi(strs[2]);
 }
 
 /*
@@ -165,14 +156,14 @@ void	get_resolution(char **strs, int arr[])
 ** @14		Edge case: one of the colors has a letter or symbol in it
 */
 
-void	get_color(char *str, int arr[])
+void	get_color(char *str, t_color *color)
 {
 	int		i;
 	char	**strs;
 
-	if (arr[0] != -1)
+	if (color->r != -1)
 	{
-		arr[0] = -1;
+		color->r = -1;
 		return ;
 	}
 	if (ft_strchr_freq(str, ',') != 2)
@@ -181,9 +172,12 @@ void	get_color(char *str, int arr[])
 		return ;
 	i = 0;
 	while (strs[i] && ft_strisdigit(strs[i]))
-	{
-		arr[i] = ft_atoi(strs[i]);
 		i++;
+	if (i == 3)
+	{
+		color->r = ft_atoi(strs[0]);
+		color->g = ft_atoi(strs[1]);
+		color->b = ft_atoi(strs[2]);
 	}
 	unload_strs(strs);
 	free(strs);

@@ -6,11 +6,39 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 08:21:33 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/01 19:25:36 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/02 11:39:21 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_scene.h"
+
+/*
+** Check if the line follows the pattern of a new line
+** @param:	- [char *] a line read from the .cub file
+** @return:	[int] 1 if follows the pattern. Else 0
+** Line-by-line comments:
+** @6-7		The list of valid characters will change if we add more features
+**			to the game (e.g. ammo, treasures). Although a valid first line
+** 			for a map can't contain characters other than 1 and space, we are
+**			including them to provide more accurate error message
+** @8-9		Only one 1 is enough to follow the correct map pattern
+*/
+
+int		is_map(char *line)
+{
+	int	check;
+
+	check = 0;
+	while (*line)
+	{
+		if (!ft_strchr("012NSEW \n\t\v\f\r", *line))
+			return (0);
+		else if (*line == '1')
+			check = 1;
+		line++;
+	}
+	return (check);
+}
 
 /*
 ** Gets the map from the .cub file
@@ -27,12 +55,11 @@
 **			spaces (1 tab = 4 spaces)
 */
 
-void	get_map(int fd, char *line, t_scene *scene)
+void	get_map(int fd, char *line, t_map *map)
 {
-	scene->map = cpy_map(fd, line);
-	scene->map_width = get_width(scene->map);
-	scene->map_height = get_height(scene->map);
-	scene->map = convert_tabs_to_spaces(scene->map, scene);
+	map->grid = cpy_map(fd, line, &map->height);
+	map->width = get_width(map->grid);
+	map->grid = convert_tabs_to_spaces(map->grid, map->width, map->height);
 }
 
 /*
@@ -49,7 +76,7 @@ void	get_map(int fd, char *line, t_scene *scene)
 **			time I find a new line I increase the size of the array by one
 */
 
-char	**cpy_map(int fd, char *line)
+char	**cpy_map(int fd, char *line, int *height)
 {
 	char	**strs;
 	int		i;
@@ -70,54 +97,7 @@ char	**cpy_map(int fd, char *line)
 	}
 	free(line);
 	strs[i] = 0;
-	return (strs);
-}
-
-/*
-** In the map, spaces can be represented by tabs but should be accounted
-** like 4 spaces
-** @param:	- [char **] map stored in an array of strings
-**			- [t_scene *] a struct that holds the data used to render the game
-** @return:	[char **] map stored in array of strings with all row with
-**                    with the same size
-** Line-by-line comments:
-** @10-12	In case the lenght of the current row is smaller than the longest
-**			one, we enlarge it to make room for spaces
-** @15-19	If we find a tab, we move the chars 4 places and fill the gap with
-**			spaces
-** @20-21	If the characters found is not a VALID_CHAR (i.e. "012NSEW "),
-**			then it means it's the end of the string and we need to add spaces
-**			until we reach j == scene->map_width
-** @23		As we are overwritting the NULL terminator for the string
-**			originally shorter than the map_width, we need to put it back
-*/
-
-char	**convert_tabs_to_spaces(char **strs, t_scene *scene)
-{
-	int		i;
-	int		j;
-	int		len;
-
-	i = -1;
-	while (++i < scene->map_height)
-	{
-		j = -1;
-		len = ft_strlen(strs[i]);
-		if (len < scene->map_width)
-			if (!(strs[i] = ft_realloc(strs[i], len + 1, scene->map_width + 1)))
-				exit(EXIT_SUCCESS);
-		while (++j < scene->map_width)
-		{
-			if (strs[i][j] == '\t')
-			{
-				ft_memmove(&strs[i][j + 4], &strs[i][j + 1], len - j + 2);
-				ft_strncpy(&strs[i][j], "    ", 4);
-			}
-			else if (!ft_strchr(VALID_CHARS, strs[i][j]) || strs[i][j] == 0)
-				strs[i][j] = ' ';
-		}
-		strs[i][j] = '\0';
-	}
+	*height = i;
 	return (strs);
 }
 
@@ -157,19 +137,49 @@ size_t	get_width(char **strs)
 }
 
 /*
+** In the map, spaces can be represented by tabs but should be accounted
+** like 4 spaces
 ** @param:	- [char **] map stored in an array of strings
-** @return:	[size_t] height of the map
+**			- [t_scene *] a struct that holds the data used to render the game
+** @return:	[char **] map stored in array of strings with all row with
+**                    with the same size
+** Line-by-line comments:
+** @10-12	In case the lenght of the current row is smaller than the longest
+**			one, we enlarge it to make room for spaces
+** @15-19	If we find a tab, we move the chars 4 places and fill the gap with
+**			spaces
+** @20-21	If the characters found is not a VALID_CHAR (i.e. "012NSEW "),
+**			then it means it's the end of the string and we need to add spaces
+**			until we reach j == scene->map_width
+** @23		As we are overwritting the NULL terminator for the string
+**			originally shorter than the map_width, we need to put it back
 */
 
-size_t	get_height(char **strs)
+char	**convert_tabs_to_spaces(char **strs, int width, int height)
 {
-	size_t	length;
+	int		i;
+	int		j;
+	int		len;
 
-	length = 0;
-	while (*strs)
+	i = -1;
+	while (++i < height)
 	{
-		strs++;
-		length++;
+		j = -1;
+		len = ft_strlen(strs[i]);
+		if (len < width)
+			if (!(strs[i] = ft_realloc(strs[i], len + 1, width + 1)))
+				exit(EXIT_SUCCESS);
+		while (++j < width)
+		{
+			if (strs[i][j] == '\t')
+			{
+				ft_memmove(&strs[i][j + 4], &strs[i][j + 1], len - j + 2);
+				ft_strncpy(&strs[i][j], "    ", 4);
+			}
+			else if (!ft_strchr(VALID_CHARS, strs[i][j]) || strs[i][j] == 0)
+				strs[i][j] = ' ';
+		}
+		strs[i][j] = '\0';
 	}
-	return (length);
+	return (strs);
 }

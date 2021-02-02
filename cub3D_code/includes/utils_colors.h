@@ -6,18 +6,18 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 17:59:22 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/26 19:00:41 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/02 11:43:57 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_COLORS_H
 # define UTILS_COLORS_H
 
-int		create_trgb(int t, int r, int g, int b);
-int		get_t(int trgb);
-int		get_r(int trgb);
-int		get_g(int trgb);
-int		get_b(int trgb);
+int		create_argb(int a, int r, int g, int b);
+int		get_a(int argb);
+int		get_r(int argb);
+int		get_g(int argb);
+int		get_b(int argb);
 int		add_shade(double distance, int color);
 int		get_opposite(int color);
 

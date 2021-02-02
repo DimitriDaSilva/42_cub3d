@@ -6,31 +6,31 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 17:58:57 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/01/26 18:48:41 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/02 09:55:41 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		create_trgb(int t, int r, int g, int b)
+int		create_argb(int a, int r, int g, int b)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	return (a << 24 | r << 16 | g << 8 | b);
 }
 
-int		get_t(int trgb)
+int		get_a(int argb)
 {
-	return (trgb & (0xFF << 24));
+	return (argb & (0xFF << 24));
 }
 
-int		get_r(int trgb)
+int		get_r(int argb)
 {
-	return (trgb & (0xFF << 16));
+	return (argb & (0xFF << 16));
 }
 
-int		get_g(int trgb)
+int		get_g(int argb)
 {
-	return (trgb & (0xFF << 8));
+	return (argb & (0xFF << 8));
 }
 
-int		get_b(int trgb)
+int		get_b(int argb)
 {
-	return (trgb & 0xFF);
+	return (argb & 0xFF);
 }

@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_window.h                                    :+:      :+:    :+:   */
+/*   init_player.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/01 08:52:44 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 11:21:43 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/02/02 10:32:50 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/02/02 11:36:57 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CREATE_WINDOW_H
-# define CREATE_WINDOW_H
+#ifndef INIT_PLAYER_H
+# define INIT_PLAYER_H
 
-# include "render_scene.h"
+# include "cub3d.h"
 
-void	create_window(t_mlx *mlx, t_res *res);
-int		close_window_esc(int keycode, t_mlx *mlx);
-int		close_window_cross(int keycode, t_mlx *mlx);
+void	get_start_position(t_player *player, char **grid);
+double	get_starting_orientation(char orientation);
 
 #endif

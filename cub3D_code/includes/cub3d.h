@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:33:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/01 19:26:08 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/02 11:37:06 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define VALID_CHARS "012NSEW "
 # define TILE_SIZE 32
+// # define M_PI 3.14159265358979323846
 
 /*
 ** To delete
@@ -33,10 +34,10 @@
 # include "utils.h"
 # include "utils_colors.h"
 
-void	init_scene(t_scene *scene);
 void	get_scene(int fd, t_scene *scene);
 void	check_scene(t_scene *scene, char *file);
-void	render_scene(t_scene *scene);
-void	free_scene(t_scene *scene);
+void	init_player(t_player *player, char **grid);
+void	render_scene(t_game *game);
+// void	free_scene(t_scene *scene);
 
 #endif

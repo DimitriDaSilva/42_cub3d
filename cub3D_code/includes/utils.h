@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 08:44:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/01 09:03:26 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/02 11:09:03 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,7 @@
 # include "cub3d.h"
 
 void	unload_strs(char **strs);
+double	rad_to_deg(double rad);
+double	deg_to_rad(double deg);
 
 #endif

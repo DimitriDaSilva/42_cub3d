@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/01 19:26:22 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/02 11:39:01 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@
 void	check_scene(t_scene *scene, char *file)
 {
 	check_cub_extention(file);
-	check_resolution(scene->resolution);
-	check_texture(scene->north_texture, "north texture");
-	check_texture(scene->south_texture, "south texture");
-	check_texture(scene->west_texture, "west texture");
-	check_texture(scene->east_texture, "east texture");
+	check_resolution(&scene->res);
+	check_texture(scene->no_texture, "north texture");
+	check_texture(scene->so_texture, "south texture");
+	check_texture(scene->we_texture, "west texture");
+	check_texture(scene->ea_texture, "east texture");
 	check_texture(scene->sprite_texture, "sprite texture");
-	check_color(scene->floor_color, "floor color");
-	check_color(scene->ceilling_color, "ceilling color");
-	check_map(scene);
+	check_color(&scene->floor, "floor color");
+	check_color(&scene->ceilling, "ceilling color");
+	check_map(&scene->map);
 }
 
 /*
@@ -62,9 +62,9 @@ void	check_cub_extention(char *file)
 **			non-digit to being stored
 */
 
-void	check_resolution(int arr[])
+void	check_resolution(t_res *res)
 {
-	if (arr[0] == -1 || arr[1] == -1 || arr[0] == 0 || arr[1] == 0)
+	if ( res->width == 0 || res->height == 0)
 	{
 		ft_printf("Error\nInvalid resolution.\n");
 		exit(EXIT_SUCCESS);
@@ -99,33 +99,22 @@ void	check_texture(char *texture_path, char *texture_name)
 ** @param:	- [int *] array with the 3 colors of the RGB code
 **			- [char *] color name (either floor color or ceilling)
 ** Line-by-line comments:
-** @6		-1 is the init value so it means that no value has been stored
+** @1		-1 is the init value so it means that no value has been stored
 */
 
-void	check_color(int arr[], char *color_name)
+void	check_color(t_color *color, char *color_name)
 {
-	int	i;
-
-	i = -1;
-	while (++i < 3)
+	if (color->r == -1)
 	{
-		if (arr[i] == -1 && i == 0)
-		{
-			ft_printf("Error\nThe %s is either missing or poorly "
-						"formatted.\n", color_name);
-			exit(EXIT_SUCCESS);
-		}
-		else if (arr[i] == -1)
-		{
-			ft_printf("Error\nThe RGB code for the %s does not contain 3 "
-						"colors.\n", color_name);
-			exit(EXIT_SUCCESS);
-		}
-		else if (arr[i] < 0 || 255 < arr[i])
-		{
-			ft_printf("Error\nThe RGB code for the %s is "
-						"incorrect.\n", color_name);
-			exit(EXIT_SUCCESS);
-		}
+		ft_printf("Error\nThe %s is either missing or poorly "
+					"formatted.\n", color_name);
+		exit(EXIT_SUCCESS);
 	}
+	else if (255 < color->r || 255 < color->g || 255 < color->b)
+	{
+		ft_printf("Error\nThe RGB code for the %s is "
+					"incorrect.\n", color_name);
+		exit(EXIT_SUCCESS);
+	}
+	color->argb = create_argb(0, color->r, color->g, color->b);
 }
