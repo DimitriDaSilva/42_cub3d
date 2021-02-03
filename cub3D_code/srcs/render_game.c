@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 19:18:43 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 20:15:14 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/03 12:36:15 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	render_game(t_game *game)
 {
-	create_window(&game->mlx, &game->scene.res);
+	create_window(&game->mlx, &game->scene);
 	set_event_hooks(game);
 	mlx_loop_hook(game->mlx.mlx_ptr, render_next_frame, game);
 	mlx_loop(game->mlx.mlx_ptr);
@@ -26,6 +26,7 @@ int		render_next_frame(void *my_struct)
 
 	game = my_struct;
 	get_empty_img(&game->mlx, &game->scene.res);
+	update(game);
 	draw_background(game);
 	draw_mini_map(game);
 	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win, game->mlx.img.img_ptr, 0, 0);

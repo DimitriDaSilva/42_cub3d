@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 16:44:10 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 20:35:08 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/03 08:16:35 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	draw_circle(t_circle *circle, int color, int *img, int res_width)
 	{
 		x1 = circle->radius * cos(deg_to_rad(angle));
 		y1 = circle->radius * sin(deg_to_rad(angle));
-		tmp_x = circle->x + (int)x1 + TILE_SIZE / 2;
-		tmp_y = circle->y + (int)y1 + TILE_SIZE / 2;
+		tmp_x = circle->x + (int)x1;
+		tmp_y = circle->y + (int)y1;
 		img[tmp_y * res_width + tmp_x] = color;
 		angle += 0.1;
 	}

@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:30:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 21:35:05 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/03 12:35:50 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct	s_scene
 	t_color		floor;
 	t_color		ceilling;
 	t_map		map;
+	int			mini_map_tile_size;
 }				t_scene;
 
 typedef struct	s_player
@@ -68,7 +69,7 @@ typedef struct	s_player
 	double		x;
 	double		y;
 	double		radius;
-	int			walk_direction;
+	char		walk_direction;
 	double		move_speed;
 	int			turn_direction;
 	double		rotation_angle;

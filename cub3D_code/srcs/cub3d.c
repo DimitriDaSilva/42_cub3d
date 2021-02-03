@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 18:13:05 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 20:59:45 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/03 12:54:44 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	check_scene(&game.scene, argv[1]);
-	init_player(&game.player, game.scene.map.grid);
+	init_player(&game.player, &game.scene);
 	render_game(&game);
 	return (0);
 }

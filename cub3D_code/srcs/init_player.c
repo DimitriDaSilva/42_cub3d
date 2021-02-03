@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:41:14 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 21:51:26 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/03 13:11:14 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,13 @@
 ** @8		Numbers of angles per frame turned
 */
 
-void	init_player(t_player *player, char **grid)
+void	init_player(t_player *player, t_scene *scene)
 {
-	player->radius = 7;
 	player->walk_direction = 0;
 	player->move_speed = 0.2;
 	player->turn_direction = 0;
 	player->rotation_speed = deg_to_rad(8);
-	get_start_position(player, grid);
+	get_start_position(player, scene->map.grid);
 }
 
 /*
@@ -60,8 +59,8 @@ void	get_start_position(t_player *player, char **grid)
 		{
 			if (ft_strchr("NSEW", grid[i][j]))
 			{
-				player->x = j;
-				player->y = i;
+				player->x = j + 0.5;
+				player->y = i + 0.5;
 				player->rotation_angle = get_starting_orientation(grid[i][j]);
 			}
 		}
