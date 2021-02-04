@@ -67,7 +67,7 @@ void	update_player_position(t_player *player, char **grid)
 		rotation = player->rotation_angle + deg_to_rad(90);
 	player->x += cos(rotation) * move_step;
 	player->y += sin(rotation) * move_step;
-	if (is_obstacle(grid, player->x, player->x))
+	if (ft_strchr("12", grid[(int)player->y][(int)player->x]))
 	{
 		player->x -= cos(rotation) * move_step;
 		player->y -= sin(rotation) * move_step;
@@ -89,11 +89,12 @@ void	update_rays(t_game *game)
 	int		i;
 	double	ray_angle;
 
-	ray_angle = game->player.rotation_angle - VIEW_ANGLE / 2;
+	ray_angle = game->player.rotation_angle - game->scene.view_angle / 2;
 	i = -1;
 	while (++i < game->rays.total_rays)
 	{
-		cast_ray(&game->rays.arr[i], game->scene.map.grid, &game->player);
-		ray_angle += VIEW_ANGLE / game->rays.total_rays;
+		game->rays.arr[i].angle = ray_angle;
+		cast_ray(&game->rays.arr[i], &game->scene.map, &game->player);
+		ray_angle += game->scene.view_angle / game->rays.total_rays;
 	}
 }
