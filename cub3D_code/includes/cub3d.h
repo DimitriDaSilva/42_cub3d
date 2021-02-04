@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:33:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/03 13:07:46 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/03 17:32:56 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 # define VALID_CHARS "012NSEW "
 # define MINIMAP_RATIO 200
 # define MINIMAP_OFFSET 10
+/*
+** 60 degrees in radians
+*/
+# define VIEW_ANGLE 1.0471975512
+# define PIXELS_PER_RAY 4
 
 /*
 ** Keycodes

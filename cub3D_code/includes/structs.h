@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:30:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/03 12:35:50 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/03 19:32:09 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,24 @@ typedef struct	s_player
 	double		rotation_speed;
 }				t_player;
 
+typedef struct	s_ray
+{
+	double		size;
+	char		obstacle;
+}				t_ray;
+
+typedef struct	s_rays
+{
+	int			total_rays;
+	t_ray		*arr;
+}				t_rays;
+
 typedef struct	s_game
 {
 	t_mlx		mlx;
 	t_scene		scene;
 	t_player	player;
+	t_rays		rays;
 }				t_game;
 
 /*
