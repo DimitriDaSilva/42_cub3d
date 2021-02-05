@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:33:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/04 18:23:45 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/05 15:40:49 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 # define CUB3D_H
 
 # define VALID_CHARS "012NSEW "
-# define MINIMAP_RATIO 200
+// # define MINIMAP_RATIO 200
+# define MINIMAP_RATIO 60
 # define MINIMAP_OFFSET 10
 # define VIEW_ANGLE 60
-# define PIXELS_PER_RAY 4
+# define PIXELS_PER_RAY 1
+// # define PIXELS_PER_RAY 60
 
 /*
 ** Keycodes

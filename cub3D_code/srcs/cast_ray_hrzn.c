@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 18:58:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/04 19:05:44 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/05 15:44:25 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ void	get_hrzn_intersection(t_ray *ray, t_map *map, t_player *player)
 		ray->size = INT_MAX;
 		return ;
 	}
-	if (check_orientation(ray->angle, 0, 90))
+	if (check_orientation(ray, 0, 90))
 		get_hrzn_intersection_SE(ray, map, player);
-	else if (check_orientation(ray->angle, 90, 180))
+	else if (check_orientation(ray, 90, 180))
 		get_hrzn_intersection_SW(ray, map, player);
-	else if (check_orientation(ray->angle, 180, 270))
+	else if (check_orientation(ray, 180, 270))
 		get_hrzn_intersection_NW(ray, map, player);
-	else if (check_orientation(ray->angle, 270, 360))
+	else if (check_orientation(ray, 270, 360))
 		get_hrzn_intersection_NE(ray, map, player);
 }
 
@@ -79,12 +79,12 @@ void	get_hrzn_intersection_SW(t_ray *ray, t_map *map, t_player *player)
 	x_step = y_step / tan(ray->angle);
 	a_x = player->x + x_step;
 	ray->size += sqrt(pow(x_step, 2) + pow(y_step, 2));
-	if (is_obstacle(map, a_x - 1, a_y, ray))
+	if (is_obstacle(map, a_x, a_y, ray))
 		return ;
 	y_step = 1;
 	x_step = y_step / tan(ray->angle);
 	ray_section = sqrt(pow(x_step, 2) + pow(y_step, 2));
-	while (!is_obstacle(map, a_x - 1, a_y, ray))
+	while (!is_obstacle(map, a_x, a_y, ray))
 	{
 		a_x += x_step;
 		a_y += y_step;
@@ -105,14 +105,14 @@ void	get_hrzn_intersection_NW(t_ray *ray, t_map *map, t_player *player)
 	x_step = y_step / tan(ray->angle);
 	a_x = player->x - x_step;
 	ray->size += sqrt(pow(x_step, 2) + pow(y_step, 2));
-	if (is_obstacle(map, a_x - 1, a_y - 1, ray))
+	if (is_obstacle(map, a_x, a_y - 1, ray))
 		return ;
 	y_step = -1;
-	x_step = y_step / tan(ray->angle);
+	x_step = -y_step / tan(ray->angle);
 	ray_section = sqrt(pow(x_step, 2) + pow(y_step, 2));
-	while (!is_obstacle(map, a_x - 1, a_y - 1, ray))
+	while (!is_obstacle(map, a_x, a_y - 1, ray))
 	{
-		a_x += x_step;
+		a_x -= x_step;
 		a_y += y_step;
 		ray->size += ray_section;
 	}

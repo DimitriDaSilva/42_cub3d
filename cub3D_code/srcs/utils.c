@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 08:43:45 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/04 19:47:17 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/05 12:42:28 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ int		is_obstacle(t_map *map, double x, double y, t_ray *ray)
 		return (1);
 	}
 	if (x_int == 0 || map->width == x_int || y_int == 0 || map->height == y_int)
+	{			ray->obstacle = '1';
 		return (1);
+	}
 	ray->obstacle = map->grid[y_int][x_int];
 	if (ft_strchr("12", ray->obstacle))
 		return (1);
@@ -49,13 +51,35 @@ int		is_obstacle(t_map *map, double x, double y, t_ray *ray)
 		return (0);
 }
 
-int		check_orientation(double radian, double deg_low, double deg_high)
+int		check_orientation(t_ray *ray, double deg_low, double deg_high)
 {
-	if (deg_to_rad(deg_low) <= normalize_radian(radian) &&
-		normalize_radian(radian) < deg_to_rad(deg_high))
+	double	rad_low;
+	double	rad_high;
+	double	norm_rad;
+
+	rad_low = deg_to_rad(deg_low);
+	rad_high = deg_to_rad(deg_high);
+	norm_rad = normalize_radian(ray->angle);
+	if (rad_low <= norm_rad && norm_rad < rad_high)
+	{
+		ray->orientation = get_orientation(rad_to_deg(norm_rad));
 		return (1);
+	}
 	else
 		return (0);
+}
+
+char	get_orientation(double degree)
+{
+	if (315 <= degree || degree < 45)
+		return ('E');
+	else if (45 <= degree && degree < 135)
+		return ('S');
+	else if (135 <= degree && degree < 225)
+		return ('W');
+	else if (225 <= degree && degree < 315)
+		return ('N');
+	return 0;
 }
 
 double	normalize_radian(double radian)
