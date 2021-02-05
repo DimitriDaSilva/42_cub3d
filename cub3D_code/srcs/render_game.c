@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 19:18:43 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/04 19:48:40 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/05 18:50:00 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ int		render_next_frame(void *my_struct)
 	game = my_struct;
 	get_empty_img(&game->mlx, &game->scene.res);
 	update(game);
-	draw_background(game);
-	draw_game(game);
+	draw_floor(game);
+	draw_ceilling(game);
+	draw_walls(game);
 	draw_mini_map(game);
 	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win, game->mlx.img.img_ptr, 0, 0);
 	mlx_destroy_image(game->mlx.mlx_ptr, game->mlx.img.img_ptr);
@@ -44,15 +45,28 @@ void	get_empty_img(t_mlx *mlx, t_res *res)
 											&mlx->img.endian);
 }
 
-void	draw_background(t_game *game)
+void	draw_floor(t_game *game)
 {
 	t_rect	rect;
 
 	rect.x = 0;
 	rect.y = 0;
 	rect.width = game->scene.res.width;
-	rect.height = game->scene.res.height;
+	rect.height = game->scene.res.height / 2;
 	rect.border_width = 0;
-	rect.fill_color = 0x00f1faee;
+	rect.fill_color = game->scene.floor.argb;
+	draw_rect(&rect, game->mlx.img.data, game->scene.res.width);
+}
+
+void	draw_ceilling(t_game *game)
+{
+	t_rect	rect;
+
+	rect.x = 0;
+	rect.y = game->scene.res.height / 2;
+	rect.width = game->scene.res.width;
+	rect.height = game->scene.res.height / 2;
+	rect.border_width = 0;
+	rect.fill_color = game->scene.ceilling.argb;
 	draw_rect(&rect, game->mlx.img.data, game->scene.res.width);
 }

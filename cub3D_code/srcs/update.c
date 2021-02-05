@@ -90,12 +90,12 @@ void	update_rays(t_game *game)
 	double	ray_angle;
 
 
-	ray_angle = game->player.rotation_angle - game->scene.view_angle / 2;
+	ray_angle = game->player.rotation_angle - game->rays.view_angle / 2;
 	i = -1;
 	while (++i < game->rays.total_rays)
 	{
 		game->rays.arr[i].angle = ray_angle;
 		cast_ray(&game->rays.arr[i], &game->scene.map, &game->player);
-		ray_angle += game->scene.view_angle / game->rays.total_rays;
+		ray_angle += game->rays.view_angle / game->rays.total_rays;
 	}
 }

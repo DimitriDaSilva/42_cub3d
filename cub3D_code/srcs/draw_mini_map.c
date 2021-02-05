@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:28:36 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/05 12:26:11 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/05 18:37:28 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	draw_map(t_game *game)
 			rect.width = game->scene.mini_map_tile_size;
 			rect.height = game->scene.mini_map_tile_size;
 			rect.border_color = 0x0014213d;
-			rect.border_width = 1;
+			rect.border_width = 0;
 			rect.fill_color = get_fill_color(game->scene.map.grid[i][j]);
 			draw_rect(&rect, game->mlx.img.data, game->scene.res.width);
 		}
@@ -51,7 +51,8 @@ void	draw_player(t_game *game)
 	double		tile_size;
 
 	tile_size = game->scene.mini_map_tile_size;
-	game->player.radius =  tile_size / 4;
+	draw_rays(game);
+	game->player.radius =  tile_size / 2;
 	circle.x = game->player.x * tile_size + MINIMAP_OFFSET;
 	circle.y = game->player.y * tile_size + MINIMAP_OFFSET;
 	circle.radius = game->player.radius;
@@ -67,7 +68,6 @@ void	draw_player(t_game *game)
 	// 			+ sin(game->player.rotation_angle) * tile_size;
 	// line.color = 0x00e63946;
 	// draw_line(&line, game->mlx.img.data, game->scene.res.width);
-	draw_rays(game);
 }
 
 int		get_fill_color(char grid_item)
@@ -99,7 +99,7 @@ void	draw_rays(t_game *game)
 					+ cos(game->rays.arr[i].angle) * tile_size * game->rays.arr[i].size;
 		line.end_y = game->player.y * tile_size + MINIMAP_OFFSET
 					+ sin(game->rays.arr[i].angle) * tile_size * game->rays.arr[i].size;
-		line.color = 0x00e63946;
+		line.color = 0x00F6B8BD;
 		draw_line(&line, game->mlx.img.data, game->scene.res.width);
 	}
 }
