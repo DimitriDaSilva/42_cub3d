@@ -89,6 +89,7 @@ void	update_rays(t_game *game)
 	int		i;
 	double	ray_angle;
 
+
 	ray_angle = game->player.rotation_angle - game->scene.view_angle / 2;
 	i = -1;
 	while (++i < game->rays.total_rays)

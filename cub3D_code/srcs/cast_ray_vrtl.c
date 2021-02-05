@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 18:58:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/05 12:49:03 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/05 16:48:27 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	get_vrtl_intersection_SE(t_ray *ray, t_map *map, t_player *player)
 	double	y_step;
 	double	ray_section;
 
-	a_x = floor(player->x) + 1;
+	a_x = ceil(player->x);
 	x_step = a_x - player->x;
 	y_step = x_step * tan(ray->angle);
 	a_y = player->y + y_step;

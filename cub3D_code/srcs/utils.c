@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 08:43:45 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/05 12:42:28 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/05 16:46:26 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ double	normalize_radian(double radian)
 	double	full_circle;
 
 	full_circle = deg_to_rad(360);
-	radian = ft_remainder(radian, full_circle);
-	if (radian <= 0)
+	radian = fmod(radian, full_circle);
+	if (radian < 0)
 		radian += full_circle;
 	return (radian);
 }

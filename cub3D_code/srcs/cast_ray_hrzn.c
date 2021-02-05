@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 18:58:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/05 15:44:25 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/05 16:49:13 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	get_hrzn_intersection_SE(t_ray *ray, t_map *map, t_player *player)
 	double	y_step;
 	double	ray_section;
 
-	a_y = floor(player->y) + 1;
+	a_y = ceil(player->y);
 	y_step = a_y - player->y;
 	x_step = y_step / tan(ray->angle);
 	a_x = player->x + x_step;
@@ -74,7 +74,7 @@ void	get_hrzn_intersection_SW(t_ray *ray, t_map *map, t_player *player)
 	double	y_step;
 	double	ray_section;
 
-	a_y = floor(player->y) + 1;
+	a_y = ceil(player->y);
 	y_step = a_y - player->y;
 	x_step = y_step / tan(ray->angle);
 	a_x = player->x + x_step;
