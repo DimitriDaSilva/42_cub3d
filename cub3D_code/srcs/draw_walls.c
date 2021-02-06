@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:43:07 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/06 11:38:22 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:30:19 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	draw_walls(t_game *game)
 		rect.width = PIXELS_PER_RAY;
 		rect.height = wall_height;
 		rect.tex = get_texture(&game->scene, game->rays.arr[i].orientation);
-		draw_rect_texture(&rect, game->mlx.img.data, game->scene.res.width);
+		draw_rect_texture(&rect, game->mlx.img.data, &game->scene.res, &game->rays.arr[i]);
 	}
 }
 
@@ -63,5 +63,6 @@ t_texture	get_texture(t_scene *scene, char orientation)
 		return (scene->so_tex);
 	else if (orientation == 'E')
 		return (scene->ea_tex);
-	return (scene->we_tex);
+	else
+		return (scene->we_tex);
 }

@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:41:14 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/05 10:14:50 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/06 15:51:03 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	init_player(t_player *player, t_scene *scene)
 ** [2]: y position in the map (yes y = i)
 ** @param:	- [char **] array of strings reprensenting the map
 **			- [int *] start_position with 3 ints allocated
+** Line-by-line comments:
+** @15		Erasing the start position from the grid to simplify edge cases
 */
 
 void	get_start_position(t_player *player, char **grid)
@@ -62,6 +64,7 @@ void	get_start_position(t_player *player, char **grid)
 				player->x = j + 0.5;
 				player->y = i + 0.5;
 				player->rotation_angle = get_starting_orientation(grid[i][j]);
+				grid[i][j] = '0';
 			}
 		}
 	}

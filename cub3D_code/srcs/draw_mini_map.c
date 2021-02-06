@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:28:36 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/05 18:37:28 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/06 14:25:27 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	draw_map(t_game *game)
 			rect.width = game->scene.mini_map_tile_size;
 			rect.height = game->scene.mini_map_tile_size;
 			rect.border_color = 0x0014213d;
-			rect.border_width = 0;
+			rect.border_width = 1;
 			rect.fill_color = get_fill_color(game->scene.map.grid[i][j]);
 			draw_rect(&rect, game->mlx.img.data, game->scene.res.width);
 		}

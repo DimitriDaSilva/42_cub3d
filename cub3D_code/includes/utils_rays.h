@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_graph.h                                      :+:      :+:    :+:   */
+/*   utils_rays.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/02 16:44:53 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/06 17:33:43 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/02/06 15:30:36 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/02/06 15:32:35 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_GRAPH_H
-# define UTILS_GRAPH_H
+#ifndef UTILS_RAYS_H
+# define UTILS_RAYS_H
 
 # include "cub3d.h"
 
-void	draw_rect(t_rect *rect, int	*img, int res_width);
-void	draw_rect_texture(t_rect *rect, int *img, t_res *res, t_ray *ray);
-int		get_bitmap_offset(t_ray *ray, int bitmap_width);
-void	draw_circle(t_circle *circle, int color, int *img, int res_width);
-void	draw_line(t_line *line, int *img, int res_width);
+int		check_orientation(t_ray *ray, double deg_low, double deg_high);
+int		is_obstacle(t_map *map, double x, double y, t_ray *ray);
+char	get_orientation(t_map *map, int x, int y, t_ray *ray);
+int		is_looking_south(double angle);
+int		is_looking_west(double angle);
 
 #endif

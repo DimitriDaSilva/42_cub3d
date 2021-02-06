@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:30:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/05 20:34:33 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:15:48 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,9 @@ typedef struct	s_ray
 	char		obstacle;
 	double		angle;
 	char		orientation;
+	char		side;
+	double		x;
+	double		y;
 }				t_ray;
 
 typedef struct	s_rays
