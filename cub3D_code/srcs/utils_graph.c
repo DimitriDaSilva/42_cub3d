@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 16:44:10 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/03 08:16:35 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/06 10:38:33 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,28 @@ void	draw_rect(t_rect *rect, int *img, int res_width)
 				img[tmp_y * res_width + tmp_x] = rect->border_color;
 			else
 				img[tmp_y * res_width + tmp_x] = rect->fill_color;
+		}
+	}
+}
+
+void	draw_rect_texture(t_rect *rect, int *img, int res_width)
+{
+	int	i;
+	int	j;
+	int	i_tex;
+	int	j_tex;
+	int	color;
+
+	i = -1;
+	while (++i < rect->height)
+	{
+		j = -1;
+		while (++j < rect->width)
+		{
+			i_tex = (rect->y + i) % rect->tex.height;
+			j_tex = (rect->x + j) % rect->tex.width;
+			color = rect->tex.img.data[i_tex * 64 + j_tex];
+			img[(rect->y + i) * res_width + rect->x + j] = color;
 		}
 	}
 }
