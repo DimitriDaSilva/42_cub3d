@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:52:12 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 11:33:34 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/05 19:53:43 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ void	init_scene(t_scene *scene)
 {
 	scene->res.width = 0;
 	scene->res.height = 0;
-	scene->no_texture = 0;
-	scene->so_texture = 0;
-	scene->we_texture = 0;
-	scene->ea_texture = 0;
-	scene->sprite_texture = 0;
+	scene->no_tex.path = 0;
+	scene->so_tex.path = 0;
+	scene->we_tex.path = 0;
+	scene->ea_tex.path = 0;
+	scene->sprite_tex.path = 0;
 	scene->floor.r = -1;
 	scene->floor.g = -1;
 	scene->floor.b = -1;
@@ -98,15 +98,15 @@ void	get_data(char **strs, t_scene *scene)
 	else if (!ft_strcmp(strs[0], "R"))
 		get_resolution(strs, &scene->res);
 	else if (!ft_strcmp(strs[0], "NO") && strs[2] == 0)
-		scene->no_texture = !scene->no_texture ? ft_strdup(strs[1]) : 0;
+		scene->no_tex.path = !scene->no_tex.path ? ft_strdup(strs[1]) : 0;
 	else if (!ft_strcmp(strs[0], "SO") && strs[2] == 0)
-		scene->so_texture = !scene->so_texture ? ft_strdup(strs[1]) : 0;
+		scene->so_tex.path = !scene->so_tex.path ? ft_strdup(strs[1]) : 0;
 	else if (!ft_strcmp(strs[0], "WE") && strs[2] == 0)
-		scene->we_texture = !scene->we_texture ? ft_strdup(strs[1]) : 0;
+		scene->we_tex.path = !scene->we_tex.path ? ft_strdup(strs[1]) : 0;
 	else if (!ft_strcmp(strs[0], "EA") && strs[2] == 0)
-		scene->ea_texture = !scene->ea_texture ? ft_strdup(strs[1]) : 0;
+		scene->ea_tex.path = !scene->ea_tex.path ? ft_strdup(strs[1]) : 0;
 	else if (!ft_strcmp(strs[0], "S") && strs[2] == 0)
-		scene->sprite_texture = !scene->sprite_texture ? ft_strdup(strs[1]) : 0;
+		scene->sprite_tex.path = !scene->sprite_tex.path ? ft_strdup(strs[1]) : 0;
 	else if (!ft_strcmp(strs[0], "F") && strs[2] == 0)
 		get_color(strs[1], &scene->floor);
 	else if (!ft_strcmp(strs[0], "C") && strs[2] == 0)

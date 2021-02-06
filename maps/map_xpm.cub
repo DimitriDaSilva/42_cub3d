@@ -1,10 +1,10 @@
 R 1200 700
-NO ./assets/textures/bookshelf.png
-SO ./assets/textures/Ice.png
-WE ./assets/textures/Stone.png
-EA ./assets/textures/Mud.png
+NO ./assets/textures/xpm/bookshelf.xpm
+SO ./assets/textures/xpm/Ice.xpm
+WE ./assets/textures/xpm/WalkStone.xpm
+EA ./assets/textures/xpm/Mud.xpm
 
-S ./assets/textures/Gold1.png
+S ./assets/textures/xpm/GemOv1.xpm
 F 220,100,0
 C 225,30,0
 

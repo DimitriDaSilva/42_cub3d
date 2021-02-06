@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 08:43:45 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/05 16:46:26 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/05 19:23:42 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		check_orientation(t_ray *ray, double deg_low, double deg_high)
 
 	rad_low = deg_to_rad(deg_low);
 	rad_high = deg_to_rad(deg_high);
-	norm_rad = normalize_radian(ray->angle);
+	norm_rad = ray->angle;
 	if (rad_low <= norm_rad && norm_rad < rad_high)
 	{
 		ray->orientation = get_orientation(rad_to_deg(norm_rad));
@@ -80,15 +80,4 @@ char	get_orientation(double degree)
 	else if (225 <= degree && degree < 315)
 		return ('N');
 	return 0;
-}
-
-double	normalize_radian(double radian)
-{
-	double	full_circle;
-
-	full_circle = deg_to_rad(360);
-	radian = fmod(radian, full_circle);
-	if (radian < 0)
-		radian += full_circle;
-	return (radian);
 }

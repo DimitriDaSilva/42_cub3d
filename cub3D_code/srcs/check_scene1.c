@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 11:39:01 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/05 19:51:14 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	check_scene(t_scene *scene, char *file)
 {
 	check_cub_extention(file);
 	check_resolution(&scene->res);
-	check_texture(scene->no_texture, "north texture");
-	check_texture(scene->so_texture, "south texture");
-	check_texture(scene->we_texture, "west texture");
-	check_texture(scene->ea_texture, "east texture");
-	check_texture(scene->sprite_texture, "sprite texture");
+	check_texture(scene->no_tex.path, "north texture");
+	check_texture(scene->so_tex.path, "south texture");
+	check_texture(scene->we_tex.path, "west texture");
+	check_texture(scene->ea_tex.path, "east texture");
+	check_texture(scene->sprite_tex.path, "sprite texture");
 	check_color(&scene->floor, "floor color");
 	check_color(&scene->ceilling, "ceilling color");
 	check_map(&scene->map);

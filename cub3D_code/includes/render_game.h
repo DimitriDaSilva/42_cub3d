@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 19:06:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/05 18:43:15 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/05 20:35:52 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	get_empty_img(t_mlx *mlx, t_res *res);
 void	update(t_game *game);
 void	draw_floor(t_game *game);
 void	draw_ceilling(t_game *game);
-void	draw_game(t_game *game);
+void	draw_walls(t_game *game);
+void	draw_sprites(t_game *game);
 void	draw_mini_map(t_game *game);
 
 #endif

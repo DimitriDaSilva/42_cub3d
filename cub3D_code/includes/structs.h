@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:30:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/05 17:45:56 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/05 20:34:33 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ typedef struct	s_res
 	int			height;
 }				t_res;
 
+typedef struct	s_texture
+{
+	char		*path;
+	t_img		img;
+	int			width;
+	int			height;
+}				t_texture;
+
 typedef struct	s_color
 {
 	int			r;
@@ -53,11 +61,11 @@ typedef struct	s_map
 typedef struct	s_scene
 {
 	t_res		res;
-	char		*no_texture;
-	char		*so_texture;
-	char		*we_texture;
-	char		*ea_texture;
-	char		*sprite_texture;
+	t_texture	no_tex;
+	t_texture	so_tex;
+	t_texture	we_tex;
+	t_texture	ea_tex;
+	t_texture	sprite_tex;
 	t_color		floor;
 	t_color		ceilling;
 	t_map		map;
@@ -105,33 +113,34 @@ typedef struct	s_game
 */
 typedef struct	s_rect
 {
-	int		x;
-	int		y;
-	int		width;
-	int		height;
-	int		fill_color;
-	int		border_color;
-	int		border_width;
+	int			x;
+	int			y;
+	int			width;
+	int			height;
+	int			fill_color;
+	int			border_color;
+	int			border_width;
+	t_texture	tex;
 }				t_rect;
 
 typedef struct s_circle
 {
-	int		x;
-	int		y;
-	double	radius;
-	int		fill_color;
-	int		border_color;
-	int		border_width;
+	int			x;
+	int				y;
+	double		radius;
+	int			fill_color;
+	int			border_color;
+	int			border_width;
 }				t_circle;
 
 typedef struct s_line
 {
-	int		begin_x;
-	int		begin_y;
-	int		end_x;
-	int		end_y;
-	int		color;
-	int		width;
+	int			begin_x;
+	int			begin_y;
+	int			end_x;
+	int			end_y;
+	int			color;
+	int			width;
 }				t_line;
 
 #endif
