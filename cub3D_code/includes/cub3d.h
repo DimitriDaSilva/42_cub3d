@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:33:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/06 19:22:10 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/06 19:25:35 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # define MINIMAP_OFFSET 10
 # define SCALE 64
 # define VIEW_ANGLE 60
-# define PIXELS_PER_RAY 2
-// # define PIXELS_PER_RAY 80
 
 /*
 ** Keycodes

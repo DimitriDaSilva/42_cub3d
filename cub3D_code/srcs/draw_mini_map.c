@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:28:36 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/06 14:25:27 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/06 19:28:28 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	draw_rays(t_game *game)
 
 	tile_size = game->scene.mini_map_tile_size;
 	i = -1;
-	while (++i < game->rays.total_rays)
+	while (++i < game->scene.res.width)
 	{
 		line.begin_x = game->player.x * tile_size + MINIMAP_OFFSET;
 		line.begin_y = game->player.y * tile_size + MINIMAP_OFFSET;

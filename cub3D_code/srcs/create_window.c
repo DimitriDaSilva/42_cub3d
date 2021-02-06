@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 08:49:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/06 10:17:41 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/06 19:26:40 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,7 @@ void	set_mini_map_size(t_scene *scene)
 
 void	set_rays(t_game *game)
 {
-	int	total_rays;
-
-	total_rays = game->scene.res.width / PIXELS_PER_RAY;
-	game->rays.total_rays = total_rays;
-	if (!(game->rays.arr = malloc(total_rays * sizeof(t_ray))))
+	if (!(game->rays.arr = malloc(game->scene.res.width * sizeof(t_ray))))
 		exit(EXIT_SUCCESS);
 }
 

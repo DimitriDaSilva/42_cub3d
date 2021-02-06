@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:30:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/06 17:15:48 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/06 19:27:29 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ typedef struct	s_ray
 
 typedef struct	s_rays
 {
-	int			total_rays;
 	t_ray		*arr;
 	double		view_angle;
 	double		dist_proj_plane;
