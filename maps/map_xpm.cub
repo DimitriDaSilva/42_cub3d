@@ -1,18 +1,18 @@
 R 1200 700
-NO ./assets/textures/xpm/bookshelf.xpm
+NO ./assets/textures/xpm/BrickOv.xpm
 SO ./assets/textures/xpm/BrickOv.xpm
-WE ./assets/textures/xpm/TilledSoil.xpm
-EA ./assets/textures/xpm/TreeRings.xpm
+WE ./assets/textures/xpm/CrackOver.xpm
+EA ./assets/textures/xpm/CrackOver.xpm
 
-S ./assets/textures/xpm/GemOv1.xpm
-F 220,100,0
-C 225,30,0
+S ./assets/sprites/xpm/barrel.xpm
+C 36,85,1
+F 51,53,51
 
 		1111111111111111111111111
-		1000000000110000000000001
+		100000000011000000000W001
 		1000000000110000000000001
 		1011000001110000020000001
-		10010000000W0000000000001
+		1001000000000000000000001
 111111111011000001110002000000001
 100000000011000001110111111111111
 11110111111111011100000010001

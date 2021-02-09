@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:33:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/06 19:25:35 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/08 16:17:46 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define CUB3D_H
 
 # define VALID_CHARS "012NSEW "
-// # define MINIMAP_RATIO 50
-# define MINIMAP_RATIO 200
+# define MINIMAP_RATIO 50
+// # define MINIMAP_RATIO 200
 # define MINIMAP_OFFSET 10
 # define SCALE 64
 # define VIEW_ANGLE 60
@@ -49,7 +49,8 @@
 # include "utils.h"
 # include "utils_colors.h"
 # include "utils_graph.h"
-# include "utils_rays.h"
+# include "utils_rays1.h"
+# include "utils_rays2.h"
 
 void	get_scene(int fd, t_scene *scene);
 void	check_scene(t_scene *scene, char *file);

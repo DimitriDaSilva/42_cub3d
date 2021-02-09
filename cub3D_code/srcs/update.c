@@ -67,7 +67,7 @@ void	update_player_position(t_player *player, char **grid)
 		rotation = player->rotation_angle + deg_to_rad(90);
 	player->x += cos(rotation) * move_step;
 	player->y += sin(rotation) * move_step;
-	if (ft_strchr("12", grid[(int)player->y][(int)player->x]))
+	if (ft_strchr("1", grid[(int)player->y][(int)player->x]))
 	{
 		player->x -= cos(rotation) * move_step;
 		player->y -= sin(rotation) * move_step;

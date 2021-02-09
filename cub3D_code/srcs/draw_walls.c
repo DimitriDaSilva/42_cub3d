@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:43:07 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/06 20:00:22 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/08 17:07:00 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ void	draw_walls(t_game *game)
 		rect.y = get_y_wall_position(game, wall_height);
 		rect.height = wall_height;
 		rect.tex = get_texture(&game->scene, game->rays.arr[i].orientation);
-		draw_wall_strip(&rect, game->mlx.img.data, &game->scene.res, &game->rays.arr[i]);
+		draw_wall_strip(&rect,
+						game->mlx.img.data,
+						&game->scene.res,
+						&game->rays.arr[i]);
 	}
 }
 
@@ -39,8 +42,6 @@ double	get_wall_height(t_game *game, t_ray *ray)
 	fisheye_adjustment = cos(ray->angle - game->player.rotation_angle);
 	scaled_distance = ray->size * SCALE * fisheye_adjustment;
 	wall_height = (SCALE / (scaled_distance)) * game->rays.dist_proj_plane;
-	// if (wall_height > game->scene.res.height)
-	// 	wall_height = game->scene.res.height;
 	return (wall_height);
 }
 

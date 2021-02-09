@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_rays.c                                       :+:      :+:    :+:   */
+/*   utils_rays1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 15:29:42 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/06 17:18:16 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/08 15:38:16 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils_rays.h"
+#include "utils_rays1.h"
 
 int		check_orientation(t_ray *ray, double deg_low, double deg_high)
 {
@@ -41,13 +41,14 @@ int		is_obstacle(t_map *map, double x, double y, t_ray *ray)
 		return (1);
 	}
 	ray->obstacle = map->grid[(int)y][(int)x];
-	if (ft_strchr("12", ray->obstacle))
+	if (ray->obstacle == '1')
 	{
 		ray->orientation = get_orientation(map, (int)x, (int)y, ray);
 		return (1);
 	}
-	else
-		return (0);
+	else if (ray->obstacle == '2')
+		add_sprite(ray, x, y, ray->obstacle);
+	return (0);
 }
 
 char	get_orientation(t_map *map, int x, int y, t_ray *ray)
@@ -60,13 +61,13 @@ char	get_orientation(t_map *map, int x, int y, t_ray *ray)
 		return ('S');
 	else if (y == map->height - 1)
 		return ('N');
-	if (map->grid[y - 1][x] == '0' && ray->side == 'H' && is_looking_south(ray->angle))
+	if (map->grid[y - 1][x] != '1' && ray->side == 'H' && is_looking_south(ray->angle))
 		return ('N');
-	else if (map->grid[y + 1][x] == '0' && ray->side == 'H' && !is_looking_south(ray->angle))
+	else if (map->grid[y + 1][x] != '1' && ray->side == 'H' && !is_looking_south(ray->angle))
 		return ('S');
-	else if (map->grid[y][x - 1] == '0' && ray->side == 'V' && !is_looking_west(ray->angle))
+	else if (map->grid[y][x - 1] != '1' && ray->side == 'V' && !is_looking_west(ray->angle))
 		return ('W');
-	else if (map->grid[y][x + 1] == '0' && ray->side == 'V' && is_looking_west(ray->angle))
+	else if (map->grid[y][x + 1] != '1' && ray->side == 'V' && is_looking_west(ray->angle))
 		return ('E');
 	return 0;
 }
