@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 18:58:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/05 16:58:48 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/09 11:00:11 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ void	get_vrtl_intersection(t_ray *ray, t_map *map, t_player *player)
 		get_vrtl_intersection_NE(ray, map, player);
 }
 
+/*
+** Potential improvement: replace a_x and a_y per ray->x and ray->y
+** and delete the assignation for is_wall()
+*/
+
 void	get_vrtl_intersection_SE(t_ray *ray, t_map *map, t_player *player)
 {
 	double	a_x;
@@ -53,12 +58,12 @@ void	get_vrtl_intersection_SE(t_ray *ray, t_map *map, t_player *player)
 	y_step = x_step * tan(ray->angle);
 	a_y = player->y + y_step;
 	ray->size += sqrt(pow(x_step, 2) + pow(y_step, 2));
-	if (is_obstacle(map, a_x, a_y, ray))
+	if (is_wall(map, a_x, a_y, ray))
 		return ;
 	x_step = 1;
 	y_step = x_step * tan(ray->angle);
 	ray_section = sqrt(pow(x_step, 2) + pow(y_step, 2));
-	while (!is_obstacle(map, a_x, a_y, ray))
+	while (!is_wall(map, a_x, a_y, ray))
 	{
 		a_x += x_step;
 		a_y += y_step;
@@ -79,12 +84,12 @@ void	get_vrtl_intersection_SW(t_ray *ray, t_map *map, t_player *player)
 	y_step = x_step * tan(ray->angle);
 	a_y = player->y - y_step;
 	ray->size += sqrt(pow(x_step, 2) + pow(y_step, 2));
-	if (is_obstacle(map, a_x - 1, a_y, ray))
+	if (is_wall(map, a_x - 1, a_y, ray))
 		return ;
 	x_step = 1;
 	y_step = x_step * tan(ray->angle);
 	ray_section = sqrt(pow(x_step, 2) + pow(y_step, 2));
-	while (!is_obstacle(map, a_x - 1, a_y, ray))
+	while (!is_wall(map, a_x - 1, a_y, ray))
 	{
 		a_x -= x_step;
 		a_y -= y_step;
@@ -105,12 +110,12 @@ void	get_vrtl_intersection_NW(t_ray *ray, t_map *map, t_player *player)
 	y_step = x_step * tan(ray->angle);
 	a_y = player->y - y_step;
 	ray->size += sqrt(pow(x_step, 2) + pow(y_step, 2));
-	if (is_obstacle(map, a_x - 1, a_y, ray))
+	if (is_wall(map, a_x - 1, a_y, ray))
 		return ;
 	x_step = -1;
 	y_step = x_step * tan(ray->angle);
 	ray_section = sqrt(pow(x_step, 2) + pow(y_step, 2));
-	while (!is_obstacle(map, a_x - 1, a_y, ray))
+	while (!is_wall(map, a_x - 1, a_y, ray))
 	{
 		a_x += x_step;
 		a_y += y_step;
@@ -131,12 +136,12 @@ void	get_vrtl_intersection_NE(t_ray *ray, t_map *map, t_player *player)
 	y_step = x_step * tan(ray->angle);
 	a_y = player->y + y_step;
 	ray->size += sqrt(pow(x_step, 2) + pow(y_step, 2));
-	if (is_obstacle(map, a_x, a_y, ray))
+	if (is_wall(map, a_x, a_y, ray))
 		return ;
 	x_step = 1;
 	y_step = x_step * tan(ray->angle);
 	ray_section = sqrt(pow(x_step, 2) + pow(y_step, 2));
-	while (!is_obstacle(map, a_x, a_y, ray))
+	while (!is_wall(map, a_x, a_y, ray))
 	{
 		a_x += x_step;
 		a_y += y_step;

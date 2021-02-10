@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:30:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/09 09:18:24 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/10 11:17:22 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,16 @@ typedef struct	s_map
 	int			height;
 }				t_map;
 
+typedef struct	s_sprite
+{
+	double		x;
+	double		y;
+	t_texture	*tex;
+	double		distance;
+	double		rotation_angle;
+	int			is_visible;
+}				t_sprite;
+
 typedef struct	s_scene
 {
 	t_res		res;
@@ -70,6 +80,8 @@ typedef struct	s_scene
 	t_color		ceilling;
 	t_map		map;
 	int			mini_map_tile_size;
+	int			total_sprites;
+	t_sprite	*sprites;
 }				t_scene;
 
 typedef struct	s_player
@@ -84,15 +96,6 @@ typedef struct	s_player
 	double		rotation_speed;
 }				t_player;
 
-typedef struct	s_sprite
-{
-	double		x;
-	double		y;
-	char		item;
-	double		distance;
-	double		angle;
-}				t_sprite;
-
 typedef struct	s_ray
 {
 	double		x;
@@ -102,8 +105,6 @@ typedef struct	s_ray
 	double		angle;
 	char		orientation;
 	char		side;
-	int			total_sprites;
-	t_sprite	*sprites;
 }				t_ray;
 
 typedef struct	s_rays
@@ -139,7 +140,7 @@ typedef struct	s_rect
 typedef struct s_circle
 {
 	int			x;
-	int				y;
+	int			y;
 	double		radius;
 	int			fill_color;
 	int			border_color;

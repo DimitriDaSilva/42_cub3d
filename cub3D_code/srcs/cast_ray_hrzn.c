@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 18:58:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/05 16:49:13 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/09 10:46:27 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ void	get_hrzn_intersection_SE(t_ray *ray, t_map *map, t_player *player)
 	x_step = y_step / tan(ray->angle);
 	a_x = player->x + x_step;
 	ray->size += sqrt(pow(x_step, 2) + pow(y_step, 2));
-	if (is_obstacle(map, a_x, a_y, ray))
+	if (is_wall(map, a_x, a_y, ray))
 		return ;
 	y_step = 1;
 	x_step = y_step / tan(ray->angle);
 	ray_section = sqrt(pow(x_step, 2) + pow(y_step, 2));
-	while (!is_obstacle(map, a_x, a_y, ray))
+	while (!is_wall(map, a_x, a_y, ray))
 	{
 		a_x += x_step;
 		a_y += y_step;
@@ -79,12 +79,12 @@ void	get_hrzn_intersection_SW(t_ray *ray, t_map *map, t_player *player)
 	x_step = y_step / tan(ray->angle);
 	a_x = player->x + x_step;
 	ray->size += sqrt(pow(x_step, 2) + pow(y_step, 2));
-	if (is_obstacle(map, a_x, a_y, ray))
+	if (is_wall(map, a_x, a_y, ray))
 		return ;
 	y_step = 1;
 	x_step = y_step / tan(ray->angle);
 	ray_section = sqrt(pow(x_step, 2) + pow(y_step, 2));
-	while (!is_obstacle(map, a_x, a_y, ray))
+	while (!is_wall(map, a_x, a_y, ray))
 	{
 		a_x += x_step;
 		a_y += y_step;
@@ -105,12 +105,12 @@ void	get_hrzn_intersection_NW(t_ray *ray, t_map *map, t_player *player)
 	x_step = y_step / tan(ray->angle);
 	a_x = player->x - x_step;
 	ray->size += sqrt(pow(x_step, 2) + pow(y_step, 2));
-	if (is_obstacle(map, a_x, a_y - 1, ray))
+	if (is_wall(map, a_x, a_y - 1, ray))
 		return ;
 	y_step = -1;
 	x_step = -y_step / tan(ray->angle);
 	ray_section = sqrt(pow(x_step, 2) + pow(y_step, 2));
-	while (!is_obstacle(map, a_x, a_y - 1, ray))
+	while (!is_wall(map, a_x, a_y - 1, ray))
 	{
 		a_x -= x_step;
 		a_y += y_step;
@@ -131,12 +131,12 @@ void	get_hrzn_intersection_NE(t_ray *ray, t_map *map, t_player *player)
 	x_step = y_step / tan(ray->angle);
 	a_x = player->x - x_step;
 	ray->size += sqrt(pow(x_step, 2) + pow(y_step, 2));
-	if (is_obstacle(map, a_x, a_y - 1, ray))
+	if (is_wall(map, a_x, a_y - 1, ray))
 		return ;
 	y_step = -1;
 	x_step = y_step / tan(ray->angle);
 	ray_section = sqrt(pow(x_step, 2) + pow(y_step, 2));
-	while (!is_obstacle(map, a_x, a_y - 1, ray))
+	while (!is_wall(map, a_x, a_y - 1, ray))
 	{
 		a_x += x_step;
 		a_y += y_step;

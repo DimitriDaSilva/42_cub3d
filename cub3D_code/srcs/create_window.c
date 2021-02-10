@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 08:49:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/06 19:26:40 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/10 09:28:15 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	create_window(t_game *game)
 	set_rays(game);
 	game->rays.view_angle = deg_to_rad(VIEW_ANGLE);
 	game->rays.dist_proj_plane = (game->scene.res.width / 2)
-								/ (tan(game->rays.view_angle / 2));
+								/ tan(game->rays.view_angle / 2);
 	load_texture(game->mlx.mlx_ptr, &game->scene.no_tex);
 	load_texture(game->mlx.mlx_ptr, &game->scene.so_tex);
 	load_texture(game->mlx.mlx_ptr, &game->scene.we_tex);

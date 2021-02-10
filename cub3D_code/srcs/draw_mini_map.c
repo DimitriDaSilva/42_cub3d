@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:28:36 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/08 16:17:54 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/09 11:59:39 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,7 @@ void	draw_player(t_game *game)
 	circle.radius = game->player.radius;
 	circle.fill_color = 0x00e63946;
 	while (circle.radius--)
-		draw_circle(&circle, circle.fill_color,
-		game->mlx.img.data, game->scene.res.width);
-	// line.begin_x = game->player.x * tile_size + MINIMAP_OFFSET;
-	// line.begin_y = game->player.y * tile_size + MINIMAP_OFFSET;
-	// line.end_x = game->player.x * tile_size	+ MINIMAP_OFFSET
-	// 			+ cos(game->player.rotation_angle) * tile_size;
-	// line.end_y = game->player.y * tile_size + MINIMAP_OFFSET
-	// 			+ sin(game->player.rotation_angle) * tile_size;
-	// line.color = 0x00e63946;
-	// draw_line(&line, game->mlx.img.data, game->scene.res.width);
+		draw_circle(&circle, game->mlx.img.data, game->scene.res.width);
 }
 
 int		get_fill_color(char grid_item)

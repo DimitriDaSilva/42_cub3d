@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_rays.h                                       :+:      :+:    :+:   */
+/*   update_sprites.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/06 15:30:36 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/06 15:32:35 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/02/09 19:47:53 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/02/09 20:49:11 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_RAYS_H
-# define UTILS_RAYS_H
+#ifndef UPDATE_SPRITES_H
+# define UPDATE_SPRITES_H
 
 # include "cub3d.h"
 
-int		check_orientation(t_ray *ray, double deg_low, double deg_high);
-int		is_obstacle(t_map *map, double x, double y, t_ray *ray);
-char	get_orientation(t_map *map, int x, int y, t_ray *ray);
-int		is_looking_south(double angle);
-int		is_looking_west(double angle);
+void	update_sprite_angle(t_game *game, t_sprite *sprite);
+void	update_sprite_visibility(t_game *game, t_sprite *sprite);
+void	update_sprite_distance(t_game *game, t_sprite *sprite);
+void	update_sprites_order(t_game *game, t_sprite *sprites);
 
 #endif

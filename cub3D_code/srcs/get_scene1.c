@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:52:12 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/05 19:53:43 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/09 12:10:52 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 ** @param:	- [int] the file descriptor of the .cub file
 **			- [t_scene *] a struct that holds the data used to render the game
 ** Line-by-line comments:
-** @5		The get_next_line function returns 1 when it has a found a new line,
+** @6		The get_next_line function returns 1 when it has a found a new line,
 **			0 when it has reached the end of the file and -1 when a error
 **			occurred
-** @7-16	The map and the rest of the data have very different formats so
+** @8-15	The map and the rest of the data have very different formats so
 **			we are here checking if the line is the beginning of the map to
 **			split the 2 use cases
-** @9		The line can contain spaces between each information. We are here
+** @10		The line can contain spaces between each information. We are here
 **			resolving this use case by spliting the string in substrings
 */
 
@@ -49,6 +49,11 @@ void	get_scene(int fd, t_scene *scene)
 	}
 	free(line);
 }
+
+/*
+** The scene needs to be initialized because there values will be checked after
+** @param:	- [t_scene *] a struct that holds the data used to render the game
+*/
 
 void	init_scene(t_scene *scene)
 {

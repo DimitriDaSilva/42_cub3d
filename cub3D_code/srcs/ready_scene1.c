@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_player.c                                      :+:      :+:    :+:   */
+/*   ready_scene1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:41:14 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/06 15:51:03 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/09 19:35:01 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init_player.h"
+#include "ready_scene.h"
+
+void	ready_scene(t_scene *scene, t_player *player)
+{
+	init_player(scene, player);
+	get_map_items(scene, &scene->map);
+}
 
 /*
 ** @param:	- [t_player *] player struct
@@ -28,13 +34,13 @@
 ** @8		Numbers of angles per frame turned
 */
 
-void	init_player(t_player *player, t_scene *scene)
+void	init_player(t_scene *scene, t_player *player)
 {
 	player->walk_direction = 0;
 	player->move_speed = 0.2;
 	player->turn_direction = 0;
 	player->rotation_speed = deg_to_rad(8);
-	get_start_position(player, scene->map.grid);
+	get_starting_position(player, scene->map.grid);
 }
 
 /*
@@ -48,7 +54,7 @@ void	init_player(t_player *player, t_scene *scene)
 ** @15		Erasing the start position from the grid to simplify edge cases
 */
 
-void	get_start_position(t_player *player, char **grid)
+void	get_starting_position(t_player *player, char **grid)
 {
 	int i;
 	int j;

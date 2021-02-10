@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_player.h                                      :+:      :+:    :+:   */
+/*   utils_rays.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/02 10:32:50 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 11:36:57 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/02/06 15:30:36 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/02/09 19:38:54 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_PLAYER_H
-# define INIT_PLAYER_H
+#ifndef UTILS_RAYS_H
+# define UTILS_RAYS_H
 
 # include "cub3d.h"
 
-void	get_start_position(t_player *player, char **grid);
-double	get_starting_orientation(char orientation);
+int		check_orientation(t_ray *ray, double deg_low, double deg_high);
+int		is_wall(t_map *map, double x, double y, t_ray *ray);
+char	get_wall_orientation(t_map *map, int x, int y, t_ray *ray);
+int		is_south(double angle);
+int		is_west(double angle);
+double	normalize_radian(double radian);
 
 #endif

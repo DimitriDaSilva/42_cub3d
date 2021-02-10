@@ -6,19 +6,42 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:40:31 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/03 11:50:58 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/09 11:41:40 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "set_event_hooks.h"
+
+/*
+** Function that sets the event hooks. Only called once and after the window
+** has been created
+** @param:	- [t_game *] root struct
+** Line-by-line comments:
+** @1		By the default x11 press key events are on autorepeat mode (i.e.
+**			pressing a key will alternatively fire off press and release
+**			events)
+** @4		Client message event is fired off when the user is trying to close
+**			the window (ALT+F4 or window corss)
+*/
 
 void	set_event_hooks(t_game *game)
 {
 	mlx_do_key_autorepeatoff(game->mlx.mlx_ptr);
 	mlx_hook(game->mlx.win, KeyPress, KeyPressMask, key_pressed, game);
 	mlx_hook(game->mlx.win, KeyRelease, KeyReleaseMask, key_released, game);
-	mlx_hook(game->mlx.win, ClientMessage, NoEventMask, close_window_cross, game);
+	mlx_hook(game->mlx.win,
+			ClientMessage,
+			NoEventMask,
+			close_window_cross,
+			game);
 }
+
+/*
+** Function called whenever a key is pressed
+** @param:	- [int] keycode of the key press
+**			- [t_game *] param passed to that function
+** @return:	[int] irrelevant to us
+*/
 
 int		key_pressed(int keycode, t_game *game)
 {
@@ -39,6 +62,13 @@ int		key_pressed(int keycode, t_game *game)
 	return (1);
 }
 
+/*
+** Function called whenever a key is released
+** @param:	- [int] keycode of the key press
+**			- [t_game *] param passed to that function
+** @return:	[int] irrelevant to us
+*/
+
 int		key_released(int keycode, t_game *game)
 {
 	(void)game;
@@ -48,6 +78,14 @@ int		key_released(int keycode, t_game *game)
 		game->player.turn_direction = 0;
 	return (1);
 }
+
+/*
+** Function called whenever the user tried to close the window (ALT FT or 
+** window cross)
+** @param:	- [int] keycode of the key press
+**			- [t_game *] param passed to that function
+** @return:	[int] irrelevant to us
+*/
 
 int		close_window_cross(int keycode, t_game *game)
 {

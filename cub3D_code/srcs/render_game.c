@@ -6,11 +6,21 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 19:18:43 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/06 09:10:06 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/09 19:41:26 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render_game.h"
+
+/*
+** Function that renders the game. Called once the .cub is done being parsed
+** for check and storing the params
+** @param:	- [t_game *] root struct
+** Line-by-line comments:
+** @3		Calls one time per frame the function render_next_frame
+** @4		Ensures that the function only finishes if the user closes the
+**			window 
+*/
 
 void	render_game(t_game *game)
 {
@@ -20,54 +30,33 @@ void	render_game(t_game *game)
 	mlx_loop(game->mlx.mlx_ptr);
 }
 
+/*
+** Function called once per frame to update, draw and put to screen the new
+** image
+** @param:	- [void *] the address of my root struct
+** @return:	[int] irrelevant to us. Function passed by mlx_loop_hook has to
+**				  return an int
+*/
+
 int		render_next_frame(void *my_struct)
 {
 	t_game	*game;
 
 	game = my_struct;
-	get_empty_img(&game->mlx, &game->scene.res);
+	game->mlx.img.img_ptr = mlx_new_image(game->mlx.mlx_ptr,
+										game->scene.res.width,
+										game->scene.res.height);
+	game->mlx.img.data = (int *)mlx_get_data_addr(game->mlx.img.img_ptr,
+												&game->mlx.img.bpp,
+												&game->mlx.img.size_l,
+												&game->mlx.img.endian);
 	update(game);
-	draw_floor(game);
-	draw_ceilling(game);
-	draw_walls(game);
-	draw_sprites(game);
-	draw_mini_map(game);
-	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win, game->mlx.img.img_ptr, 0, 0);
+	draw(game);
+	mlx_put_image_to_window(game->mlx.mlx_ptr,
+							game->mlx.win,
+							game->mlx.img.img_ptr,
+							0,
+							0);
 	mlx_destroy_image(game->mlx.mlx_ptr, game->mlx.img.img_ptr);
 	return (1);
-}
-
-void	get_empty_img(t_mlx *mlx, t_res *res)
-{
-	mlx->img.img_ptr = mlx_new_image(mlx->mlx_ptr, res->width, res->height);
-	mlx->img.data = (int *)mlx_get_data_addr(mlx->img.img_ptr,
-											&mlx->img.bpp,
-											&mlx->img.size_l,
-											&mlx->img.endian);
-}
-
-void	draw_floor(t_game *game)
-{
-	t_rect	rect;
-
-	rect.x = 0;
-	rect.y = 0;
-	rect.width = game->scene.res.width;
-	rect.height = game->scene.res.height / 2;
-	rect.border_width = 0;
-	rect.fill_color = game->scene.floor.argb;
-	draw_rect(&rect, game->mlx.img.data, game->scene.res.width);
-}
-
-void	draw_ceilling(t_game *game)
-{
-	t_rect	rect;
-
-	rect.x = 0;
-	rect.y = game->scene.res.height / 2;
-	rect.width = game->scene.res.width;
-	rect.height = game->scene.res.height / 2;
-	rect.border_width = 0;
-	rect.fill_color = game->scene.ceilling.argb;
-	draw_rect(&rect, game->mlx.img.data, game->scene.res.width);
 }

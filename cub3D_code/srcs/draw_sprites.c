@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:18:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/08 20:27:19 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/10 12:18:19 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,157 +15,118 @@
 void	draw_sprites(t_game *game)
 {
 	int			i;
-	int			j;
-	t_sprite	curr;
+	t_sprite	*sprite;
 
 	i = -1;
-	while (++i < game->scene.res.width)
+	while (++i < game->scene.total_sprites)
 	{
-		if (game->rays.arr[i].total_sprites == 0)
-			continue ;
-		adjust_sprite_pos(&game->rays.arr[i]);
-		get_sprite_distances(&game->rays.arr[i], &game->player);
-		sort_sprites(&game->rays.arr[i]);
-		j = -1;
-		while (++j < game->rays.arr[i].total_sprites)
-		{
-			curr = game->rays.arr[i].sprites[j];
-			if (curr.distance < game->rays.arr[i].size)
-				draw_sprite(game, &game->rays.arr[i].sprites[j], i);
-		}
-		free(game->rays.arr[i].sprites);
+		sprite = &game->scene.sprites[i];
+		if (sprite->is_visible)
+			draw_single_sprite(game, &game->scene.sprites[i]);
 	}
 }
 
-void	adjust_sprite_pos(t_ray *ray)
+void	draw_single_sprite(t_game *game, t_sprite *sprite)
 {
-	int	i;
-
-	i = -1;
-	while (++i < ray->total_sprites)
-	{
-		ray->sprites[i].x = floor(ray->sprites[i].x) + 0.5;
-		ray->sprites[i].y = floor(ray->sprites[i].y) + 0.5;
-	}
-}
-
-void	get_sprite_distances(t_ray *ray, t_player *player)
-{
-	int	dx;
-	int	dy;
-	int	i;
-
-	i = -1;
-	while (++i < ray->total_sprites)
-	{
-		dx = pow(player->x - ray->sprites[i].x, 2); 
-		dy = pow(player->y - ray->sprites[i].y, 2); 
-		ray->sprites[i].distance = sqrt(dx + dy);
-	}
-}
-
-void	sort_sprites(t_ray *ray)
-{
-	t_sprite	tmp;
-	int			i;
-	int			j;
-
-	i = -1;
-	while (++i < ray->total_sprites)
-	{
-		j = -1;
-		while (++j < ray->total_sprites - 1)
-		{
-			if (ray->sprites[j].distance < ray->sprites[j + 1].distance)
-			{
-				tmp = ray->sprites[j];
-				ray->sprites[j] = ray->sprites[j + 1];
-				ray->sprites[j + 1] = tmp;
-			}
-		}
-	}
-}
-
-void	draw_sprite(t_game *game, t_sprite *sprite, int posX;)
-{
-	double	sprite_height;
 	t_rect	rect;
+	int		column_width;
+	int		i;
+	int		j;
+	int		posX;
 
-	sprite_height = get_sprite_height(game, sprite->distance);
-	rect.x = posX;
-	rect.y = get_y_sprite_position(game, sprite_height);
-	rect.height = sprite_height;
-	rect.tex = get_sprite_texture(&game->scene, sprite->item);
-	draw_sprite_strip(&rect,
-					game->mlx.img.data,
-					&game->scene.res,
-					sprite);
+	rect.height = get_sprite_height(game, sprite->distance);
+	rect.y = get_y_sprite_position(game, rect.height);
+	rect.x = get_x_sprite_position(game, sprite, rect.height);
+	column_width = rect.height / sprite->tex->height;
+	i = -1;
+	while (++i < sprite->tex->width)
+	{
+		j = -1;
+		while (++j < column_width)
+		{
+			posX = (int)(rect.x + (i - 1) * column_width + j);
+			if (sprite->distance < game->rays.arr[posX].size)
+				draw_sprite_strip(&rect, sprite, game, i, posX);
+		}
+	}
 }
 
 double	get_sprite_height(t_game *game, double distance)
 {
-	double	sprite_height;
 	double	scaled_distance;
+	double	sprite_height;
 
 	scaled_distance = distance * SCALE;
-	sprite_height = (SCALE / (scaled_distance)) * game->rays.dist_proj_plane;
+	sprite_height = (SCALE / scaled_distance) * game->rays.dist_proj_plane;
 	return (sprite_height);
 }
 
 int		get_y_sprite_position(t_game *game, double sprite_height)
 {
-	double	center_screen;
-	int		y;
+	int	center_screen;
+	int	center_sprite;
+	int	y;
 	
 	center_screen = game->scene.res.height / 2;
-	y = center_screen - sprite_height / 2;
+	center_sprite = sprite_height / 2;
+	y = center_screen - center_sprite;
 	if (y < 0)
 		y = 0;
 	return (y);
 }
 
-t_texture	get_sprite_texture(t_scene *scene, char item)
+int		get_x_sprite_position(t_game *game, t_sprite *sprite, double sprite_width)
 {
-	// if (item == '2')
-	return (scene->sprite_tex);
+	double	center_sprite;
+	int		center_screen;
+	double	begin_sprite;
+
+	center_sprite = tan(sprite->rotation_angle) * SCALE;
+	center_screen = game->scene.res.width / 2;
+	begin_sprite = center_screen + center_sprite - sprite_width / 2;
+	return (begin_sprite);
 }
 
-void	draw_sprite_strip(t_rect *rect, int *img, t_res *res, t_sprite *sprite)
+
+void	draw_sprite_strip(t_rect *rect, t_sprite *sprite, t_game *game, int x_tex, int x1)
 {
-	int	y;
-	int	y_tex;
-	int	x_tex;
-	int	color;
 	double	step;
 	double	texPos;
+	int		y;
+	int		y_tex;
+	int		color;
 
-	step = 1.0 * rect->tex.height / rect->height;
-	texPos = (rect->y - res->height / 2 + rect->height / 2) * step;
-	x_tex = get_bitmap_offset_stripe(ray, rect->tex.width);
+	step = 1.0 * sprite->tex->height / rect->height;
+	texPos = (rect->y - game->scene.res.height / 2 + rect->height / 2) * step;
 	y = -1;
-	while (++y < rect->height && y < res->height)
+	while (++y < rect->height && y < game->scene.res.height)
 	{
-		y_tex = (int)texPos & (rect->tex.height - 1);
+		y_tex = (int)texPos & (sprite->tex->height - 1);
 		texPos += step;
-		color = rect->tex.img.data[y_tex * rect->tex.height + x_tex];
-		img[(rect->y + y) * res->width + rect->x] = color;
+		color = sprite->tex->img.data[y_tex * sprite->tex->height + x_tex];
+		if (color < 0)
+			continue ;
+		game->mlx.img.data[(rect->y + y) * game->scene.res.width + x1] = color;
 	}
 }
 
-int		get_bitmap_offset_stripe(t_ray *ray, int bitmap_width)
-{
-	double	remainder;
-	int	offset;
+// void	draw_sprite(t_rect *rect, t_sprite *sprite, int *img, t_res *res)
+// {
+// 	int		column_width;
+// 	int		i;
+// 	int		j;
+// 	int		posX;
 
-	if (ray->side == 'H')
-	{
-		remainder = ray->x - floor(ray->x);
-		offset = floor(bitmap_width * remainder);
-	}
-	else
-	{
-		remainder = ray->y - floor(ray->y);
-		offset = floor(bitmap_width * remainder);
-	}
-	return (offset);
-}
+// 	column_width = sprite_height / sprite->tex.height;
+// 	i = -1;
+// 	while (++i < sprite->tex.width)
+// 	{
+// 		j = -1;
+// 		while (++j < column_width)
+// 		{
+// 			posX = (int)(rect->x + ((i - 1) * column_width) + j);
+// 			if (sprite->distance < game->rays.arr[posX].size)
+// 				draw_sprite_strip(rect, sprite, img, res);
+// 		}
+// 	}
+// }

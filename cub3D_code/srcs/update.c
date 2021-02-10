@@ -23,6 +23,7 @@ void	update(t_game *game)
 	update_player_position(&game->player, game->scene.map.grid);
 	update_player_orientation(&game->player);
 	update_rays(game);
+	update_sprites(game);
 }
 
 /*
@@ -43,7 +44,7 @@ void	update(t_game *game)
 **			because we know the distance to cross
 ** @17		Adding to x the adjacent (go left...)
 ** @18		Adding to y the opposite (...and up)
-** @19-24	If the new position is in a wall, then we go back to previous
+** @19-23	If the new position is in a wall, then we go back to previous
 **			position
 */
 
@@ -74,6 +75,15 @@ void	update_player_position(t_player *player, char **grid)
 	}
 }
 
+/*
+** Update player rotation based on the left / right arrow clicks
+** @param:	- [t_player *] player
+** Line-by-line comments:
+** @3-4		The player isn't pressing in left / right arrow
+** @5		The width of the rotation depends on the rotation speed
+** 			The turn_direction is -1 if left and +1 if right
+*/
+
 void	update_player_orientation(t_player *player)
 {
 	double	rotation;
@@ -84,11 +94,23 @@ void	update_player_orientation(t_player *player)
 	player->rotation_angle += rotation;
 }
 
+/*
+** Update all the rays being casted even if no movement
+** @param:	- [t_game *] root struct
+** Line-by-line comments:
+** @4		Get the left-most ray's angle. For instance, for a 60° degree
+**			view angle and a player facing north (i.e. 270°)
+**			ray_angle = 270 - 60 / 2 = 240
+**			Example here in degree but values are in radians
+** @6		Number of rays casted = resolution's width
+** @10		We increment the ray angle by simpliting the view_angle by the
+**			number of rays casted (e.g. 60° / 1920)
+*/
+
 void	update_rays(t_game *game)
 {
-	int		i;
 	double	ray_angle;
-
+	int		i;
 
 	ray_angle = game->player.rotation_angle - game->rays.view_angle / 2;
 	i = -1;
@@ -98,4 +120,20 @@ void	update_rays(t_game *game)
 		cast_ray(&game->rays.arr[i], &game->scene.map, &game->player);
 		ray_angle += game->rays.view_angle / game->scene.res.width;
 	}
+}
+
+void	update_sprites(t_game *game)
+{
+	int			i;
+	t_sprite	*sprite;
+
+	i = -1;
+	while (++i < game->scene.total_sprites)
+	{
+		sprite = &game->scene.sprites[i];
+		update_sprite_angle(game, sprite);
+		update_sprite_visibility(game, sprite);
+		update_sprite_distance(game, sprite);
+	}
+	update_sprites_order(game, game->scene.sprites);
 }
