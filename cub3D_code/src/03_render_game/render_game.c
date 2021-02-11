@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 19:18:43 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/09 19:41:26 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/10 18:24:35 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,22 @@
 
 void	render_game(t_game *game)
 {
-	create_window(game);
-	set_event_hooks(game);
-	mlx_loop_hook(game->mlx.mlx_ptr, render_next_frame, game);
-	mlx_loop(game->mlx.mlx_ptr);
+	game->mlx.mlx_ptr = mlx_init();
+	if (!ft_strcmp(game->mode, "PLAY"))
+		game->mlx.win = mlx_new_window(game->mlx.mlx_ptr,
+										game->scene.res.width,
+										game->scene.res.height,
+										"Cub3d");
+	ready_game(game);
+	if (!ft_strcmp(game->mode, "PLAY"))
+	{
+		mlx_loop_hook(game->mlx.mlx_ptr, render_next_frame, game);
+		mlx_loop(game->mlx.mlx_ptr);
+	}
+	else if (!ft_strcmp(game->mode, "SAVE"))
+	{
+		save_bmp_img(game);
+	}
 }
 
 /*
@@ -59,4 +71,9 @@ int		render_next_frame(void *my_struct)
 							0);
 	mlx_destroy_image(game->mlx.mlx_ptr, game->mlx.img.img_ptr);
 	return (1);
+}
+
+void	save_bmp_img(t_game *game)
+{
+	(void)game;
 }

@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_event_hooks.h                                  :+:      :+:    :+:   */
+/*   utils_others.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/02 19:42:22 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/03 11:24:53 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/01/29 08:44:13 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/02/11 00:15:24 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SET_EVENT_HOOKS_H
-# define SET_EVENT_HOOKS_H
+#ifndef UTILS_OTHERS_H
+# define UTILS_OTHERS_H
 
-# include "cub3d.h"
 
-int		key_pressed(int keycode, t_game *game);
-int		key_released(int keycode, t_game *game);
-int		close_window_cross(int keycode, t_game *game);
+void	unload_strs(char **strs);
+double	rad_to_deg(double rad);
+double	deg_to_rad(double deg);
+double	normalize_radian(double radian);
+void	check_arguments(int argc, char *argv[], char *mode);
 
 #endif
+

@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_colors.h                                     :+:      :+:    :+:   */
+/*   ready_game_events.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/26 17:59:22 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/11 00:15:43 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/02/11 00:06:48 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/02/11 00:07:15 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_COLORS_H
-# define UTILS_COLORS_H
+#ifndef READY_GAME_EVENTS_H
+# define READY_GAME_EVENTS_H
 
+# include "cub3d.h"
 
-int		create_argb(int a, int r, int g, int b);
-int		get_a(int argb);
-int		get_r(int argb);
-int		get_g(int argb);
-int		get_b(int argb);
-int		add_shade(double distance, int color);
-int		get_opposite(int color);
+int			key_pressed(int keycode, t_game *game);
+int			key_released(int keycode, t_game *game);
+int			close_window_cross(int keycode, t_game *game);
 
 #endif

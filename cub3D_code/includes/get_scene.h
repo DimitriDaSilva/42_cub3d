@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 16:17:30 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 11:32:31 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/10 23:56:19 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,15 @@
 # include "cub3d.h"
 
 /*
-** get_scene1.c file
+** get_scene1
 */
-void	get_scene(int fd, t_scene *scene);
 void	init_scene(t_scene *scene);
 void	get_data(char **strs, t_scene *scene);
 void	get_resolution(char **strs, t_res *res);
 void	get_color(char *str, t_color *color);
 
 /*
-** get_scene2.c file
+** get_scene2
 */
 int		is_map(char *line);
 void	get_map(int fd, char *line, t_map *map);

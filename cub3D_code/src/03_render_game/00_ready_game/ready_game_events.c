@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_event_hooks.c                                  :+:      :+:    :+:   */
+/*   ready_game_events.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:40:31 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/09 11:41:40 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/11 00:07:19 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "set_event_hooks.h"
+#include "ready_game_events.h"
 
 /*
 ** Function that sets the event hooks. Only called once and after the window
@@ -21,10 +21,10 @@
 **			pressing a key will alternatively fire off press and release
 **			events)
 ** @4		Client message event is fired off when the user is trying to close
-**			the window (ALT+F4 or window corss)
+**			the window (ALT+F4 or window cross)
 */
 
-void	set_event_hooks(t_game *game)
+void	ready_game_events(t_game *game)
 {
 	mlx_do_key_autorepeatoff(game->mlx.mlx_ptr);
 	mlx_hook(game->mlx.win, KeyPress, KeyPressMask, key_pressed, game);

@@ -6,12 +6,16 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:30:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/10 11:17:22 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/10 19:19:52 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+/*
+** General
+*/
 
 typedef struct	s_img
 {
@@ -120,17 +124,19 @@ typedef struct	s_game
 	t_scene		scene;
 	t_player	player;
 	t_rays		rays;
+	char		mode[5];
 }				t_game;
 
 /*
-** Structs used by utils_graph
+** Graphical
 */
+
 typedef struct	s_rect
 {
 	int			x;
 	int			y;
-	int			width;
-	int			height;
+	double		width;
+	double		height;
 	int			fill_color;
 	int			border_color;
 	int			border_width;
@@ -156,5 +162,9 @@ typedef struct s_line
 	int			color;
 	int			width;
 }				t_line;
+
+/*
+** BPM converter
+*/
 
 #endif

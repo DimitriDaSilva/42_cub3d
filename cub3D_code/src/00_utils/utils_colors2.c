@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_colors1.c                                    :+:      :+:    :+:   */
+/*   utils_colors2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 17:58:57 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 09:55:41 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/10 23:55:30 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		create_argb(int a, int r, int g, int b)
+#include "utils_colors.h"
+
+int		add_shade(double distance, int color)
 {
-	return (a << 24 | r << 16 | g << 8 | b);
+	int alpha;
+
+	alpha = distance * (double)(255);
+	return (create_argb(alpha, get_r(color), get_g(color), get_b(color)));
 }
 
-int		get_a(int argb)
+int		get_opposite(int color)
 {
-	return (argb & (0xFF << 24));
-}
-
-int		get_r(int argb)
-{
-	return (argb & (0xFF << 16));
-}
-
-int		get_g(int argb)
-{
-	return (argb & (0xFF << 8));
-}
-
-int		get_b(int argb)
-{
-	return (argb & 0xFF);
+	return (create_argb(get_a(color),
+				get_r(0xFF0000) - get_r(color),
+				get_g(0x00FF00) - get_g(color),
+				get_b(0x0000FF) - get_b(color)));
 }

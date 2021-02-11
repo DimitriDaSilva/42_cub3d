@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ready_scene2.c                                     :+:      :+:    :+:   */
+/*   ready_game_sprites.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 19:22:48 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/10 11:17:42 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/11 00:08:33 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ready_scene.h"
+#include "ready_game_sprites.h"
+
+void	ready_game_sprites(t_game *game)
+{
+	get_map_items(&game->scene, &game->scene.map);
+}
 
 void	get_map_items(t_scene *scene, t_map *map)
 {

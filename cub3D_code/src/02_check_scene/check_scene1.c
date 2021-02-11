@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/05 19:51:14 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/10 18:43:07 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 /*
 ** @param:	- [t_scene *] a struct that holds the data used to render the game
-**			- [char	*] name of the file passed in as argument of the cub3d
 */
 
-void	check_scene(t_scene *scene, char *file)
+void	check_scene(t_scene *scene)
 {
-	check_cub_extention(file);
 	check_resolution(&scene->res);
 	check_texture(scene->no_tex.path, "north texture");
 	check_texture(scene->so_tex.path, "south texture");
@@ -38,16 +36,15 @@ void	check_scene(t_scene *scene, char *file)
 **			I risk doing a SEGFAULT
 */
 
-void	check_cub_extention(char *file)
+int		is_cub(char *file)
 {
 	int	len;
 
 	len = ft_strlen(file);
 	if (!(len > 4 && !ft_strncmp(&file[len - 4], ".cub", 5)))
-	{
-		ft_printf("Error\nFile %s does not have the .cub extension.\n", file);
-		exit(EXIT_SUCCESS);
-	}
+		return (0);
+	else
+		return (1);
 }
 
 /*

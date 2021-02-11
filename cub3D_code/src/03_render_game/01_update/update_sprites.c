@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 19:46:54 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/10 15:11:38 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/10 15:30:22 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ void	update_sprite_visibility(t_game *game, t_sprite *sprite)
 	if (delta_angle > M_PI)
 		delta_angle -= 2.0 * M_PI;
 	delta_angle = fabs(delta_angle);
-	// if (delta_angle < game->rays.view_angle / 2 + deg_to_rad(4))
-	// 	sprite->is_visible = 1;
-	if (delta_angle < game->rays.view_angle / 2)
+	if (delta_angle < game->rays.view_angle / 2 + deg_to_rad(4))
 		sprite->is_visible = 1;
 	else
 		sprite->is_visible = 0;
@@ -65,7 +63,7 @@ void	update_sprites_order(t_game *game, t_sprite *sprites)
 		j = -1;
 		while (++j < game->scene.total_sprites - 1)
 		{
-			if (sprites[j].distance > sprites[j + 1].distance)
+			if (sprites[j].distance < sprites[j + 1].distance)
 			{
 				tmp = sprites[j];
 				sprites[j] = sprites[j + 1];

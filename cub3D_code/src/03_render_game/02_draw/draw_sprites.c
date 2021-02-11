@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:18:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/10 12:18:19 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/10 15:38:53 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	draw_sprites(t_game *game)
 void	draw_single_sprite(t_game *game, t_sprite *sprite)
 {
 	t_rect	rect;
-	int		column_width;
+	double	column_width;
 	int		i;
 	int		j;
 	int		posX;
@@ -45,7 +45,8 @@ void	draw_single_sprite(t_game *game, t_sprite *sprite)
 		while (++j < column_width)
 		{
 			posX = (int)(rect.x + (i - 1) * column_width + j);
-			if (sprite->distance < game->rays.arr[posX].size)
+			if (posX >= 0 && posX <= game->scene.res.width - 1
+				&& sprite->distance < game->rays.arr[posX].size)
 				draw_sprite_strip(&rect, sprite, game, i, posX);
 		}
 	}
@@ -81,7 +82,7 @@ int		get_x_sprite_position(t_game *game, t_sprite *sprite, double sprite_width)
 	int		center_screen;
 	double	begin_sprite;
 
-	center_sprite = tan(sprite->rotation_angle) * SCALE;
+	center_sprite = tan(sprite->rotation_angle) * game->rays.dist_proj_plane;
 	center_screen = game->scene.res.width / 2;
 	begin_sprite = center_screen + center_sprite - sprite_width / 2;
 	return (begin_sprite);

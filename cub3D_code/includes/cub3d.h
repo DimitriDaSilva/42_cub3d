@@ -6,54 +6,48 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:33:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/10 12:10:27 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/10 23:56:50 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# define VALID_CHARS "012NSEW "
-// # define MINIMAP_RATIO 50
-# define MINIMAP_RATIO 200
-# define MINIMAP_OFFSET 10
-# define SCALE 64
-# define VIEW_ANGLE 60
-
 /*
-** Keycodes
+** Forbiddent external libraries to delete
 */
-# define K_ESC 65307
-# define K_W 122
-# define K_A 113
-# define K_S 115
-# define K_D 100
-# define K_LEFT_ARROW 65361
-# define K_RIGHT_ARROW 65363
 
-/*
-** To delete
-*/
 # include <string.h>
 # include <stdio.h>
 
 /*
-** To keep
+** External libraries
 */
+
 # include <fcntl.h>
 # include <math.h>
 # include <X11/Xlib.h>
+
+/*
+** Static libraries
+*/
+
 # include "../../libft/includes/libft.h"
 # include "../../libmlx/mlx.h"
+
+/*
+** Header files
+*/
+
 # include "structs.h"
-# include "utils.h"
-# include "utils_colors.h"
+# include "constants.h"
+# include "utils_others.h"
 # include "utils_graph.h"
 # include "utils_rays.h"
+# include "utils_colors.h"
 
 void	get_scene(int fd, t_scene *scene);
-void	check_scene(t_scene *scene, char *file);
-void	ready_scene(t_scene *scene, t_player *player);
+void	check_scene(t_scene *scene);
 void	render_game(t_game *game);
 
 #endif

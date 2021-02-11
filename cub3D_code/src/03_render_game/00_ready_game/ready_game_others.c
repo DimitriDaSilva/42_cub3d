@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_window.c                                    :+:      :+:    :+:   */
+/*   ready_game_others.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 08:49:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/10 09:28:15 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/11 00:06:16 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "create_window.h"
+#include "ready_game_others.h"
 
-void	create_window(t_game *game)
+void	ready_game_others(t_game *game)
 {
-	game->mlx.mlx_ptr = mlx_init();
 	check_user_res(&game->mlx, &game->scene.res);
 	set_mini_map_size(&game->scene);
 	set_rays(game);
@@ -26,10 +25,6 @@ void	create_window(t_game *game)
 	load_texture(game->mlx.mlx_ptr, &game->scene.we_tex);
 	load_texture(game->mlx.mlx_ptr, &game->scene.ea_tex);
 	load_texture(game->mlx.mlx_ptr, &game->scene.sprite_tex);
-	game->mlx.win = mlx_new_window(game->mlx.mlx_ptr,
-									game->scene.res.width,
-									game->scene.res.height,
-									"Cub3d");
 }
 
 void	check_user_res(t_mlx *mlx, t_res *res)

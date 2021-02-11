@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:30:46 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/05 09:51:44 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/10 15:44:25 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void	draw_map(t_game *game);
 void	draw_player(t_game *game);
-int		get_fill_color(char grid_item);
+int		get_fill_color(t_color *floor_color, char grid_item);
 void	draw_rays(t_game *game);
 
 #endif

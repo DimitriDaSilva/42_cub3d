@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ready_game_sprites.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/29 08:43:45 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/06 15:33:20 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/02/11 00:07:54 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/02/11 00:08:17 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#ifndef READY_GAME_SPRITES_H
+# define READY_GAME_SPRITES_H
 
-void	unload_strs(char **strs)
-{
-	while (*strs)
-		free(*strs++);
-}
+# include "cub3d.h"
 
-double	rad_to_deg(double rad)
-{
-	return (rad * 180.0 / M_PI);
-}
+void		get_map_items(t_scene *scene, t_map *map);
+void		add_sprite(t_scene *scene, int x, int y, char sprite);
+t_texture	*get_sprite_tex(t_scene *scene, char sprite);
 
-double	deg_to_rad(double deg)
-{
-	return (deg * M_PI / 180.0);
-}
+#endif

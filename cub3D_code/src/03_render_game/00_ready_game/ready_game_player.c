@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ready_scene1.c                                     :+:      :+:    :+:   */
+/*   ready_game_player.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:41:14 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/09 19:35:01 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/11 00:09:03 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ready_scene.h"
-
-void	ready_scene(t_scene *scene, t_player *player)
-{
-	init_player(scene, player);
-	get_map_items(scene, &scene->map);
-}
+#include "ready_game_player.h"
 
 /*
 ** @param:	- [t_player *] player struct
@@ -34,13 +28,13 @@ void	ready_scene(t_scene *scene, t_player *player)
 ** @8		Numbers of angles per frame turned
 */
 
-void	init_player(t_scene *scene, t_player *player)
+void	ready_game_player(t_game *game)
 {
-	player->walk_direction = 0;
-	player->move_speed = 0.2;
-	player->turn_direction = 0;
-	player->rotation_speed = deg_to_rad(8);
-	get_starting_position(player, scene->map.grid);
+	game->player->walk_direction = 0;
+	game->player->move_speed = 0.2;
+	game->player->turn_direction = 0;
+	game->player->rotation_speed = deg_to_rad(8);
+	get_starting_position(&game->player, game->scene.map.grid);
 }
 
 /*

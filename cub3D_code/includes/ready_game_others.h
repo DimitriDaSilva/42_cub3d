@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_rays2.c                                      :+:      :+:    :+:   */
+/*   ready_game_others.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/08 14:44:27 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/10 15:10:47 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/02/11 00:05:14 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/02/11 00:06:01 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils_rays.h"
+#ifndef READY_GAME_OTHERS_H
+# define READY_GAME_OTHERS_H
 
-/*
-** Makes sure the radian stays between 0 and 2 * PI
-** @param:	- [double] radian
-** @return:	[double] radian normalized
-*/
+# include "cub3d.h"
 
-double	normalize_radian(double radian)
-{
-	double	full_circle;
+void	check_user_res(t_mlx *mlx, t_res *res);
+void	set_mini_map_size(t_scene *scene);
+void	set_rays(t_game *game);
+void	load_texture(void *mlx, t_texture *texture);
 
-	full_circle = deg_to_rad(360);
-	radian = fmod(radian, full_circle);
-	if (radian < 0)
-		radian += full_circle;
-	return (radian);
-}
+#endif

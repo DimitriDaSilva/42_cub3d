@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_colors2.c                                    :+:      :+:    :+:   */
+/*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/26 17:58:57 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/03 17:04:45 by dda-silv         ###   ########.fr       */
+/*   Created: 2021/02/10 19:17:19 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/02/10 19:17:55 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils_colors.h"
+#ifndef CONSTANTS_H
+# define CONSTANTS_H
 
-int		add_shade(double distance, int color)
-{
-	int alpha;
+/*
+** General
+*/
 
-	alpha = distance * (double)(255);
-	return (create_argb(alpha, get_r(color), get_g(color), get_b(color)));
-}
+# define VALID_CHARS "012NSEW "
+// # define MINIMAP_RATIO 50
+# define MINIMAP_RATIO 200
+# define MINIMAP_OFFSET 10
+# define SCALE 64
+# define VIEW_ANGLE 60
 
-int		get_opposite(int color)
-{
-	return (create_argb(get_a(color),
-				get_r(0xFF0000) - get_r(color),
-				get_g(0x00FF00) - get_g(color),
-				get_b(0x0000FF) - get_b(color)));
-}
+/*
+** Keycodes
+*/
+
+# define K_ESC 65307
+# define K_W 122
+# define K_A 113
+# define K_S 115
+# define K_D 100
+# define K_LEFT_ARROW 65361
+# define K_RIGHT_ARROW 65363
+
+#endif
