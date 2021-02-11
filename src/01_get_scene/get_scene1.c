@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:52:12 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/09 12:10:52 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/11 11:56:20 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ void	get_scene(int fd, t_scene *scene)
 			strs = ft_split(line, " \n\t\v\f\r");
 			get_data(strs, scene);
 			unload_strs(strs);
-			free(strs);
-			free(line);
+			// free(strs);
+			// free(line);
 		}
 		else
 			get_map(fd, line, &scene->map);
 	}
-	free(line);
+	// free(line);
 }
 
 /*

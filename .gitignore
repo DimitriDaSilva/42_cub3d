@@ -3,3 +3,4 @@ cub3D
 *.a
 exe_vcxsrv.sh
 env_var.sh
+build/
