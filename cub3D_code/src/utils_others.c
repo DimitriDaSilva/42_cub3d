@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 08:43:45 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/10 19:24:55 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/11 00:38:34 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,22 @@ void	check_arguments(int argc, char *argv[], char *mode)
 		ft_printf("Error\nWrong number of arguments.\n");
 		exit(EXIT_FAILURE);
 	}
+}
+
+/*
+** @param:	- [char	*] name of the file passed in as argument of the cub3d
+** Line-by-line comments:
+** @4		Before checking the extension, I need to check it's size otherwise
+**			I risk doing a SEGFAULT
+*/
+
+int		is_cub(char *file)
+{
+	int	len;
+
+	len = ft_strlen(file);
+	if (!(len > 4 && !ft_strncmp(&file[len - 4], ".cub", 5)))
+		return (0);
+	else
+		return (1);
 }
