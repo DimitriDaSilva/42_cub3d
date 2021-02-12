@@ -2,7 +2,7 @@
 
 cub3d is a 42 project that offers us to create a raycasting engine using a very minimalistic library (miniLibX).
 
-![screenshot](https://user-images.githubusercontent.com/66511903/107834151-5d6a5c80-6d8d-11eb-92e3-5378d308da8d.png)
+![image](https://user-images.githubusercontent.com/66511903/107834307-bd610300-6d8d-11eb-9d37-fc8a64efbe31.png)
 
 If you want to check out the result for yourself:
 ```
