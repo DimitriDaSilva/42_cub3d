@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 12:30:39 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 17:06:49 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	check_resolution(t_res *res)
 }
 
 /*
+** Just checking if the path has been given and if it works (open / close)
 ** @param:	- [char *] file name with directory path
 **			- [char *] name of the texture we are checking
 */

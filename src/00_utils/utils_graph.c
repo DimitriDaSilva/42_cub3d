@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 16:44:10 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 10:15:20 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 16:53:03 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 **			- [int *] the mlx_img
 **			- [int] res_width. Needed for the index of the mlx_img
 ** Line-by-line comments:
-** @7		A border_width of 1 is interpreted as a 0 because the i = 0 is
+** @6		A border_width of 1 is interpreted as a 0 because the i = 0 is
 **			being checked
 */
 

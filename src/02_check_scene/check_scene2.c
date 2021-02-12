@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 12:31:54 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 17:07:49 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	check_map(t_map *map)
 **			- [int] width of the map
 ** @return:	[int] true or false
 ** Line-by-line comments:
-** @11		We are parsing the map stopping each time we find a non-1
+** @10		We are parsing the map stopping each time we find a non-1
 **			characters and check the 2 cases for which it could me the map
 **			is not enclosed
 **			The order of these 2 checks is important. The opposite could lead

@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:52:12 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 11:20:45 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 17:01:21 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@
 ** @param:	- [int] the file descriptor of the .cub file
 **			- [t_scene *] a struct that holds the data used to render the game
 ** Line-by-line comments:
-** @6		The get_next_line function returns 1 when it has a found a new line,
+** @4-6		The scene struct needs to be initialized cleaned so that I can
+**			check later if some fields were left empty or not. So I'm
+**			preventing finding garbage values
+** @8		The get_next_line function returns 1 when it has a found a new line,
 **			0 when it has reached the end of the file and -1 when a error
 **			occurred
-** @8-15	The map and the rest of the data have very different formats so
+** @10-17	The map and the rest of the data have very different formats so
 **			we are here checking if the line is the beginning of the map to
 **			split the 2 use cases
-** @10		The line can contain spaces between each information. We are here
+** @12		The line can contain spaces between each information. We are here
 **			resolving this use case by spliting the string in substrings
 */
 
@@ -77,19 +80,19 @@ void	get_data(char **strs, t_scene *scene)
 		return ;
 	else if (!ft_strcmp(strs[0], "R"))
 		get_resolution(strs, &scene->res);
-	else if (!ft_strcmp(strs[0], "NO") && strs[2] == 0)
+	else if (!ft_strcmp(strs[0], "NO") && strs[1] != 0 && strs[2] == 0)
 		get_texture(strs[1], &scene->no_tex);
-	else if (!ft_strcmp(strs[0], "SO") && strs[2] == 0)
+	else if (!ft_strcmp(strs[0], "SO") && strs[1] != 0 && strs[2] == 0)
 		get_texture(strs[1], &scene->so_tex);
-	else if (!ft_strcmp(strs[0], "WE") && strs[2] == 0)
+	else if (!ft_strcmp(strs[0], "WE") && strs[1] != 0 && strs[2] == 0)
 		get_texture(strs[1], &scene->we_tex);
-	else if (!ft_strcmp(strs[0], "EA") && strs[2] == 0)
+	else if (!ft_strcmp(strs[0], "EA") && strs[1] != 0 && strs[2] == 0)
 		get_texture(strs[1], &scene->ea_tex);
-	else if (!ft_strcmp(strs[0], "S") && strs[2] == 0)
+	else if (!ft_strcmp(strs[0], "S") && strs[1] != 0 && strs[2] == 0)
 		get_texture(strs[1], &scene->sprite_tex);
-	else if (!ft_strcmp(strs[0], "F") && strs[2] == 0)
+	else if (!ft_strcmp(strs[0], "F") && strs[1] != 0 && strs[2] == 0)
 		get_color(strs[1], &scene->floor);
-	else if (!ft_strcmp(strs[0], "C") && strs[2] == 0)
+	else if (!ft_strcmp(strs[0], "C") && strs[1] != 0 && strs[2] == 0)
 		get_color(strs[1], &scene->ceilling);
 	else if (strs[0][0] != '\n')
 	{
@@ -153,7 +156,7 @@ void	get_texture(char *texture_path, t_texture *texture)
 **			ft_split function doesn't care how many ',' are in the string
 **			so I created a function that returns the number of times a char is
 **			found in a given string
-** @14		Edge case: one of the colors has a letter or symbol in it
+** @15		Edge case: one of the colors has a letter or symbol in it
 */
 
 void	get_color(char *str, t_color *color)

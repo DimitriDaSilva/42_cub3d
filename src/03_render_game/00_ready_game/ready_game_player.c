@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:41:14 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 11:22:24 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 17:50:39 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,12 @@
 /*
 ** @param:	- [t_player *] player struct
 ** Line-by-line comments:
-** @1-2		Current position of the player. Will receive start position
-**			from the .cub file
-** @3		Helf the size of the player in pixels (radius in geometry is )
-** @4		Value that will be updated based on the key pressed
+** @1		Value that will be updated based on the key pressed
 ** 			-1 for back, 1 for front and 0 for still
-** @5		Number of pixels per frame between two positions
-** @6		Value that will be updated based on the key pressed
+** @2		Number of pixels per frame between two positions
+** @3		Value that will be updated based on the key pressed
 ** 			-1 for left, 1 for right and 0 for still
-** @7		Angle in radians where the player is facing. Will be receive
-**			initial angle from .cub file
-** @8		Numbers of angles per frame turned
+** @4		Numbers of angles per frame turned
 */
 
 void	ready_game_player(t_game *game)
@@ -38,10 +33,6 @@ void	ready_game_player(t_game *game)
 }
 
 /*
-** Gets start_position in the map. Stores it in an array of 3 ints:
-** [0]: spawning orientation in ASCII value
-** [1]: x position in the map (yes x = j)
-** [2]: y position in the map (yes y = i)
 ** @param:	- [char **] array of strings reprensenting the map
 **			- [int *] start_position with 3 ints allocated
 ** Line-by-line comments:

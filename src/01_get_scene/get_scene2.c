@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 08:21:33 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 10:43:21 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 17:05:16 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	is_map(char *line)
 ** @1		Extracts the map from the .cub file without changing the format
 **			and stores it in a array of string. The string are here not
 **			necessarely all of the same size
-** @2-4		The map needs to be easy to parse to check if it's valid and to
+** @2-3		The map needs to be easy to parse to check if it's valid and to
 **			render it. The change here made is to have all lines with the same
 **			size filled with spaces when necessary. Also tabs are converted to
 **			spaces (1 tab = 4 spaces)
@@ -68,9 +68,9 @@ void	get_map(int fd, char *line, t_map *map)
 **			- [char *] first row of the map
 ** @return:	[char **] map stored in an array of strings
 ** Line-by-line comments:
-** @5-6		Allocating the first char * to be able to use realloc in the
+** @5		Allocating the first char * to be able to use realloc in the
 **			do... while loop (home-made do... while but still)
-** @7-17	Had to use a do... while because of the edge case where we only
+** @9-20	Had to use a do... while because of the edge case where we only
 **			have one row in the map, I had memory leaks
 **			Here I'm looping and storing in array of strings the map. Each
 **			time I find a new line I increase the size of the array by one
@@ -146,14 +146,16 @@ size_t	get_width(char **strs)
 ** @return:	[char **] map stored in array of strings with all row with
 **                    with the same size
 ** Line-by-line comments:
-** @10-12	In case the length of the current row is smaller than the longest
+** @10-11	In case the length of the current row is smaller than the longest
 **			one, we enlarge it to make room for spaces
-** @15-19	If we find a tab, we move the chars 4 places and fill the gap with
+**			The ft_realloc protected is a ft_realloc that quits if the
+**			ft_realloc didn't work (yes it's for space purposes)
+** @14-18	If we find a tab, we move the chars 4 places and fill the gap with
 **			spaces
-** @20-21	If the characters found is not a VALID_CHAR (i.e. "012NSEW "),
+** @19-20	If the characters found is not a VALID_CHAR (i.e. "012NSEW "),
 **			then it means it's the end of the string and we need to add spaces
 **			until we reach j == scene->map_width
-** @23		As we are overwritting the NULL terminator for the string
+** @22		As we are overwritting the NULL terminator for the string
 **			originally shorter than the map_width, we need to put it back
 */
 
