@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 08:49:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 17:30:00 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 18:56:01 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 void	ready_game_others(t_game *game)
 {
 	check_user_res(&game->mlx, &game->scene.res);
-	scene->mini_map_tile_size = scene->res.width / MINIMAP_RATIO;
+	game->scene.mini_map_tile_size = game->scene.res.width / MINIMAP_RATIO;
 	set_rays(game);
 	load_texture(game->mlx.mlx_ptr, &game->scene.no_tex);
 	load_texture(game->mlx.mlx_ptr, &game->scene.so_tex);
