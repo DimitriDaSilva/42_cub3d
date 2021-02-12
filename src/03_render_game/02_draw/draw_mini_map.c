@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:28:36 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 11:57:12 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 21:56:02 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,19 @@
 void	draw_mini_map(t_game *game)
 {
 	draw_map(game);
-	draw_player(game);
+	draw_player(game, game->scene.mini_map_tile_size);
 }
+
+/*
+** Draws the map of the mini map. Parses the 2D grid and each time if finds a
+** non-space item, it prints a square of a color that depends on the item  
+** @param:	- [t_game *] root struct
+** Line-by-line comments:
+** @15-16		The minimap needs to be offset otherwise it would be straight
+**				on the corner of the screen
+** @18			The mini_map_tile_size is variable with the res width
+** @20			The square could have border I chose not to here
+*/
 
 void	draw_map(t_game *game)
 {
@@ -46,13 +57,22 @@ void	draw_map(t_game *game)
 	}
 }
 
-void	draw_player(t_game *game)
+/*
+** Dranw the player on top of the map. Player composed of a dot and the rays
+** that were casted
+** @param:	- [t_game *] root struct
+** Line-by-line comments:
+** @3		The rays go below the dot so they need to be printed first
+** @4		I get seg fault for a radius very close to 0
+** @9-10	The draw circle only draws the border of the circle so I'm filling
+**			it by printing several times reducing its radius
+*/
+
+void	draw_player(t_game *game, double tile_size)
 {
 	t_circle	circle;
-	double		tile_size;
 
-	tile_size = game->scene.mini_map_tile_size;
-	draw_rays(game);
+	draw_rays(game, tile_size);
 	game->player.radius = ceil(tile_size / 2);
 	circle.x = game->player.x * tile_size + MINIMAP_OFFSET;
 	circle.y = game->player.y * tile_size + MINIMAP_OFFSET;
@@ -75,13 +95,20 @@ int	get_fill_color(t_color *floor_color, char grid_item)
 	return (color);
 }
 
-void	draw_rays(t_game *game)
+/*
+** Draws all the casted rays in the minimap
+** @param:	- [t_game *] root struct
+** Line-by-line comments:
+** @5		Again, number of rays casted == res width
+** @11		The size of the line is determined by the scale (tile_size) and
+**			its grid length (rays.arr[i].size)
+*/
+
+void	draw_rays(t_game *game, double tile_size)
 {
 	int		i;
 	t_line	line;
-	double	tile_size;
 
-	tile_size = game->scene.mini_map_tile_size;
 	i = -1;
 	while (++i < game->scene.res.width)
 	{

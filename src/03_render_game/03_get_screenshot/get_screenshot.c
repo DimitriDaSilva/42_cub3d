@@ -6,11 +6,18 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 15:06:06 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 12:27:54 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 23:33:25 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_screenshot.h"
+
+/*
+** Gets the first frame of the game and saves it in bmp format at the root
+** of the directory. It creates an image, updates it once, draws it once, saves
+** it and then exits
+** @param:	- [t_game *] root struct
+*/
 
 void	get_screenshot(t_game *game)
 {
@@ -24,7 +31,15 @@ void	get_screenshot(t_game *game)
 	update(game);
 	draw(game);
 	save_image_in_bmp(game);
+	exit(EXIT_SUCCESS);
 }
+
+/*
+** Saves the mlx_img to a new bmp file
+** @param:	- [t_game *] root struct
+** Line-by-line comments:
+** @9-10	Two part header of all bmp files
+*/
 
 void	save_image_in_bmp(t_game *game)
 {
@@ -44,8 +59,20 @@ void	save_image_in_bmp(t_game *game)
 		ft_printf("Error\nCould not close file screenshot.bmp.\n");
 		exit(EXIT_SUCCESS);
 	}
-	exit(EXIT_SUCCESS);
 }
+
+/*
+** Writes the first bmp header
+** @param:	- [t_game *] root struct
+**			- [int] file descripter to write in the new file created
+** Line-by-line comments:
+** @4		54 because the size of the first header is 14 bytes and the second
+**			is 40 (14 + 40 = 54)
+** @8		Writing all at once DOES NOT WORK. C structs seems to have
+**			performance related features that bugs it. Basically it will add
+**			round to 4 the bytes per field (so he'll assume the byte_signature
+**			is 4 bytes offsetting all the rest of the header)
+*/
 
 void	write_bmp_header(t_game *game, int fd)
 {
@@ -61,6 +88,16 @@ void	write_bmp_header(t_game *game, int fd)
 	write(fd, &bmp_header.reserved_bytes, 4);
 	write(fd, &bmp_header.byte_offset, 4);
 }
+
+/*
+** Writes the second header
+** @param:	- [t_game *] root struct
+**			- [int] file descripter to write in the new file created
+** Line-by-line comments:
+** @6			Bitmap files are written with upside down data for performance
+**				reasons
+** @10-11		Source: Google. Explanation: NOT worth the effort
+*/
 
 void	write_dib_header(t_game *game, int fd)
 {
@@ -89,6 +126,19 @@ void	write_dib_header(t_game *game, int fd)
 	write(fd, &dib_header.color_table, 4);
 	write(fd, &dib_header.important_colors, 4);
 }
+
+/*
+** Writes the pixels from the image into the bmp file. Bmp files have pixels
+** stored upside down so we'll need to create an upside down array from the
+** array of int we got from mlx
+** @param:	- [t_game *] root struct
+**			- [int] file descripter to write in the new file created
+** Line-by-line comments:
+** @6-7		An int is 4 bytes while a char is 1. Each char will have a value
+**			between 0 and 255
+** @16-19	Bitwise manipulation to get the colors in reverse from ARGB
+**			hence in line 16 we get blue, 17 green etc.
+*/
 
 void	write_body(t_game *game, int fd)
 {

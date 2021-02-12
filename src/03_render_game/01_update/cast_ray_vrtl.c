@@ -6,14 +6,14 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 18:58:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 19:54:37 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 20:10:05 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cast_ray_vrtl.h"
 
 /*
-** On a grid, checks all horizontal intersections of the ray casted and stores
+** On a grid, checks all vertical intersections of the ray casted and stores
 ** the distance between player and wall hit
 ** @param:	- [t_ray *] ray struct with x, y, size, angle, etc.
 **			- [t_map *] map formatted in a 2d array of chars
@@ -23,7 +23,7 @@
 **			raycasting, it means that the ray will be parallel to the grid
 **			lines and will never find an intersection. We give him a very
 **			height value so that it rules it out as the shortest ray
-** @7-14	2 cases based on the orientation of the ray need to be taken into
+** @7-10	2 cases based on the orientation of the ray need to be taken into
 **			account. The two functions are very similar but different enough to
 **			justify the existence of each. Here readability > maintanability
 */
@@ -63,6 +63,7 @@ void	get_vrtl_intersection(t_ray *ray, t_map *map, t_player *player)
 ** @7		We need to round down to get the next vertical intersection
 ** @8		Float minus rounded down value gets us the straight distance to
 **			the vertical intersection 
+** @10		Taking a step backwards because we are moving from right to left
 ** @12-13	We need to adjust the value checked to be on the value and not on
 **			the edge of it. Same for line 17
 ** @14		Step needs to negative because we are moving from right to left on
@@ -100,6 +101,7 @@ void	get_vrtl_intersection_west(t_ray *ray, t_map *map, t_player *player)
 ** @7		We need to round up to get the next vertical intersection
 ** @8		Rounded up value minus float one gets us the straight distance to
 **			the vertical intersection 
+** @10		Taking a step forward because we are moving from left to right
 ** @14		Step needs to positive because we are moving from left to right on
 **			the grid
 */

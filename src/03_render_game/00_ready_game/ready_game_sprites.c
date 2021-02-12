@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 19:22:48 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 17:58:31 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 23:34:08 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ready_game_sprites(t_game *game)
 ** Parses the grid and adds a sprite each time it finds one
 ** @param:	- [t_scene *] scene struct
 **			- [t_map *] map struct with grid, height and width
-** @return:	[type] return_value
 */
 
 void	get_map_items(t_scene *scene, t_map *map)
@@ -49,7 +48,6 @@ void	get_map_items(t_scene *scene, t_map *map)
 ** Sprites are stored in an array of t_sprite
 ** @param:	- [t_scene *] scene struct
 **			- [int] x position of the sprite in the grid
-** @return:	[type] return_value
 ** Line-by-line comments:
 ** @3-8		If it's the first sprite added, I need to malloc. That way I'm
 **			sure I can realloc on the standard case

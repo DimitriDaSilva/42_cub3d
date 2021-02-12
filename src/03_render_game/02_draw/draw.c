@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 11:58:00 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/10 15:48:50 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 21:02:27 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	draw(t_game *game)
 ** indicated on the .cub file
 ** @param:	- [t_game *] root struct
 ** Line-by-line comments:
-** @4	Y position is at half the screen
+** @4	Y position is the top the screen
 */
 
 void	draw_ceilling(t_game *game)
@@ -54,7 +54,7 @@ void	draw_ceilling(t_game *game)
 ** indicated on the .cub file
 ** @param:	- [t_game *] root struct
 ** Line-by-line comments:
-** @4	Y position is the top of the screen
+** @4	Y position is at half of the screen
 */
 
 void	draw_floor(t_game *game)

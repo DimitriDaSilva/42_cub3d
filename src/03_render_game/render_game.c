@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 19:18:43 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 12:29:52 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 23:38:22 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@
 ** for check and storing the params
 ** @param:	- [t_game *] root struct
 ** Line-by-line comments:
-** @3		Calls one time per frame the function render_next_frame
-** @4		Ensures that the function only finishes if the user closes the
+** @2-8		No need to create a window in save mode
+** @9		Some scene preparations rely on having the mlx_ptr and the window
+** @10-14	In PLAY mode, mlx_loop_hook calls one time per frame the function
+**			render_next_frame
+** @13		Ensures that the function only finishes if the user closes the
 **			window 
 */
 

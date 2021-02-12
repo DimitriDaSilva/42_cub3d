@@ -6,33 +6,11 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 15:29:42 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 10:13:12 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 20:19:45 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils_rays.h"
-
-/*
-** Receives a low and high degree threshold and returns if the ray is within
-** that view_angle
-** @param:	- [t_ray *] current ray being casted
-**			- [double] low degree threshold
-**			- [double] high degree threshold
-** @return:	[int] 1 for true and 0 for false
-*/
-
-int	check_orientation(t_ray *ray, double deg_low, double deg_high)
-{
-	double	rad_low;
-	double	rad_high;
-
-	rad_low = deg_to_rad(deg_low);
-	rad_high = deg_to_rad(deg_high);
-	if (rad_low <= ray->angle && ray->angle < rad_high)
-		return (1);
-	else
-		return (0);
-}
 
 /*
 ** Each time a grid intersection (x == 0 or y == 0) is found, this function

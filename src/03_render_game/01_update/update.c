@@ -13,8 +13,10 @@
 #include "update.h"
 
 /*
-** Between each frame, we check if the values of our struct have to be update
-** because of user interactions (mouse motions or key presses)
+** Each frame, we check if the values of our struct have to be update
+** because of user interactions (mouse motions or key presses). For rays and
+** sprites, the values are recalculated whether the player moves or not so room
+** for improvement here
 ** @param:	- [t_game *] root struct
 */
 
@@ -121,6 +123,20 @@ void	update_rays(t_game *game)
 		ray_angle += game->rays.view_angle / game->scene.res.width;
 	}
 }
+
+/*
+** Update sprite array even if no movement
+** @param:	- [t_game *] root struct
+** Line-by-line comments:
+** @8		Gives the sprite the necessary angle to be facing the player
+** @9		Determines if the sprite should be visible or not. Here only based
+**			on the field of view. So even if being a wall, it will be deemed as
+**			visible. Later, we'll check for that
+** @10		Gives the distance between the sprite and the player
+** @12		Orders the sprites from farther to closer. Sprites needs to be
+**			printed in that order because the closer goes on top the farther
+**			pixel-wise
+*/
 
 void	update_sprites(t_game *game)
 {
