@@ -6,11 +6,25 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 18:13:05 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 08:52:48 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 09:03:46 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+/*
+** Program that creates a raycasting engine. It creates a map based on the .cub
+** file passed as first argument. If --save is 2nd argument, the program saves
+** the first image of the game and quits.
+** @param:	- [int] argc
+**			- [char **] argv
+** Line-by-line comments:
+** @4		Based on the arguments, assigns game.mode either "SAVE" or "PLAY"
+** @11		In order to parse the .cub file only once, I extract the
+**			information (get_scene()) and then I analyse it to determin
+**			if the .cub is valid (check_scene()). For instance, some fields
+**			of the t_scene struct could remain empty if it's invalid
+*/
 
 int	main(int argc, char *argv[])
 {

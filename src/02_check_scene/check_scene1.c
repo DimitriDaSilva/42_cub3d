@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/11 15:34:48 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 12:30:39 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	check_scene(t_scene *scene)
 
 void	check_resolution(t_res *res)
 {
-	if ( res->width == 0 || res->height == 0)
+	if (res->width == 0 || res->height == 0)
 	{
 		ft_printf("Error\nInvalid resolution.\n");
 		exit(EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:28:36 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 08:44:09 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 11:57:12 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	draw_player(t_game *game)
 
 	tile_size = game->scene.mini_map_tile_size;
 	draw_rays(game);
-	game->player.radius =  ceil(tile_size / 2);
+	game->player.radius = ceil(tile_size / 2);
 	circle.x = game->player.x * tile_size + MINIMAP_OFFSET;
 	circle.y = game->player.y * tile_size + MINIMAP_OFFSET;
 	circle.radius = game->player.radius;
@@ -62,9 +62,9 @@ void	draw_player(t_game *game)
 		draw_circle(&circle, game->mlx.img.data, game->scene.res.width);
 }
 
-int		get_fill_color(t_color *floor_color, char grid_item)
+int	get_fill_color(t_color *floor_color, char grid_item)
 {
-	int color;
+	int	color;
 
 	if (grid_item == '1')
 		color = floor_color->argb;
@@ -87,10 +87,12 @@ void	draw_rays(t_game *game)
 	{
 		line.begin_x = game->player.x * tile_size + MINIMAP_OFFSET;
 		line.begin_y = game->player.y * tile_size + MINIMAP_OFFSET;
-		line.end_x = game->player.x * tile_size	+ MINIMAP_OFFSET
-					+ cos(game->rays.arr[i].angle) * tile_size * game->rays.arr[i].size;
+		line.end_x = game->player.x * tile_size + MINIMAP_OFFSET
+			+ cos(game->rays.arr[i].angle)
+			* tile_size * game->rays.arr[i].size;
 		line.end_y = game->player.y * tile_size + MINIMAP_OFFSET
-					+ sin(game->rays.arr[i].angle) * tile_size * game->rays.arr[i].size;
+			+ sin(game->rays.arr[i].angle)
+			* tile_size * game->rays.arr[i].size;
 		line.color = 0x00F6B8BD;
 		draw_line(&line, game->mlx.img.data, game->scene.res.width);
 	}

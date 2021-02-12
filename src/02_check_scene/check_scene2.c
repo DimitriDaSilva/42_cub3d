@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_scene2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 10:29:18 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 12:31:54 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void	check_map(t_map *map)
 ** 14-18	Case: there is a space on one of the 8 boxes around that position
 */
 
-int		is_map_enclosed(char **map, int height, int width)
+int	is_map_enclosed(char **map, int height, int width)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	while (map[++i])
@@ -67,10 +67,10 @@ int		is_map_enclosed(char **map, int height, int width)
 			{
 				if (i == 0 || j == 0 || i == height - 1 || j == width - 1)
 					return (0);
-				else if (map[i - 1][j - 1] == ' ' || map[i - 1][j] == ' ' ||
-						map[i - 1][j + 1] == ' ' || map[i][j + 1] == ' ' ||
-						map[i + 1][j + 1] == ' ' || map[i + 1][j] == ' ' ||
-						map[i + 1][j - 1] == ' ' || map[i][j - 1] == ' ')
+				else if (map[i - 1][j - 1] == ' ' || map[i - 1][j] == ' '
+					|| map[i - 1][j + 1] == ' ' || map[i][j + 1] == ' '
+					|| map[i + 1][j + 1] == ' ' || map[i + 1][j] == ' '
+					|| map[i + 1][j - 1] == ' ' || map[i][j - 1] == ' ')
 					return (0);
 			}
 		}
@@ -87,11 +87,11 @@ int		is_map_enclosed(char **map, int height, int width)
 ** @16		If count == 1 is true, then 1 is returned. Else, 0
 */
 
-int		has_one_start_position(char **map)
+int	has_one_start_position(char **map)
 {
-	int count;
-	int i;
-	int j;
+	int	count;
+	int	i;
+	int	j;
 
 	count = 0;
 	i = -1;

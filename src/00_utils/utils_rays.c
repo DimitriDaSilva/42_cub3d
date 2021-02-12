@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_rays1.c                                      :+:      :+:    :+:   */
+/*   utils_rays.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 15:29:42 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/09 19:39:08 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 10:13:12 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 ** @return:	[int] 1 for true and 0 for false
 */
 
-int		check_orientation(t_ray *ray, double deg_low, double deg_high)
+int	check_orientation(t_ray *ray, double deg_low, double deg_high)
 {
 	double	rad_low;
 	double	rad_high;
@@ -53,7 +53,7 @@ int		check_orientation(t_ray *ray, double deg_low, double deg_high)
 **			value of that line we do seg fault
 */
 
-int		is_wall(t_map *map, double x, double y, t_ray *ray)
+int	is_wall(t_map *map, double x, double y, t_ray *ray)
 {
 	ray->x = x;
 	ray->y = y;
@@ -116,10 +116,10 @@ char	get_wall_orientation(t_map *map, int x, int y, t_ray *ray)
 		else if (map->grid[y][x + 1] != '1' && is_west(ray->angle))
 			return ('E');
 	}
-	return 0;
+	return (0);
 }
 
-int		is_south(double angle)
+int	is_south(double angle)
 {
 	if (0 <= angle && angle < M_PI)
 		return (1);
@@ -127,7 +127,7 @@ int		is_south(double angle)
 		return (0);
 }
 
-int		is_west(double angle)
+int	is_west(double angle)
 {
 	if (M_PI / 2 <= angle && angle < M_PI * 1.5)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:33:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/11 20:33:58 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 10:10:31 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@
 # include "utils_others.h"
 # include "utils_graph.h"
 # include "utils_rays.h"
-# include "utils_colors.h"
 
 void	get_scene(int fd, t_scene *scene);
 void	check_scene(t_scene *scene);

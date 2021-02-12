@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:40:31 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/11 16:38:12 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 11:23:37 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 ** has been created
 ** @param:	- [t_game *] root struct
 ** Line-by-line comments:
-** @1		By the default x11 press key events are on autorepeat mode (i.e.
+** @1-2		No window created in "SAVE" mode so return
+** @3		By the default x11 press key events are on autorepeat mode (i.e.
 **			pressing a key will alternatively fire off press and release
 **			events)
-** @4		Client message event is fired off when the user is trying to close
+** @6		Client message event is fired off when the user is trying to close
 **			the window (ALT+F4 or window cross)
 */
 
@@ -42,10 +43,10 @@ void	ready_game_events(t_game *game)
 ** Function called whenever a key is pressed
 ** @param:	- [int] keycode of the key press
 **			- [t_game *] param passed to that function
-** @return:	[int] irrelevant to us
+** @return:	[int] returns int to fit pointer function prototype
 */
 
-int		key_pressed(int keycode, t_game *game)
+int	key_pressed(int keycode, t_game *game)
 {
 	if (keycode == K_W)
 		game->player.walk_direction = 'w';
@@ -68,10 +69,10 @@ int		key_pressed(int keycode, t_game *game)
 ** Function called whenever a key is released
 ** @param:	- [int] keycode of the key press
 **			- [t_game *] param passed to that function
-** @return:	[int] irrelevant to us
+** @return:	[int] returns int to fit pointer function prototype
 */
 
-int		key_released(int keycode, t_game *game)
+int	key_released(int keycode, t_game *game)
 {
 	(void)game;
 	if (keycode == K_W || keycode == K_A || keycode == K_S || keycode == K_D)
@@ -86,10 +87,10 @@ int		key_released(int keycode, t_game *game)
 ** window cross)
 ** @param:	- [int] keycode of the key press
 **			- [t_game *] param passed to that function
-** @return:	[int] irrelevant to us
+** @return:	[int] returns int to fit pointer function prototype
 */
 
-int		close_window_cross(int keycode, t_game *game)
+int	close_window_cross(int keycode, t_game *game)
 {
 	(void)game;
 	(void)keycode;

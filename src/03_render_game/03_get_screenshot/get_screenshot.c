@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 15:06:06 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 08:53:23 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 12:27:54 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void	get_screenshot(t_game *game)
 {
 	game->mlx.img.img_ptr = mlx_new_image(game->mlx.mlx_ptr,
-										game->scene.res.width,
-										game->scene.res.height);
+			game->scene.res.width,
+			game->scene.res.height);
 	game->mlx.img.data = (int *)mlx_get_data_addr(game->mlx.img.img_ptr,
-												&game->mlx.img.bpp,
-												&game->mlx.img.size_l,
-												&game->mlx.img.endian);
+			&game->mlx.img.bpp,
+			&game->mlx.img.size_l,
+			&game->mlx.img.endian);
 	update(game);
 	draw(game);
 	save_image_in_bmp(game);
@@ -29,7 +29,7 @@ void	get_screenshot(t_game *game)
 void	save_image_in_bmp(t_game *game)
 {
 	int	fd;
-	
+
 	fd = open("screenshot.bmp", O_CREAT | O_WRONLY | O_TRUNC, 0777);
 	if (fd == -1)
 	{
@@ -53,7 +53,7 @@ void	write_bmp_header(t_game *game, int fd)
 
 	ft_strncpy(bmp_header.byte_signature, "BM", 2);
 	bmp_header.size = 54 + game->scene.res.width * game->scene.res.height
-					* (game->mlx.img.bpp / 8);
+		* (game->mlx.img.bpp / 8);
 	bmp_header.reserved_bytes = 0;
 	bmp_header.byte_offset = 14 + 40;
 	write(fd, &bmp_header.byte_signature, 2);
@@ -96,9 +96,9 @@ void	write_body(t_game *game, int fd)
 	int		i;
 	int		j;
 	char	*pixel_arr;
-	
+
 	size = game->scene.res.width * game->scene.res.height
-							* (game->mlx.img.bpp / 8);
+		* (game->mlx.img.bpp / 8);
 	pixel_arr = malloc(size * sizeof(char));
 	if (!pixel_arr)
 		exit(EXIT_SUCCESS);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_scene2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 08:21:33 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/02 11:39:21 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 10:43:21 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 ** @8-9		Only one 1 is enough to follow the correct map pattern
 */
 
-int		is_map(char *line)
+int	is_map(char *line)
 {
 	int	check;
 
@@ -82,13 +82,15 @@ char	**cpy_map(int fd, char *line, int *height)
 	int		i;
 
 	i = 0;
-	if (!(strs = malloc(sizeof(char *))))
+	strs = malloc(sizeof(char *));
+	if (!strs)
 		exit(EXIT_SUCCESS);
 	while (1)
 	{
-		if (!(strs = ft_realloc(strs,
-								(i + 1) * sizeof(char *),
-								(i + 2) * sizeof(char *))))
+		strs = ft_realloc(strs,
+				(i + 1) * sizeof(char *),
+				(i + 2) * sizeof(char *));
+		if (!strs)
 			exit(EXIT_SUCCESS);
 		strs[i++] = ft_strdup(line);
 		free(line);
@@ -144,7 +146,7 @@ size_t	get_width(char **strs)
 ** @return:	[char **] map stored in array of strings with all row with
 **                    with the same size
 ** Line-by-line comments:
-** @10-12	In case the lenght of the current row is smaller than the longest
+** @10-12	In case the length of the current row is smaller than the longest
 **			one, we enlarge it to make room for spaces
 ** @15-19	If we find a tab, we move the chars 4 places and fill the gap with
 **			spaces
@@ -167,8 +169,7 @@ char	**convert_tabs_to_spaces(char **strs, int width, int height)
 		j = -1;
 		len = ft_strlen(strs[i]);
 		if (len < width)
-			if (!(strs[i] = ft_realloc(strs[i], len + 1, width + 1)))
-				exit(EXIT_SUCCESS);
+			ft_realloc_protected((void **)&strs[i], len + 1, width + 1);
 		while (++j < width)
 		{
 			if (strs[i][j] == '\t')

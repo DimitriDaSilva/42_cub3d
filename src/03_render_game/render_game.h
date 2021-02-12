@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 19:06:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/11 15:15:42 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 13:15:35 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,3 @@ int		render_next_frame(void *my_struct);
 void	get_screenshot(t_game *game);
 
 #endif
-

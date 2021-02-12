@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ready_game_player.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:41:14 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/11 00:35:35 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 11:22:24 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	ready_game_player(t_game *game)
 
 void	get_starting_position(t_player *player, char **grid)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	while (grid[++i])
@@ -72,7 +72,7 @@ void	get_starting_position(t_player *player, char **grid)
 
 double	get_starting_orientation(char orientation)
 {
-	double radian;
+	double	radian;
 
 	radian = 0;
 	if (orientation == 'N')

@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:52:12 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/11 14:53:08 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 11:20:45 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	get_scene(int fd, t_scene *scene)
 	char	*line;
 	char	**strs;
 
-	init_scene(scene);
+	ft_memset(scene, 0, sizeof(t_scene));
+	ft_memset(&scene->floor, -1, sizeof(t_color));
+	ft_memset(&scene->ceilling, -1, sizeof(t_color));
 	line = 0;
 	while (get_next_line(fd, &line))
 	{
@@ -51,29 +53,6 @@ void	get_scene(int fd, t_scene *scene)
 }
 
 /*
-** The scene needs to be initialized because there values will be checked after
-** @param:	- [t_scene *] a struct that holds the data used to render the game
-*/
-
-void	init_scene(t_scene *scene)
-{
-	scene->res.width = 0;
-	scene->res.height = 0;
-	scene->no_tex.path = 0;
-	scene->so_tex.path = 0;
-	scene->we_tex.path = 0;
-	scene->ea_tex.path = 0;
-	scene->sprite_tex.path = 0;
-	scene->floor.r = -1;
-	scene->floor.g = -1;
-	scene->floor.b = -1;
-	scene->ceilling.r = -1;
-	scene->ceilling.g = -1;
-	scene->ceilling.b = -1;
-	scene->map.grid = 0;
-}
-
-/*
 ** Checks the identifier and fills the struct
 ** @param:	- [char **] array of information contained in one line of the
 **                      .cub file
@@ -83,10 +62,6 @@ void	init_scene(t_scene *scene)
 **			we need to consider the information invalid. So here we simply
 **			skip it and scene->north_texture remains NULL. Same pattern for
 **			other fields
-** @6		Edge case: a specifier is used twice. When it's the case we need
-**			to return Error\n. So we are here overwritting with NULL the
-**			path previously saved if not NULL. If NULL, then normal case, we
-**			copy the path from the .cub file to the struct
 ** @19-23	Edge case: use of an unknown specifier. We need to check that the
 **			line is not simply a line feed first.
 **			There are some cases where the identifier is correct and it will
@@ -103,15 +78,15 @@ void	get_data(char **strs, t_scene *scene)
 	else if (!ft_strcmp(strs[0], "R"))
 		get_resolution(strs, &scene->res);
 	else if (!ft_strcmp(strs[0], "NO") && strs[2] == 0)
-		scene->no_tex.path = !scene->no_tex.path ? ft_strdup(strs[1]) : 0;
+		get_texture(strs[1], &scene->no_tex);
 	else if (!ft_strcmp(strs[0], "SO") && strs[2] == 0)
-		scene->so_tex.path = !scene->so_tex.path ? ft_strdup(strs[1]) : 0;
+		get_texture(strs[1], &scene->so_tex);
 	else if (!ft_strcmp(strs[0], "WE") && strs[2] == 0)
-		scene->we_tex.path = !scene->we_tex.path ? ft_strdup(strs[1]) : 0;
+		get_texture(strs[1], &scene->we_tex);
 	else if (!ft_strcmp(strs[0], "EA") && strs[2] == 0)
-		scene->ea_tex.path = !scene->ea_tex.path ? ft_strdup(strs[1]) : 0;
+		get_texture(strs[1], &scene->ea_tex);
 	else if (!ft_strcmp(strs[0], "S") && strs[2] == 0)
-		scene->sprite_tex.path = !scene->sprite_tex.path ? ft_strdup(strs[1]) : 0;
+		get_texture(strs[1], &scene->sprite_tex);
 	else if (!ft_strcmp(strs[0], "F") && strs[2] == 0)
 		get_color(strs[1], &scene->floor);
 	else if (!ft_strcmp(strs[0], "C") && strs[2] == 0)
@@ -147,6 +122,26 @@ void	get_resolution(char **strs, t_res *res)
 }
 
 /*
+** Gets the texture from the .cub file
+** @param:	- [char *] texture path found in the .cub file
+**			- [t_texture *] texture struct with path, img, width and height
+** Line-by-line comments:
+** @line-line	comment
+** @3-4		Edge case: a specifier is used twice. When it's the case we need
+**			to return Error\n. So we are here overwritting with NULL the
+**			path previously saved if not NULL. If NULL, then normal case, we
+**			copy the path from the .cub file to the struct
+*/
+
+void	get_texture(char *texture_path, t_texture *texture)
+{
+	if (!texture->path)
+		texture->path = ft_strdup(texture_path);
+	else
+		texture->path = 0;
+}
+
+/*
 ** Gets the color from the .cub file. Function works with both floor and
 ** ceilling
 ** @param:	- [char *] line extracted from the .cub file
@@ -173,7 +168,8 @@ void	get_color(char *str, t_color *color)
 	}
 	if (ft_strchr_freq(str, ',') != 2)
 		return ;
-	if (!(strs = ft_split(str, ",")))
+	strs = ft_split(str, ",");
+	if (!strs)
 		return ;
 	i = 0;
 	while (strs[i] && ft_strisdigit(strs[i]))

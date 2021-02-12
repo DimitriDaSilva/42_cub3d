@@ -4,3 +4,4 @@ cub3D
 exe_vcxsrv.sh
 env_var.sh
 build/
+*.bmp

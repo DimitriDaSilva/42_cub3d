@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_graph.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 16:44:10 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/09 11:22:58 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 10:15:20 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	draw_rect(t_rect *rect, int *img, int res_width)
 	int	tmp_x;
 	int	tmp_y;
 
-
 	rect->border_width--;
 	i = -1;
 	while (++i < rect->height)
@@ -39,9 +38,9 @@ void	draw_rect(t_rect *rect, int *img, int res_width)
 		{
 			tmp_x = rect->x + j;
 			tmp_y = rect->y + i;
-			if (i <= rect->border_width || j <= rect->border_width ||
-				i >= rect->height - 1 - rect->border_width ||
-				j >= rect->width - 1 - rect->border_width)
+			if (i <= rect->border_width || j <= rect->border_width
+				|| i >= rect->height - 1 - rect->border_width
+				|| j >= rect->width - 1 - rect->border_width)
 				img[tmp_y * res_width + tmp_x] = rect->border_color;
 			else
 				img[tmp_y * res_width + tmp_x] = rect->fill_color;
@@ -59,8 +58,8 @@ void	draw_rect(t_rect *rect, int *img, int res_width)
 void	draw_circle(t_circle *circle, int *img, int res_width)
 {
 	double	angle;
-	double 	x1;
-	double 	y1;
+	double	x1;
+	double	y1;
 	int		tmp_x;
 	int		tmp_y;
 
@@ -83,7 +82,6 @@ void	draw_circle(t_circle *circle, int *img, int res_width)
 **			- [int] res_width. Needed for the index of the mlx_img
 */
 
-
 void	draw_line(t_line *line, int *img, int res_width)
 {
 	double	delta_x;
@@ -91,7 +89,6 @@ void	draw_line(t_line *line, int *img, int res_width)
 	int		pixels;
 	double	pixel_x;
 	double	pixel_y;
-
 
 	delta_x = line->end_x - line->begin_x;
 	delta_y = line->end_y - line->begin_y;

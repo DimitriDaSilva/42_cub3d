@@ -6,7 +6,7 @@
 #    By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/02/11 12:18:46 by dda-silv         ###   ########.fr        #
+#    Updated: 2021/02/12 10:44:04 by dda-silv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,6 +85,16 @@ fclean:					clean
 						@ make -C $(PATH_LIBFT) fclean
 
 re:						fclean all
+
+normH:
+						norminette $(shell find $(PATH_SRC) -name *.h)
+						@ make -C $(PATH_LIBFT) normH
+
+normC:
+						norminette $(SRCS)
+						@ make -C $(PATH_LIBFT) normC
+
+norm:					normH normC
 
 .PHONY:					all clean fclean re
 

@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 19:18:43 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/11 15:07:12 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 12:29:52 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ void	render_game(t_game *game)
 {
 	game->mlx.mlx_ptr = mlx_init();
 	if (!ft_strcmp(game->mode, "PLAY"))
+	{
 		game->mlx.win = mlx_new_window(game->mlx.mlx_ptr,
-										game->scene.res.width,
-										game->scene.res.height,
-										"Cub3d");
+				game->scene.res.width,
+				game->scene.res.height,
+				"Cub3d");
+	}
 	ready_game(game);
 	if (!ft_strcmp(game->mode, "PLAY"))
 	{
@@ -50,18 +52,18 @@ void	render_game(t_game *game)
 **				  return an int
 */
 
-int		render_next_frame(void *my_struct)
+int	render_next_frame(void *my_struct)
 {
 	t_game	*game;
 
 	game = my_struct;
 	game->mlx.img.img_ptr = mlx_new_image(game->mlx.mlx_ptr,
-										game->scene.res.width,
-										game->scene.res.height);
+			game->scene.res.width,
+			game->scene.res.height);
 	game->mlx.img.data = (int *)mlx_get_data_addr(game->mlx.img.img_ptr,
-												&game->mlx.img.bpp,
-												&game->mlx.img.size_l,
-												&game->mlx.img.endian);
+			&game->mlx.img.bpp,
+			&game->mlx.img.size_l,
+			&game->mlx.img.endian);
 	update(game);
 	draw(game);
 	mlx_put_image_to_window(game->mlx.mlx_ptr,

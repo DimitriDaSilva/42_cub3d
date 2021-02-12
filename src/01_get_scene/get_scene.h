@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_scene.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 16:17:30 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/10 23:56:19 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 11:13:21 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 /*
 ** get_scene1
 */
-void	init_scene(t_scene *scene);
 void	get_data(char **strs, t_scene *scene);
 void	get_resolution(char **strs, t_res *res);
+void	get_texture(char *texture_path, t_texture *texture);
 void	get_color(char *str, t_color *color);
 
 /*
