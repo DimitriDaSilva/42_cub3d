@@ -1,4 +1,4 @@
-R 1200 700
+R 1920 1080
 NO ./assets/textures/xpm/BrickOv.xpm
 SO ./assets/textures/xpm/BrickOv.xpm
 WE ./assets/textures/xpm/CrackOver.xpm

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ready_game_events.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:40:31 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/11 00:07:19 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/11 16:38:12 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 
 void	ready_game_events(t_game *game)
 {
+	if (!ft_strcmp(game->mode, "SAVE"))
+		return ;
 	mlx_do_key_autorepeatoff(game->mlx.mlx_ptr);
 	mlx_hook(game->mlx.win, KeyPress, KeyPressMask, key_pressed, game);
 	mlx_hook(game->mlx.win, KeyRelease, KeyReleaseMask, key_released, game);

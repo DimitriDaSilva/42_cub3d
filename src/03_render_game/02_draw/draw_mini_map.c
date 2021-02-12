@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_mini_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:28:36 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/10 15:49:18 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/12 08:44:09 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	draw_player(t_game *game)
 
 	tile_size = game->scene.mini_map_tile_size;
 	draw_rays(game);
-	game->player.radius =  tile_size / 2;
+	game->player.radius =  ceil(tile_size / 2);
 	circle.x = game->player.x * tile_size + MINIMAP_OFFSET;
 	circle.y = game->player.y * tile_size + MINIMAP_OFFSET;
 	circle.radius = game->player.radius;

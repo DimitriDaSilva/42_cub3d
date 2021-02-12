@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_game.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 19:18:43 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/10 18:24:35 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/11 15:07:12 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	render_game(t_game *game)
 	}
 	else if (!ft_strcmp(game->mode, "SAVE"))
 	{
-		save_bmp_img(game);
+		get_screenshot(game);
 	}
 }
 
@@ -71,9 +71,4 @@ int		render_next_frame(void *my_struct)
 							0);
 	mlx_destroy_image(game->mlx.mlx_ptr, game->mlx.img.img_ptr);
 	return (1);
-}
-
-void	save_bmp_img(t_game *game)
-{
-	(void)game;
 }

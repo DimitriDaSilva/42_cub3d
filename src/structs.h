@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:30:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/10 19:19:52 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/11 20:01:12 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,30 @@ typedef struct s_line
 }				t_line;
 
 /*
-** BPM converter
+** BPM file creator
 */
+
+typedef struct	s_bmp_header
+{
+    char		byte_signature[2];
+    uint32_t	size;
+    uint32_t	reserved_bytes;
+    uint32_t	byte_offset;
+}				t_bmp_header;
+
+typedef struct	s_dib_header
+{
+    uint32_t	dib_header_size;
+    int32_t		width;
+    int32_t		height;
+    uint16_t	number_color_planes;
+    uint16_t	bpp;
+    uint32_t	compression_method;
+    uint32_t	raw_bitmap_data_size;
+    int32_t		horizontal_resolution;
+    int32_t		vertical_resolution;
+    uint32_t	color_table;
+    uint32_t	important_colors;
+}				t_dib_header;
 
 #endif

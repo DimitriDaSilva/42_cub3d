@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_scene1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/11 00:38:24 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/11 15:34:48 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,18 @@ void	check_texture(char *texture_path, char *texture_name)
 					"formatted.\n", texture_name);
 		exit(EXIT_SUCCESS);
 	}
-	if ((fd = open(texture_path, O_RDONLY)) == -1)
+	fd = open(texture_path, O_RDONLY);
+	if (fd == -1)
 	{
 		ft_printf("Error\nCould not open the %s: "
 					"%s.\n", texture_name, texture_path);
 		exit(EXIT_SUCCESS);
 	}
-	close(fd);
+	if (close(fd) == -1)
+	{
+		ft_printf("Error\nCould not close file %s.\n", texture_path);
+		exit(EXIT_FAILURE);
+	}
 }
 
 /*
