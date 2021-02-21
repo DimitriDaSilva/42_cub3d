@@ -6,7 +6,7 @@
 #    By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/02/12 22:07:00 by dda-silv         ###   ########.fr        #
+#    Updated: 2021/02/17 15:13:34 by dda-silv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,15 +33,17 @@ FLAG_WARNING	:=		-Wall -Wextra -Werror
 FLAG_INC		:= 		$(addprefix -I, $(INC_DIRS))
 FLAG_MAKEFILE	:=		-MMD -MP
 FLAGS_COMP		:= 		$(FLAG_WARNING) $(FLAG_INC) $(FLAG_MAKEFILE)
+FLAG_DEBUG		:= 		-g
+FLAGS_COMP		:= 		$(FLAG_WARNING) $(FLAG_INC) $(FLAG_MAKEFILE) $(FLAG_DEBUG)
+
+# Flags - memory leak check
+FLAG_MEM_LEAK	:= 		-fsanitize=address
 
 # Flags - linking
 FLAG_LIBFT		:=		-Llibft -lft 
 FLAG_LIBMLX		:=		-Llibmlx -lmlx
 FLAG_LIBX11		:=		-lX11 -lbsd -lXext
 FLAGS_LINKINKG	:=		-lm $(FLAG_LIBFT) $(FLAG_LIBMLX) $(FLAG_LIBX11)
-
-# Flags - debugging
-FLAG_DEBUG		:= 		-g -fsanitize=address
 
 # Others commands
 RM				=		rm -rf
@@ -57,8 +59,8 @@ _SUCCESS		=		[$(_GREEN)SUCCESS$(_RESET)]
 all:					init $(NAME)
 						@ echo "$(_SUCCESS) Compilation done"
 
-debug:					FLAGS_COMP += $(FLAG_DEBUG)
-debug:					FLAGS_LINKINKG += $(FLAG_DEBUG)
+debug:					FLAGS_COMP += $(FLAG_MEM_LEAK)
+debug:					FLAGS_LINKINKG += $(FLAG_MEM_LEAK)
 debug:					re
 
 init:

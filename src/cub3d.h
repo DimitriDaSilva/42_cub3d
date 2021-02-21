@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:33:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 10:10:31 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/17 14:53:03 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 ** Static libraries
 */
 
-# include "../../libft/includes/libft.h"
+# include "../../libft/src/libft.h"
 # include "../../libmlx/mlx.h"
 
 /*
