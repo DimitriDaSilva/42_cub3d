@@ -6,7 +6,7 @@
 #    By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/02/23 18:27:05 by dda-silv         ###   ########.fr        #
+#    Updated: 2021/02/23 19:34:21 by dda-silv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,11 +42,12 @@ FLAG_MEM_LEAK	:= 		-fsanitize=address
 # Flags - linking
 FLAG_LIBFT		:=		-Llibft -lft 
 FLAG_LIBMLX		:=		-Llibmlx -lmlx
-FLAG_LIBX11		:=		-lX11 -lbsd -lXext
-FLAGS_LINKINKG	:=		-lm $(FLAG_LIBFT) $(FLAG_LIBMLX) $(FLAG_LIBX11)
+FLAG_MAC		:=		-framework OpenGL -framework AppKit
+FLAGS_LINKINKG	:=		-lm $(FLAG_LIBFT) $(FLAG_LIBMLX) $(FLAG_MAC)
 
 # Others commands
-RM				=		rm -rf
+RM				:=		rm -rf
+MLX				:=		libmlx.dylib
 
 # Color Code and template code
 _YELLOW			=		\e[38;5;184m
@@ -68,7 +69,7 @@ init:
 						@ make -C $(PATH_LIBFT)
 						@ make -C $(PATH_LIBMLX)
 
-$(NAME):				$(OBJS)
+$(NAME):				$(MLX) $(OBJS)
 						$(CC) $(OBJS) -o $@ $(FLAGS_LINKINKG)
 
 
