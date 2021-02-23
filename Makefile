@@ -6,7 +6,7 @@
 #    By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/02/23 19:34:21 by dda-silv         ###   ########.fr        #
+#    Updated: 2021/02/23 19:50:39 by dda-silv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ FLAGS_LINKINKG	:=		-lm $(FLAG_LIBFT) $(FLAG_LIBMLX) $(FLAG_MAC)
 
 # Others commands
 RM				:=		rm -rf
-MLX				:=		libmlx.dylib
+MLX_LIB			:=		libmlx.dylib
 
 # Color Code and template code
 _YELLOW			=		\e[38;5;184m
@@ -68,8 +68,9 @@ init:
 						@ echo "$(_INFO) Initialize $(NAME)"
 						@ make -C $(PATH_LIBFT)
 						@ make -C $(PATH_LIBMLX)
+						@ mv $(PATH_LIBMLX)/$(MLX_LIB) .
 
-$(NAME):				$(MLX) $(OBJS)
+$(NAME):				$(OBJS)
 						$(CC) $(OBJS) -o $@ $(FLAGS_LINKINKG)
 
 
