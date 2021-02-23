@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_mini_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:28:36 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 21:56:02 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 19:01:50 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	draw_mini_map(t_game *game)
 
 /*
 ** Draws the map of the mini map. Parses the 2D grid and each time if finds a
-** non-space item, it prints a square of a color that depends on the item  
+** non-space item, it prints a square of a color that depends on the item
 ** @param:	- [t_game *] root struct
 ** Line-by-line comments:
 ** @15-16		The minimap needs to be offset otherwise it would be straight
@@ -82,7 +82,7 @@ void	draw_player(t_game *game, double tile_size)
 		draw_circle(&circle, game->mlx.img.data, game->scene.res.width);
 }
 
-int	get_fill_color(t_color *floor_color, char grid_item)
+int		get_fill_color(t_color *floor_color, char grid_item)
 {
 	int	color;
 

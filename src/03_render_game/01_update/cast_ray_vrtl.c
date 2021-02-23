@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_ray_vrtl.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 18:58:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 20:10:05 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:55:42 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	get_vrtl_intersection(t_ray *ray, t_map *map, t_player *player)
 ** get_vrtl_intersection_west() specific comments (go up for general comments):
 ** @7		We need to round down to get the next vertical intersection
 ** @8		Float minus rounded down value gets us the straight distance to
-**			the vertical intersection 
+**			the vertical intersection
 ** @10		Taking a step backwards because we are moving from right to left
 ** @12-13	We need to adjust the value checked to be on the value and not on
 **			the edge of it. Same for line 17
@@ -100,7 +100,7 @@ void	get_vrtl_intersection_west(t_ray *ray, t_map *map, t_player *player)
 ** get_vrtl_intersection_east() specific comments (go up for general comments):
 ** @7		We need to round up to get the next vertical intersection
 ** @8		Rounded up value minus float one gets us the straight distance to
-**			the vertical intersection 
+**			the vertical intersection
 ** @10		Taking a step forward because we are moving from left to right
 ** @14		Step needs to positive because we are moving from left to right on
 **			the grid

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 17:32:24 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 18:06:10 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:55:00 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** Casts 2 rays to find the distance between player and wall. One ray checks
-** the horizontal grid intersection and the other the vertical ones. The 
+** the horizontal grid intersection and the other the vertical ones. The
 ** shortest ray is kept as the distance between player and wall to determine
 ** the height of the wall
 ** @param:	- [t_ray *] ray being casted

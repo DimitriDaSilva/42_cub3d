@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_ray_hrzn.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 18:58:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 20:17:31 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:59:23 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	get_hrzn_intersection(t_ray *ray, t_map *map, t_player *player)
 ** get_hrzn_intersection_south() specific comments (go up for general comments):
 ** @7		We need to round up to get the next horizontal intersection
 ** @8		Rounded up value minus float one gets us the straight distance to
-**			the horizontal intersection 
+**			the horizontal intersection
 ** @10		Taking a step forward because we are moving from up to down
 ** @14		Step needs to positive because we are moving from up to down on
 **			the grid
@@ -98,7 +98,7 @@ void	get_hrzn_intersection_south(t_ray *ray, t_map *map, t_player *player)
 ** get_hrzn_intersection_north() specific comments (go up for general comments):
 ** @7		We need to round down to get the next horizontal intersection
 ** @8		Float minus rounded down value gets us the straight distance to
-**			the horizontal intersection 
+**			the horizontal intersection
 ** @10		Taking a step backwards because we are moving from down to up
 ** @12-13	We need to adjust the value checked to be on the value and not on
 **			the edge of it. Same for line 17

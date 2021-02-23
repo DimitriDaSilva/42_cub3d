@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_others2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 10:08:18 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 10:41:42 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:53:45 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ void	check_arguments(int argc, char *argv[], char *mode)
 {
 	if ((argc == 2 || argc == 3) && !is_cub(argv[1]))
 	{
-		ft_printf("Error\nScene description file with wrong extention.\n");
+		printf("Error\nScene description file with wrong extention.\n");
 		exit(EXIT_SUCCESS);
 	}
 	else if (argc == 2 && is_cub(argv[1]))
 		ft_strcpy(mode, "PLAY");
 	else if (argc == 3 && ft_strcmp("--save", argv[2]) != 0)
 	{
-		ft_printf("Error\nWrong flag. Use --save.\n");
+		printf("Error\nWrong flag. Use --save.\n");
 		exit(EXIT_SUCCESS);
 	}
 	else if (argc == 3 && ft_strcmp("--save", argv[2]) == 0)
 		ft_strcpy(mode, "SAVE");
 	else
 	{
-		ft_printf("Error\nWrong number of arguments.\n");
+		printf("Error\nWrong number of arguments.\n");
 		exit(EXIT_SUCCESS);
 	}
 }
@@ -42,7 +42,7 @@ void	check_arguments(int argc, char *argv[], char *mode)
 **			I risk doing a SEGFAULT
 */
 
-int	is_cub(char *file)
+int		is_cub(char *file)
 {
 	int	len;
 

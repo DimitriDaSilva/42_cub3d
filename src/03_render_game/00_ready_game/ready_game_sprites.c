@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ready_game_sprites.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 19:22:48 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 23:34:08 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:32:09 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_rays.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 15:29:42 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 20:19:45 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:53:38 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 ** Line-by-line comments:
 ** @1-2		Updating the position of the ray
 **			Can be improved on changing these value on the function caller
-** @3-7		Edge case: the ray went out of the bounds of the grid. We stop	
+** @3-7		Edge case: the ray went out of the bounds of the grid. We stop
 **			the ray and give it a value really high so that he doesn't get
 **			picked as the closest to the player
 ** @8-13	Edge case: the ray ended up right on the south border of the grid.
@@ -31,7 +31,7 @@
 **			value of that line we do seg fault
 */
 
-int	is_wall(t_map *map, double x, double y, t_ray *ray)
+int		is_wall(t_map *map, double x, double y, t_ray *ray)
 {
 	ray->x = x;
 	ray->y = y;
@@ -41,7 +41,7 @@ int	is_wall(t_map *map, double x, double y, t_ray *ray)
 		return (1);
 	}
 	if (map->height == (int)y)
-	{	
+	{
 		ray->obstacle = '1';
 		ray->orientation = 'N';
 		return (1);
@@ -59,7 +59,7 @@ int	is_wall(t_map *map, double x, double y, t_ray *ray)
 ** Gets the orientation of a wall. If we found this wall it means there is
 ** at least one non-wall space next to it. We also take into account which
 ** grid border (hrzn or vrtl) was touched and the angle of the ray touching
-** the wall 
+** the wall
 ** @param:	- [t_map *] map struct with grid, width and height
 **			- [int] x position of the ray being casted
 **			- [int] y position of the ray being casted
@@ -97,7 +97,7 @@ char	get_wall_orientation(t_map *map, int x, int y, t_ray *ray)
 	return (0);
 }
 
-int	is_south(double angle)
+int		is_south(double angle)
 {
 	if (0 <= angle && angle < M_PI)
 		return (1);
@@ -105,7 +105,7 @@ int	is_south(double angle)
 		return (0);
 }
 
-int	is_west(double angle)
+int		is_west(double angle)
 {
 	if (M_PI / 2 <= angle && angle < M_PI * 1.5)
 		return (1);

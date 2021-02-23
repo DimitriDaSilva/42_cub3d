@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 11:59:48 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 23:13:40 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 19:07:25 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ void	draw_wall_strip(t_rect *rect, int *img, t_res *res, t_ray *ray)
 	int		y_tex;
 	int		x_tex;
 	double	step;
-	double	texPos;
+	double	tex_pox;
 
 	step = 1.0 * rect->tex.height / rect->height;
-	texPos = (rect->y - res->height / 2 + rect->height / 2) * step;
+	tex_pox = (rect->y - res->height / 2 + rect->height / 2) * step;
 	x_tex = get_bitmap_offset(ray, rect->tex.width);
 	y = -1;
 	while (++y < rect->height && y < res->height)
 	{
-		y_tex = (int)texPos & (rect->tex.height - 1);
-		texPos += step;
-		img[(rect->y * res->width) + (y * res->width) + rect->x]
-			= rect->tex.img.data[y_tex * rect->tex.height + x_tex];
+		y_tex = (int)tex_pox & (rect->tex.height - 1);
+		tex_pox += step;
+		img[(rect->y * res->width) + (y * res->width)
+			+ rect->x] = rect->tex.img.data[y_tex * rect->tex.height + x_tex];
 	}
 }
 
@@ -69,7 +69,7 @@ void	draw_wall_strip(t_rect *rect, int *img, t_res *res, t_ray *ray)
 **			array index
 */
 
-int	get_bitmap_offset(t_ray *ray, int bitmap_width)
+int		get_bitmap_offset(t_ray *ray, int bitmap_width)
 {
 	double	remainder;
 	int		offset;

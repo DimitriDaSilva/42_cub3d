@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ready_game_events.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:40:31 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 11:23:37 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:59:58 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 ** @3		By the default x11 press key events are on autorepeat mode (i.e.
 **			pressing a key will alternatively fire off press and release
 **			events)
+** @4-5		1L << 0 and 1L << 1 are X11 masks
+**			(https://harm-smits.github.io/42docs/libs/minilibx/events.html)
 ** @6		Client message event is fired off when the user is trying to close
 **			the window (ALT+F4 or window cross)
 */
@@ -30,11 +32,11 @@ void	ready_game_events(t_game *game)
 	if (!ft_strcmp(game->mode, "SAVE"))
 		return ;
 	mlx_do_key_autorepeatoff(game->mlx.mlx_ptr);
-	mlx_hook(game->mlx.win, KeyPress, KeyPressMask, key_pressed, game);
-	mlx_hook(game->mlx.win, KeyRelease, KeyReleaseMask, key_released, game);
+	mlx_hook(game->mlx.win, KEY_PRESS, 1L << 0, key_pressed, game);
+	mlx_hook(game->mlx.win, KEY_RELEASE, 1L << 1, key_released, game);
 	mlx_hook(game->mlx.win,
-			ClientMessage,
-			NoEventMask,
+			CLIENT_MESSAGE,
+			0L,
 			close_window_cross,
 			game);
 }
@@ -46,7 +48,7 @@ void	ready_game_events(t_game *game)
 ** @return:	[int] returns int to fit pointer function prototype
 */
 
-int	key_pressed(int keycode, t_game *game)
+int		key_pressed(int keycode, t_game *game)
 {
 	if (keycode == K_W)
 		game->player.walk_direction = 'w';
@@ -72,7 +74,7 @@ int	key_pressed(int keycode, t_game *game)
 ** @return:	[int] returns int to fit pointer function prototype
 */
 
-int	key_released(int keycode, t_game *game)
+int		key_released(int keycode, t_game *game)
 {
 	(void)game;
 	if (keycode == K_W || keycode == K_A || keycode == K_S || keycode == K_D)
@@ -83,14 +85,14 @@ int	key_released(int keycode, t_game *game)
 }
 
 /*
-** Function called whenever the user tried to close the window (ALT FT or 
+** Function called whenever the user tried to close the window (ALT FT or
 ** window cross)
 ** @param:	- [int] keycode of the key press
 **			- [t_game *] param passed to that function
 ** @return:	[int] returns int to fit pointer function prototype
 */
 
-int	close_window_cross(int keycode, t_game *game)
+int		close_window_cross(int keycode, t_game *game)
 {
 	(void)game;
 	(void)keycode;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ready_game_others.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 08:49:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 18:56:01 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 19:00:31 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	check_user_res(t_mlx *mlx, t_res *res)
 **			res.width / 2 = opposite of the triangle
 **			FOV / 2 = angle of that triangle
 **			adjacent = opposite / tan(FOV / 2)
-**			Here the adjacent represents the distance to the projection plane 
+**			Here the adjacent represents the distance to the projection plane
 */
 
 void	set_rays(t_game *game)

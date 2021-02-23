@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_sprites2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 11:53:02 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 22:55:18 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 19:02:34 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,18 @@
 void	draw_sprite_strip(t_rect *rect, t_game *game, int x_tex, int x_img)
 {
 	double	step;
-	double	texPos;
+	double	tex_pos;
 	int		y;
 	int		y_tex;
 	int		color;
 
 	step = 1.0 * rect->sprite->tex->height / rect->height;
-	texPos = (rect->y - game->scene.res.height / 2 + rect->height / 2) * step;
+	tex_pos = (rect->y - game->scene.res.height / 2 + rect->height / 2) * step;
 	y = -1;
 	while (++y < rect->height && y < game->scene.res.height)
 	{
-		y_tex = (int)texPos & (rect->sprite->tex->height - 1);
-		texPos += step;
+		y_tex = (int)tex_pos & (rect->sprite->tex->height - 1);
+		tex_pos += step;
 		color = rect->sprite->tex->img.data[y_tex
 			* rect->sprite->tex->height + x_tex];
 		if (color < 0)

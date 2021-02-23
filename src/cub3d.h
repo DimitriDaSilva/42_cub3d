@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:33:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/17 14:53:03 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:40:27 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 
 # include <fcntl.h>
 # include <math.h>
-# include <X11/Xlib.h>
 # include <stdint.h>
 
 /*

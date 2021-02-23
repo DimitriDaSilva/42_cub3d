@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:43:07 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 23:14:02 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 19:01:27 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** @11		No need to get width as it is 1 pixel
 */
 
-void	draw_walls(t_game *game)
+void		draw_walls(t_game *game)
 {
 	int		i;
 	double	wall_height;
@@ -51,7 +51,7 @@ void	draw_walls(t_game *game)
 ** @6		Goes from grid distance to full scale distance
 */
 
-double	get_wall_height(t_game *game, t_ray *ray)
+double		get_wall_height(t_game *game, t_ray *ray)
 {
 	double	wall_height;
 	double	scaled_distance;
@@ -76,7 +76,7 @@ double	get_wall_height(t_game *game, t_ray *ray)
 **			than screen height then it begin draw at the top of the screen
 */
 
-int	get_y_wall_position(t_game *game, double wall_height)
+int			get_y_wall_position(t_game *game, double wall_height)
 {
 	double	center_screen;
 	double	center_wall;

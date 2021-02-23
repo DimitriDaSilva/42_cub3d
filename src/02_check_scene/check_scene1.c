@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_scene1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 17:06:49 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:29:37 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	check_resolution(t_res *res)
 {
 	if (res->width == 0 || res->height == 0)
 	{
-		ft_printf("Error\nInvalid resolution.\n");
+		printf("Error\nInvalid resolution.\n");
 		exit(EXIT_SUCCESS);
 	}
 }
@@ -62,20 +62,20 @@ void	check_texture(char *texture_path, char *texture_name)
 
 	if (texture_path == 0)
 	{
-		ft_printf("Error\nThe %s is either missing or poorly "
+		printf("Error\nThe %s is either missing or poorly "
 					"formatted.\n", texture_name);
 		exit(EXIT_SUCCESS);
 	}
 	fd = open(texture_path, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_printf("Error\nCould not open the %s: "
+		printf("Error\nCould not open the %s: "
 					"%s.\n", texture_name, texture_path);
 		exit(EXIT_SUCCESS);
 	}
 	if (close(fd) == -1)
 	{
-		ft_printf("Error\nCould not close file %s.\n", texture_path);
+		printf("Error\nCould not close file %s.\n", texture_path);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -91,13 +91,13 @@ void	check_color(t_color *color, char *color_name)
 {
 	if (color->r == -1)
 	{
-		ft_printf("Error\nThe %s is either missing or poorly "
+		printf("Error\nThe %s is either missing or poorly "
 					"formatted.\n", color_name);
 		exit(EXIT_SUCCESS);
 	}
 	else if (255 < color->r || 255 < color->g || 255 < color->b)
 	{
-		ft_printf("Error\nThe RGB code for the %s is "
+		printf("Error\nThe RGB code for the %s is "
 					"incorrect.\n", color_name);
 		exit(EXIT_SUCCESS);
 	}

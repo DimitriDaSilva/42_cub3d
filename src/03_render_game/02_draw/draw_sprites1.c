@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_sprites1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 20:18:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 22:32:01 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 19:05:33 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	draw_sprites(t_game *game)
 **			right. (i - 1) * column_width + j is the amount of sprite strips
 **			already drawn
 ** @19		Checks if we are within the screen width
-** @20		Checks if the sprite isn't being a wall  
+** @20		Checks if the sprite isn't being a wall
 ** @22		Draws one column at a time of the sprite
 */
 
@@ -53,7 +53,7 @@ void	draw_single_sprite(t_game *game, t_sprite *sprite)
 	double	column_width;
 	int		i;
 	int		j;
-	int		posX;
+	int		pos_x;
 
 	rect.height = get_sprite_height(game, sprite->distance);
 	rect.y = get_y_sprite_position(game, rect.height);
@@ -66,11 +66,11 @@ void	draw_single_sprite(t_game *game, t_sprite *sprite)
 		j = -1;
 		while (++j < column_width)
 		{
-			posX = (int)(rect.x + (i - 1) * column_width + j);
-			if (posX >= 0 && posX <= game->scene.res.width - 1
-				&& sprite->distance < game->rays.arr[posX].size)
+			pos_x = (int)(rect.x + (i - 1) * column_width + j);
+			if (pos_x >= 0 && pos_x <= game->scene.res.width - 1
+				&& sprite->distance < game->rays.arr[pos_x].size)
 			{
-				draw_sprite_strip(&rect, game, i, posX);
+				draw_sprite_strip(&rect, game, i, pos_x);
 			}
 		}
 	}
@@ -100,7 +100,7 @@ double	get_sprite_height(t_game *game, double distance)
 **			than screen height then it begin draw at the top of the screen
 */
 
-int	get_y_sprite_position(t_game *game, double sprite_height)
+int		get_y_sprite_position(t_game *game, double sprite_height)
 {
 	int	center_screen;
 	int	center_sprite;
@@ -127,7 +127,7 @@ int	get_y_sprite_position(t_game *game, double sprite_height)
 **			adjacent
 */
 
-int	get_x_sprite_position(t_game *game,
+int		get_x_sprite_position(t_game *game,
 							t_sprite *sprite,
 							double sprite_width)
 {

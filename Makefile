@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/02/17 15:13:34 by dda-silv         ###   ########.fr        #
+#    Updated: 2021/02/23 18:27:05 by dda-silv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,8 @@ $(PATH_BUILD)/%.c.o:	%.c
 						mkdir -p $(dir $@)
 						$(CC) $(FLAGS_COMP) -c $< -o $@
 
+bonus:					all
+
 clean:
 						@ $(RM) -rf $(PATH_BUILD)
 						@ make -C $(PATH_LIBFT) clean
@@ -97,6 +99,16 @@ normC:
 						@ make -C $(PATH_LIBFT) normC
 
 norm:					normH normC
+
+old_normH:
+						~/.old_norminette/norminette.rb $(shell find $(PATH_SRC) -name *.h)
+						@ make -C $(PATH_LIBFT) old_normH
+
+old_normC:
+						~/.old_norminette/norminette.rb $(SRCS)
+						@ make -C $(PATH_LIBFT) old_normC
+
+old_norm:				old_normH old_normC
 
 .PHONY:					all clean fclean re
 

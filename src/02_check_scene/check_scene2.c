@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_scene2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 17:07:49 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:56:52 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ void	check_map(t_map *map)
 {
 	if (map->grid == 0)
 	{
-		ft_printf("Error\nThe map is missing.\n");
+		printf("Error\nThe map is missing.\n");
 		exit(EXIT_SUCCESS);
 	}
 	else if (!is_map_enclosed(map->grid, map->height, map->width))
 	{
-		ft_printf("Error\nThe map is not enclosed.\n");
+		printf("Error\nThe map is not enclosed.\n");
 		exit(EXIT_SUCCESS);
 	}
 	else if (!has_one_start_position(map->grid))
 	{
-		ft_printf("Error\nThe map has 0 or more than 1 start position.\n");
+		printf("Error\nThe map has 0 or more than 1 start position.\n");
 		exit(EXIT_SUCCESS);
 	}
 }
@@ -52,7 +52,7 @@ void	check_map(t_map *map)
 ** 14-18	Case: there is a space on one of the 8 boxes around that position
 */
 
-int	is_map_enclosed(char **map, int height, int width)
+int		is_map_enclosed(char **map, int height, int width)
 {
 	int	i;
 	int	j;
@@ -87,7 +87,7 @@ int	is_map_enclosed(char **map, int height, int width)
 ** @16		If count == 1 is true, then 1 is returned. Else, 0
 */
 
-int	has_one_start_position(char **map)
+int		has_one_start_position(char **map)
 {
 	int	count;
 	int	i;

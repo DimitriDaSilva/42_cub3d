@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_game.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 19:18:43 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 23:38:22 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:57:03 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 ** @10-14	In PLAY mode, mlx_loop_hook calls one time per frame the function
 **			render_next_frame
 ** @13		Ensures that the function only finishes if the user closes the
-**			window 
+**			window
 */
 
 void	render_game(t_game *game)
@@ -55,7 +55,7 @@ void	render_game(t_game *game)
 **				  return an int
 */
 
-int	render_next_frame(void *my_struct)
+int		render_next_frame(void *my_struct)
 {
 	t_game	*game;
 

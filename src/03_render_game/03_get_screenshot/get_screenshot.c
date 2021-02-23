@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_screenshot.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 15:06:06 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 23:33:25 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:31:10 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	save_image_in_bmp(t_game *game)
 	fd = open("screenshot.bmp", O_CREAT | O_WRONLY | O_TRUNC, 0777);
 	if (fd == -1)
 	{
-		ft_printf("Error\nCould not create file screenshot.bmp.\n");
+		printf("Error\nCould not create file screenshot.bmp.\n");
 		exit(EXIT_SUCCESS);
 	}
 	write_bmp_header(game, fd);
@@ -56,7 +56,7 @@ void	save_image_in_bmp(t_game *game)
 	write_body(game, fd);
 	if (close(fd) == -1)
 	{
-		ft_printf("Error\nCould not close file screenshot.bmp.\n");
+		printf("Error\nCould not close file screenshot.bmp.\n");
 		exit(EXIT_SUCCESS);
 	}
 }

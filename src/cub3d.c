@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 18:13:05 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 09:03:46 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:30:58 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ int	main(int argc, char *argv[])
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
-		ft_printf("Error\nCould not open file %s.\n", argv[1]);
+		printf("Error\nCould not open file %s.\n", argv[1]);
 		exit(EXIT_SUCCESS);
 	}
 	get_scene(fd, &game.scene);
 	if (close(fd) == -1)
 	{
-		ft_printf("Error\nCould not close file %s.\n", argv[1]);
+		printf("Error\nCould not close file %s.\n", argv[1]);
 		exit(EXIT_SUCCESS);
 	}
 	check_scene(&game.scene);

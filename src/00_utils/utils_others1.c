@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_others1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 08:43:45 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 10:12:18 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:53:05 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ double	normalize_radian(double radian)
 	return (radian);
 }
 
-int	create_argb(int a, int r, int g, int b)
+int		create_argb(int a, int r, int g, int b)
 {
 	return (a << 24 | r << 16 | g << 8 | b);
 }

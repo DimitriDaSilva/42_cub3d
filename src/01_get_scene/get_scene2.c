@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_scene2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 08:21:33 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 17:05:16 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:54:27 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 ** @8-9		Only one 1 is enough to follow the correct map pattern
 */
 
-int	is_map(char *line)
+int		is_map(char *line)
 {
 	int	check;
 

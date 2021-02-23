@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 19:17:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/10 19:17:55 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:49:09 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 */
 
 # define VALID_CHARS "012NSEW "
-// # define MINIMAP_RATIO 50
 # define MINIMAP_RATIO 200
 # define MINIMAP_OFFSET 10
 # define SCALE 64
@@ -35,5 +34,13 @@
 # define K_D 100
 # define K_LEFT_ARROW 65361
 # define K_RIGHT_ARROW 65363
+
+/*
+** X11 Events
+*/
+
+# define CLIENT_MESSAGE 33
+# define KEY_PRESS 02
+# define KEY_RELEASE 03
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:30:40 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 19:57:44 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:35:46 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** General
 */
 
-typedef struct s_img
+typedef struct	s_img
 {
 	void		*img_ptr;
 	int			*data;
@@ -26,20 +26,20 @@ typedef struct s_img
 	int			endian;
 }				t_img;
 
-typedef struct s_mlx
+typedef struct	s_mlx
 {
 	void		*mlx_ptr;
 	void		*win;
 	t_img		img;
 }				t_mlx;
 
-typedef struct s_res
+typedef struct	s_res
 {
 	int			width;
 	int			height;
 }				t_res;
 
-typedef struct s_texture
+typedef struct	s_texture
 {
 	char		*path;
 	t_img		img;
@@ -47,7 +47,7 @@ typedef struct s_texture
 	int			height;
 }				t_texture;
 
-typedef struct s_color
+typedef struct	s_color
 {
 	int			r;
 	int			g;
@@ -55,14 +55,14 @@ typedef struct s_color
 	int			argb;
 }				t_color;
 
-typedef struct s_map
+typedef struct	s_map
 {
 	char		**grid;
 	int			width;
 	int			height;
 }				t_map;
 
-typedef struct s_sprite
+typedef struct	s_sprite
 {
 	double		x;
 	double		y;
@@ -72,7 +72,7 @@ typedef struct s_sprite
 	int			is_visible;
 }				t_sprite;
 
-typedef struct s_scene
+typedef struct	s_scene
 {
 	t_res		res;
 	t_texture	no_tex;
@@ -88,7 +88,7 @@ typedef struct s_scene
 	t_sprite	*sprites;
 }				t_scene;
 
-typedef struct s_player
+typedef struct	s_player
 {
 	double		x;
 	double		y;
@@ -100,7 +100,7 @@ typedef struct s_player
 	double		rotation_speed;
 }				t_player;
 
-typedef struct s_ray
+typedef struct	s_ray
 {
 	double		x;
 	double		y;
@@ -113,14 +113,14 @@ typedef struct s_ray
 	double		y_step;
 }				t_ray;
 
-typedef struct s_rays
+typedef struct	s_rays
 {
 	t_ray		*arr;
 	double		view_angle;
 	double		dist_proj_plane;
 }				t_rays;
 
-typedef struct s_game
+typedef struct	s_game
 {
 	t_mlx		mlx;
 	t_scene		scene;
@@ -133,7 +133,7 @@ typedef struct s_game
 ** Graphical
 */
 
-typedef struct s_rect
+typedef struct	s_rect
 {
 	int			x;
 	int			y;
@@ -146,7 +146,7 @@ typedef struct s_rect
 	t_sprite	*sprite;
 }				t_rect;
 
-typedef struct s_circle
+typedef struct	s_circle
 {
 	int			x;
 	int			y;
@@ -156,7 +156,7 @@ typedef struct s_circle
 	int			border_width;
 }				t_circle;
 
-typedef struct s_line
+typedef struct	s_line
 {
 	int			begin_x;
 	int			begin_y;
@@ -170,7 +170,7 @@ typedef struct s_line
 ** BPM file creator
 */
 
-typedef struct s_bmp_header
+typedef struct	s_bmp_header
 {
 	char		byte_signature[2];
 	uint32_t	size;
@@ -178,7 +178,7 @@ typedef struct s_bmp_header
 	uint32_t	byte_offset;
 }				t_bmp_header;
 
-typedef struct s_dib_header
+typedef struct	s_dib_header
 {
 	uint32_t	dib_header_size;
 	int32_t		width;

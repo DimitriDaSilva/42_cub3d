@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_scene1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 14:52:12 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/12 17:01:21 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/23 18:29:43 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	get_data(char **strs, t_scene *scene)
 		get_color(strs[1], &scene->ceilling);
 	else if (strs[0][0] != '\n')
 	{
-		ft_printf("Error\nUnknown identifier: %s", strs[0]);
+		printf("Error\nUnknown identifier: %s", strs[0]);
 		exit(EXIT_SUCCESS);
 	}
 }
