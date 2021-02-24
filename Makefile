@@ -6,7 +6,7 @@
 #    By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/02/24 16:09:21 by dds              ###   ########.fr        #
+#    Updated: 2021/02/24 17:13:23 by dds              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,18 +21,16 @@ PATH_LIBMLX		:=		libmlx
 
 # List of sources
 SRCS			:=		$(shell find $(PATH_SRC) -name *.c)
-OBJS			:=		$(SRCS:%=$(PATH_BUILD)/%.o)
+OBJS			:=		$(SRCS:%.c=$(PATH_BUILD)/%.o)
 DEPS			:=		$(OBJS:.o=.d)
 INC_DIRS		:=		$(shell find $(PATH_SRC) -type d)
 
 # Compiler
 CC				:=		gcc
 
-MLX_LIB			:=		libmlx.dylib
-
 # Flags - compilation
 FLAG_WARNING	:=		-O3 -Wall -Wextra -Werror
-FLAG_INC		:= 		$(addprefix -I, $(INC_DIRS)) -I.
+FLAG_INC		:= 		$(addprefix -I, $(INC_DIRS)) -I$(PATH_LIBMLX)
 FLAG_MAKEFILE	:=		-MMD -MP
 FLAG_DEBUG		:= 		-g
 FLAGS_COMP		:= 		$(FLAG_WARNING) $(FLAG_INC) $(FLAG_MAKEFILE) $(FLAG_DEBUG)
@@ -48,6 +46,7 @@ FLAGS_LINKINKG	:=		-lm $(FLAG_LIBFT) $(FLAG_LIBMLX) $(FLAG_MAC)
 
 # Others commands
 RM				:=		rm -rf
+MLX_LIB			:=		libmlx.dylib
 
 # Color Code and template code
 _YELLOW			=		\e[38;5;184m
@@ -74,14 +73,15 @@ $(NAME):				$(OBJS)
 						$(CC) $(FLAGS_COMP) -o $@ $(OBJS) $(FLAGS_LINKINKG)
 
 
-$(PATH_BUILD)/%.c.o:	%.c
+$(PATH_BUILD)/%.o:	%.c
 						mkdir -p $(dir $@)
 						$(CC) $(FLAGS_COMP) -c $< -o $@
 
 bonus:					all
 
 clean:
-						@ $(RM) -rf $(PATH_BUILD) $(MLX_LIB)
+						@ $(RM) -rf $(PATH_BUILD)
+						@ $(RM) -rf $(MLX_LIB)
 						@ make -C $(PATH_LIBFT) clean
 						@ make -C $(PATH_LIBMLX) clean
 						@ echo "$(_INFO) Deleted files and directory"

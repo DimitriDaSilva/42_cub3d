@@ -1,10 +1,10 @@
-R 800 600
-NO ./assets/textures/xpm/Mud.xpm
+R 1920 1080
+NO ./assets/textures/xpm/LavaF2.xpm
 SO ./assets/textures/xpm/Mud.xpm
 WE ./assets/textures/xpm/Sand.xpm
 EA ./assets/textures/xpm/Sand.xpm
 
-S ./assets/sprites/xpm/cage4.xpm
+S ./assets/sprites/xpm/gun.xpm
 C 51,53,51
 F 36,85,1
 

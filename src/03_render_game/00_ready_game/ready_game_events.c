@@ -6,7 +6,7 @@
 /*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:40:31 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/24 12:46:14 by dds              ###   ########.fr       */
+/*   Updated: 2021/02/24 18:30:57 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	ready_game_events(t_game *game)
 	mlx_hook(game->mlx.win, KEY_PRESS, 1L << 0, key_pressed, game);
 	mlx_hook(game->mlx.win, KEY_RELEASE, 1L << 1, key_released, game);
 	mlx_hook(game->mlx.win,
-			CLIENT_MESSAGE,
-			0L,
+			DESTROY_NOTIFY,
+			1L << 17,
 			close_window_cross,
 			game);
 }
@@ -50,7 +50,6 @@ void	ready_game_events(t_game *game)
 
 int		key_pressed(int keycode, t_game *game)
 {
-	printf("Keycode: \"%d\"\n", keycode);
 	if (keycode == K_W)
 		game->player.walk_direction = 'w';
 	else if (keycode == K_A)

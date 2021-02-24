@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_others2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 10:08:18 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/23 18:53:45 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/24 19:09:11 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	check_arguments(int argc, char *argv[], char *mode)
 {
-	if ((argc == 2 || argc == 3) && !is_cub(argv[1]))
+	if ((argc == 2 || argc == 3) && !check_extension(argv[1], ".cub"))
 	{
 		printf("Error\nScene description file with wrong extention.\n");
 		exit(EXIT_SUCCESS);
 	}
-	else if (argc == 2 && is_cub(argv[1]))
+	else if (argc == 2 && check_extension(argv[1], ".cub"))
 		ft_strcpy(mode, "PLAY");
 	else if (argc == 3 && ft_strcmp("--save", argv[2]) != 0)
 	{
@@ -36,21 +36,29 @@ void	check_arguments(int argc, char *argv[], char *mode)
 }
 
 /*
-** @param:	- [char	*] name of the file passed in as argument of the cub3d
+** Check if the file has the extension specified
+** @param:	- [char	*] file name
+** 			- [char	*] extension tested
 ** Line-by-line comments:
-** @4		Before checking the extension, I need to check it's size otherwise
+** @6-7		Before checking the extension, I need to check it's size otherwise
 **			I risk doing a SEGFAULT
+** @8-9		I need to find the index where the extension would start and I need
+**			to check len_ext + 1 to make sure the NULL char is also a match
 */
 
-int		is_cub(char *file)
+int		check_extension(char *file, char *extension)
 {
-	int	len;
+	int	len_file;
+	int	len_ext;
 
-	len = ft_strlen(file);
-	if (!(len > 4 && !ft_strncmp(&file[len - 4], ".cub", 5)))
+	len_file = ft_strlen(file);
+	len_ext = ft_strlen(file);
+	if (len_file <= len_ext)
 		return (0);
-	else
+	else if (!ft_strncmp(&file[len_file - len_ext], extension, len_ext + 1))
 		return (1);
+	else
+		return (0);
 }
 
 void	ft_realloc_protected(void **ptr, size_t orig_size, size_t new_size)

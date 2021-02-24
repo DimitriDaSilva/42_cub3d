@@ -6,7 +6,7 @@
 /*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 08:49:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/24 16:10:38 by dds              ###   ########.fr       */
+/*   Updated: 2021/02/24 19:10:38 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 void	ready_game_others(t_game *game)
 {
-	check_user_res(&game->mlx, &game->scene.res);
+	// check_user_res(&game->mlx, &game->scene.res);
 	game->scene.mini_map_tile_size = game->scene.res.width / MINIMAP_RATIO;
 	set_rays(game);
 	load_texture(game->mlx.mlx_ptr, &game->scene.no_tex);
@@ -49,7 +49,7 @@ void	check_user_res(t_mlx *mlx, t_res *res)
 	user_width = 0;
 	user_height = 0;
 	(void)mlx;
-	mlx_get_screen_size(mlx->mlx_ptr, &user_width, &user_height);
+	// mlx_get_screen_size(mlx->mlx_ptr, &user_width, &user_height);
 	if (user_width < res->width)
 		res->width = user_width;
 	if (user_height < res->height)
@@ -81,8 +81,16 @@ void	set_rays(t_game *game)
 
 void	load_texture(void *mlx, t_texture *texture)
 {
-	texture->img.img_ptr = mlx_xpm_file_to_image(mlx, texture->path,
-			&texture->width, &texture->height);
+	if (check_extension(texture->path, ".png"))
+	{
+		texture->img.img_ptr = mlx_png_file_to_image(mlx, texture->path,
+				&texture->width, &texture->height);
+	}
+	else
+	{
+		texture->img.img_ptr = mlx_xpm_file_to_image(mlx, texture->path,
+				&texture->width, &texture->height);
+	}
 	texture->img.data = (int *)mlx_get_data_addr(texture->img.img_ptr,
 			&texture->img.bpp,
 			&texture->img.size_l,

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:43:07 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/23 19:01:27 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/24 17:25:30 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ double		get_wall_height(t_game *game, t_ray *ray)
 	double	wall_height;
 	double	scaled_distance;
 	double	fisheye_adjustment;
+	(void)fisheye_adjustment;
 
 	fisheye_adjustment = cos(ray->angle - game->player.rotation_angle);
 	scaled_distance = ray->size * SCALE * fisheye_adjustment;

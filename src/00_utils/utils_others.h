@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_others.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 08:44:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/23 18:29:58 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/24 19:09:20 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		create_argb(int a, int r, int g, int b);
 */
 
 void	check_arguments(int argc, char *argv[], char *mode);
-int		is_cub(char *file);
+int		check_extension(char *file, char *extension);
 void	ft_realloc_protected(void **ptr, size_t orig_size, size_t new_size);
 
 #endif

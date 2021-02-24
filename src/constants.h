@@ -6,7 +6,7 @@
 /*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 19:17:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/24 12:50:51 by dds              ###   ########.fr       */
+/*   Updated: 2021/02/24 18:28:11 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 ** X11 Events
 */
 
-# define CLIENT_MESSAGE 33
+# define DESTROY_NOTIFY 17
 # define KEY_PRESS 02
 # define KEY_RELEASE 03
 
