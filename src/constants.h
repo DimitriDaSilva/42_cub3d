@@ -6,7 +6,7 @@
 /*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 19:17:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/24 10:48:21 by dds              ###   ########.fr       */
+/*   Updated: 2021/02/24 12:50:51 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@
 ** Keycodes
 */
 
-# define K_ESC 65307
-# define K_W 122
-# define K_A 113
-# define K_S 115
-# define K_D 100
-# define K_LEFT_ARROW 65361
-# define K_RIGHT_ARROW 65363
+# define K_ESC 53
+# define K_W 13
+# define K_A 0
+# define K_S 1
+# define K_D 2
+# define K_LEFT_ARROW 123
+# define K_RIGHT_ARROW 124
 
 /*
 ** X11 Events

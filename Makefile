@@ -6,7 +6,7 @@
 #    By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/02/24 10:28:45 by dds              ###   ########.fr        #
+#    Updated: 2021/02/24 16:09:21 by dds              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,12 @@ INC_DIRS		:=		$(shell find $(PATH_SRC) -type d)
 # Compiler
 CC				:=		gcc
 
+MLX_LIB			:=		libmlx.dylib
+
 # Flags - compilation
-FLAG_WARNING	:=		-Wall -Wextra -Werror
-FLAG_INC		:= 		$(addprefix -I, $(INC_DIRS))
+FLAG_WARNING	:=		-O3 -Wall -Wextra -Werror
+FLAG_INC		:= 		$(addprefix -I, $(INC_DIRS)) -I.
 FLAG_MAKEFILE	:=		-MMD -MP
-FLAGS_COMP		:= 		$(FLAG_WARNING) $(FLAG_INC) $(FLAG_MAKEFILE)
 FLAG_DEBUG		:= 		-g
 FLAGS_COMP		:= 		$(FLAG_WARNING) $(FLAG_INC) $(FLAG_MAKEFILE) $(FLAG_DEBUG)
 
@@ -40,14 +41,13 @@ FLAGS_COMP		:= 		$(FLAG_WARNING) $(FLAG_INC) $(FLAG_MAKEFILE) $(FLAG_DEBUG)
 FLAG_MEM_LEAK	:= 		-fsanitize=address
 
 # Flags - linking
-FLAG_LIBFT		:=		-Llibft -lft 
-FLAG_LIBMLX		:=		-Llibmlx -lmlx
+FLAG_LIBFT		:=		-L$(PATH_LIBFT) -lft 
+FLAG_LIBMLX		:=		-L$(PATH_LIBMLX) -lmlx
 FLAG_MAC		:=		-framework OpenGL -framework AppKit
 FLAGS_LINKINKG	:=		-lm $(FLAG_LIBFT) $(FLAG_LIBMLX) $(FLAG_MAC)
 
 # Others commands
 RM				:=		rm -rf
-MLX_LIB			:=		libmlx.dylib
 
 # Color Code and template code
 _YELLOW			=		\e[38;5;184m
@@ -71,7 +71,7 @@ init:
 						@ mv $(PATH_LIBMLX)/$(MLX_LIB) .
 
 $(NAME):				$(OBJS)
-						$(CC) $(OBJS) -o $@ $(FLAGS_LINKINKG)
+						$(CC) $(FLAGS_COMP) -o $@ $(OBJS) $(FLAGS_LINKINKG)
 
 
 $(PATH_BUILD)/%.c.o:	%.c
@@ -81,7 +81,7 @@ $(PATH_BUILD)/%.c.o:	%.c
 bonus:					all
 
 clean:
-						@ $(RM) -rf $(PATH_BUILD)
+						@ $(RM) -rf $(PATH_BUILD) $(MLX_LIB)
 						@ make -C $(PATH_LIBFT) clean
 						@ make -C $(PATH_LIBMLX) clean
 						@ echo "$(_INFO) Deleted files and directory"

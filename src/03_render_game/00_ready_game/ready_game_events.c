@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ready_game_events.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:40:31 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/23 18:59:58 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/24 12:46:14 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	ready_game_events(t_game *game)
 
 int		key_pressed(int keycode, t_game *game)
 {
+	printf("Keycode: \"%d\"\n", keycode);
 	if (keycode == K_W)
 		game->player.walk_direction = 'w';
 	else if (keycode == K_A)
