@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ready_game_others.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 08:49:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/23 19:00:31 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/24 10:10:42 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,12 @@ void	check_user_res(t_mlx *mlx, t_res *res)
 
 	user_width = 0;
 	user_height = 0;
-	mlx_get_screen_size(mlx->mlx_ptr, &user_width, &user_height);
+	// mlx_get_screen_size(mlx->mlx_ptr, &user_width, &user_height);
 	if (user_width < res->width)
 		res->width = user_width;
 	if (user_height < res->height)
 		res->height = user_height;
+	(void)mlx;
 }
 
 /*

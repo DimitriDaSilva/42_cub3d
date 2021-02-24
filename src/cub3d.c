@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 18:13:05 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/23 18:30:58 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/24 10:17:04 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ int	main(int argc, char *argv[])
 		exit(EXIT_SUCCESS);
 	}
 	get_scene(fd, &game.scene);
+	int i = 0;
+	while (game.scene.map.grid[i] != 0)
+	{
+		printf("%s\n", game.scene.map.grid[i]);
+		i++;
+	}
 	if (close(fd) == -1)
 	{
 		printf("Error\nCould not close file %s.\n", argv[1]);

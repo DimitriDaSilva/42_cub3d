@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_scene2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 08:21:33 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/23 18:54:27 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/24 10:52:57 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,11 +150,11 @@ size_t	get_width(char **strs)
 **			one, we enlarge it to make room for spaces
 **			The ft_realloc protected is a ft_realloc that quits if the
 **			ft_realloc didn't work (yes it's for space purposes)
-** @14-18	If we find a tab, we move the chars 4 places and fill the gap with
-**			spaces
-** @19-20	If the characters found is not a VALID_CHAR (i.e. "012NSEW "),
-**			then it means it's the end of the string and we need to add spaces
-**			until we reach j == scene->map_width
+** @14-19	If we find a tab, we move the chars 4 places and fill the gap with
+**			spaces. We need to add 4 to the length so that in the len in the
+**			next if statement takes the updated length of the row
+** @20-21	If we are above the original length then it means we need to fill
+**			it with spaces
 ** @22		As we are overwritting the NULL terminator for the string
 **			originally shorter than the map_width, we need to put it back
 */
@@ -178,8 +178,9 @@ char	**convert_tabs_to_spaces(char **strs, int width, int height)
 			{
 				ft_memmove(&strs[i][j + 4], &strs[i][j + 1], len - j + 2);
 				ft_strncpy(&strs[i][j], "    ", 4);
+				len += 4;
 			}
-			else if (!ft_strchr(VALID_CHARS, strs[i][j]) || strs[i][j] == 0)
+			else if (j >= len)
 				strs[i][j] = ' ';
 		}
 		strs[i][j] = '\0';
