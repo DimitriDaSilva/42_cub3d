@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_mini_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:28:36 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/23 19:01:50 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/02/27 18:10:50 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	draw_map(t_game *game)
 }
 
 /*
-** Dranw the player on top of the map. Player composed of a dot and the rays
+** Draws the player on top of the map. Player composed of a dot and the rays
 ** that were casted
 ** @param:	- [t_game *] root struct
 ** Line-by-line comments:

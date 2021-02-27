@@ -1,8 +1,8 @@
-R 1920 1080
-NO ./assets/textures/xpm/LavaF2.png
-SO ./assets/textures/xpm/Mud.png
-WE ./assets/textures/xpm/Sand.png
-EA ./assets/textures/xpm/Sand.png
+R 1600 1000
+NO ./assets/textures/png/LavaF2.png
+SO ./assets/textures/png/Mud.png
+WE ./assets/textures/png/Sand.png
+EA ./assets/textures/png/Sand.png
 
 S ./assets/sprites/xpm/gun.xpm
 C 51,53,51
@@ -10,7 +10,7 @@ F 36,85,1
 
 		1111111111111111111111111
 		1000000000110000000000001
-		100000000011000000002W001
+		100000000011000000002N001
 		1011000001110000000000001
 		1001000000000000000000001
 111111111011000001110000000000001

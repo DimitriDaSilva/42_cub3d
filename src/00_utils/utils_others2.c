@@ -6,7 +6,7 @@
 /*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 10:08:18 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/24 19:09:11 by dds              ###   ########.fr       */
+/*   Updated: 2021/02/27 16:38:36 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		check_extension(char *file, char *extension)
 	int	len_ext;
 
 	len_file = ft_strlen(file);
-	len_ext = ft_strlen(file);
+	len_ext = ft_strlen(extension);
 	if (len_file <= len_ext)
 		return (0);
 	else if (!ft_strncmp(&file[len_file - len_ext], extension, len_ext + 1))
