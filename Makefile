@@ -6,7 +6,7 @@
 #    By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/02/24 17:13:23 by dds              ###   ########.fr        #
+#    Updated: 2021/02/27 16:06:39 by dds              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,18 @@ OBJS			:=		$(SRCS:%.c=$(PATH_BUILD)/%.o)
 DEPS			:=		$(OBJS:.o=.d)
 INC_DIRS		:=		$(shell find $(PATH_SRC) -type d)
 
+# Name of dynamic lib
+MLX_LIB			:=		libmlx.dylib
+
+# Name of screnshot
+BMP_SCREENSHOT	:=		screenshot.bmp
+
 # Compiler
 CC				:=		gcc
 
 # Flags - compilation
 FLAG_WARNING	:=		-O3 -Wall -Wextra -Werror
-FLAG_INC		:= 		$(addprefix -I, $(INC_DIRS)) -I$(PATH_LIBMLX)
+FLAG_INC		:= 		$(addprefix -I, $(INC_DIRS))
 FLAG_MAKEFILE	:=		-MMD -MP
 FLAG_DEBUG		:= 		-g
 FLAGS_COMP		:= 		$(FLAG_WARNING) $(FLAG_INC) $(FLAG_MAKEFILE) $(FLAG_DEBUG)
@@ -40,13 +46,11 @@ FLAG_MEM_LEAK	:= 		-fsanitize=address
 
 # Flags - linking
 FLAG_LIBFT		:=		-L$(PATH_LIBFT) -lft 
-FLAG_LIBMLX		:=		-L$(PATH_LIBMLX) -lmlx
-FLAG_MAC		:=		-framework OpenGL -framework AppKit
-FLAGS_LINKINKG	:=		-lm $(FLAG_LIBFT) $(FLAG_LIBMLX) $(FLAG_MAC)
+FLAG_LIBMLX		:=		-L. -lmlx
+FLAGS_LINKINKG	:=		$(FLAG_LIBFT) $(FLAG_LIBMLX)
 
 # Others commands
 RM				:=		rm -rf
-MLX_LIB			:=		libmlx.dylib
 
 # Color Code and template code
 _YELLOW			=		\e[38;5;184m
@@ -80,8 +84,9 @@ $(PATH_BUILD)/%.o:	%.c
 bonus:					all
 
 clean:
-						@ $(RM) -rf $(PATH_BUILD)
-						@ $(RM) -rf $(MLX_LIB)
+						@ $(RM) $(PATH_BUILD)
+						@ $(RM) $(MLX_LIB)
+						@ $(RM) $(BMP_SCREENSHOT)
 						@ make -C $(PATH_LIBFT) clean
 						@ make -C $(PATH_LIBMLX) clean
 						@ echo "$(_INFO) Deleted files and directory"
