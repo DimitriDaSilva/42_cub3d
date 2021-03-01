@@ -1,0 +1,15 @@
+R 500 1000
+NO ./assets/textures/Grass.xpm
+SO ./assets/textures/Ice.xpm
+WE ./assets/textures/Gold0.xpm
+EA ./assets/textures/Gold1.xpm
+
+S ./assets/sprites/knight.xpm
+C 51,53,51
+F 36,85,1
+
+1111111111111111111111111
+1000000000000000020000001
+100022222222220000002W001
+1000000000000000020000001
+1111111111111111111111111

@@ -6,15 +6,12 @@
 #    By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/03/01 15:13:42 by dds              ###   ########.fr        #
+#    Updated: 2021/03/01 15:27:41 by dds              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Name of the program built
 NAME				:=		cub3D
-
-# OS. Default OS = macOS
-# OS					:=		MAC
 
 # Name directory
 PATH_SRC			:=		src

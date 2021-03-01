@@ -1,10 +1,10 @@
 R 1920 1080
-NO ./assets/textures/LavaF2.xpm
-SO ./assets/textures/Bricks.xpm
-WE ./assets/textures/Sand.xpm
-EA ./assets/textures/WoolSnow.xpm
+NO ./assets/textures/TilledSoil.xpm
+SO ./assets/textures/TreeRings.xpm
+WE ./assets/textures/WalkStone.xpm
+EA ./assets/textures/WaterF1.xpm
 
-S ./assets/sprites/gun.xpm
+S ./assets/sprites/chest.xpm
 C 51,53,51
 F 36,85,1
 

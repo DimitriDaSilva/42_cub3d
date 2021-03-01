@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ready_game_player.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 09:41:14 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/23 18:32:12 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/03/01 15:35:54 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 void	ready_game_player(t_game *game)
 {
 	game->player.walk_direction = 0;
-	game->player.move_speed = 0.2;
+	game->player.move_speed = 0.15;
 	game->player.turn_direction = 0;
-	game->player.rotation_speed = deg_to_rad(8);
+	game->player.rotation_speed = deg_to_rad(4);
 	get_starting_position(&game->player, game->scene.map.grid);
 }
 
