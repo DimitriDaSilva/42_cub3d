@@ -6,7 +6,7 @@
 #    By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/03/01 12:34:53 by dda-silv         ###   ########.fr        #
+#    Updated: 2021/03/01 13:06:49 by dda-silv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME				:=		cub3D
 
 # OS. Default OS = macOS
-OS					:=		mac
+# OS					:=		MAC
 
 # Name directory
 PATH_SRC			:=		src
@@ -50,7 +50,7 @@ FLAG_MEM_LEAK		:= 		-fsanitize=address
 FLAG_LIBFT			:=		-L$(PATH_LIBFT) -lft 
 FLAG_LIBMLX_MAC		:=		-L$(PATH_LIBMLX_MAC) -lmlx -framework OpenGL -framework AppKit -lz
 FLAG_LIBMLX_LINUX	:=		-L$(PATH_LIBMLX_LINUX) -lmlx -lX11 -lbsd -lXext
-ifeq ($(OS), mac)
+ifeq ($(OS),)
 	FLAGS_LINKINKG := -lm $(FLAG_LIBFT) $(FLAG_LIBMLX_MAC)
 else
 	FLAGS_LINKINKG := -lm $(FLAG_LIBFT) $(FLAG_LIBMLX_LINUX)
@@ -73,14 +73,14 @@ all:						init $(NAME)
 init:
 							@ echo "$(_INFO) Initialize $(NAME)"
 							@ make -C $(PATH_LIBFT)
-ifeq ($(OS), mac)
+ifeq ($(OS),)
 	@ make -C $(PATH_LIBMLX_MAC)
 else
 	@ make -C $(PATH_LIBMLX_LINUX)
 endif
 
 $(NAME):					$(OBJS)
-							$(CC) $(FLAGS_COMP) -o $@ $(OBJS) $(FLAGS_LINKINKG)
+							$(CC) $(FLAGS_COMP) -o $@ $(OBJS) $(FLAGS_LINKINKG) -D OS=$(OS)
 
 
 $(PATH_BUILD)/%.o:	%.c
