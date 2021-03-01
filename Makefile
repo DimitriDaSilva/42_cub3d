@@ -6,7 +6,7 @@
 #    By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/03/01 13:06:49 by dda-silv         ###   ########.fr        #
+#    Updated: 2021/03/01 14:15:29 by dda-silv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ endif
 
 # Others commands
 RM					:=		rm -rf
+OS_DEFINE			:=		-D OS=$(OS)
 
 # Color Code and template code
 _YELLOW				:=		\e[38;5;184m
@@ -80,12 +81,12 @@ else
 endif
 
 $(NAME):					$(OBJS)
-							$(CC) $(FLAGS_COMP) -o $@ $(OBJS) $(FLAGS_LINKINKG) -D OS=$(OS)
+							$(CC) $(FLAGS_COMP) -o $@ $(OBJS) $(FLAGS_LINKINKG)
 
 
 $(PATH_BUILD)/%.o:	%.c
 							mkdir -p $(dir $@)
-							$(CC) $(FLAGS_COMP) -c $< -o $@
+							$(CC) $(FLAGS_COMP) -c $< -o $@ $(OS_DEFINE)
 
 bonus:						all
 
