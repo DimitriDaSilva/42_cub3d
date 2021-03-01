@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 19:17:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 14:08:00 by dds              ###   ########.fr       */
+/*   Updated: 2021/03/01 14:18:47 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@
 */
 
 # define DESTROY_NOTIFY 17
+# define CLIENT_MESSAGE 33
 # define KEY_PRESS 02
 # define KEY_RELEASE 03
 

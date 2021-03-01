@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ready_game_events.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:40:31 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/24 18:30:57 by dds              ###   ########.fr       */
+/*   Updated: 2021/03/01 14:21:04 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,18 @@ void	ready_game_events(t_game *game)
 	mlx_do_key_autorepeatoff(game->mlx.mlx_ptr);
 	mlx_hook(game->mlx.win, KEY_PRESS, 1L << 0, key_pressed, game);
 	mlx_hook(game->mlx.win, KEY_RELEASE, 1L << 1, key_released, game);
-	mlx_hook(game->mlx.win,
-			DESTROY_NOTIFY,
-			1L << 17,
-			close_window_cross,
-			game);
+	if (!OS)
+		mlx_hook(game->mlx.win,
+				DESTROY_NOTIFY,
+				1L << 17,
+				close_window_cross,
+				game);
+	else
+		mlx_hook(game->mlx.win,
+				CLIENT_MESSAGE,
+				0L,
+				close_window_cross,
+				game);
 }
 
 /*
