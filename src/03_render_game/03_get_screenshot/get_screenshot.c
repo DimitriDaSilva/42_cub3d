@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_screenshot.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 15:06:06 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 18:06:26 by dds              ###   ########.fr       */
+/*   Updated: 2021/03/01 23:43:12 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	get_screenshot(t_game *game)
 	update(game);
 	draw(game);
 	save_image_in_bmp(game);
+	free_game(game);
 	exit(EXIT_SUCCESS);
 }
 
