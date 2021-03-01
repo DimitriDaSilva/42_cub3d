@@ -6,7 +6,7 @@
 /*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 19:17:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 14:55:24 by dds              ###   ########.fr       */
+/*   Updated: 2021/03/01 15:12:15 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 
 # ifndef OS
 #  define K_ESC 53
+#  define K_W 13
 #  define K_A 0
 #  define K_S 1
 #  define K_D 2
