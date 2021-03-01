@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_scene1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 12:38:07 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/03/01 17:07:12 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ void	check_resolution(t_res *res)
 		printf("Error\nInvalid resolution.\n");
 		exit(EXIT_SUCCESS);
 	}
+	if (MAX_RES_WIDTH < res->width)
+		res->width = MAX_RES_WIDTH;
+	if (MAX_RES_HEIGHT < res->height)
+		res->height = MAX_RES_HEIGHT;
 }
 
 /*

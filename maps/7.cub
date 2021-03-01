@@ -1,11 +1,11 @@
-R 10000000000000 1000000000000000
-NO ./assets/textures/TilledSoil.xpm
-SO ./assets/textures/TreeRings.xpm
-WE ./assets/textures/WalkStone.xpm
-EA ./assets/textures/WaterF1.xpm
+R 10000 10000
+NO ./assets/textures/WaterF2.xpm
+SO ./assets/textures/WaterF3.xpm
+WE ./assets/textures/WaterF4.xpm
+EA ./assets/textures/WoolSnow.xpm
 
-S ./assets/sprites/cage4.xpm
-C 51,53,51
+S ./assets/sprites/pilar.xpm
+C 51,53,10000000000000
 F 36,85,1
 
 		1111111111111111111111111
