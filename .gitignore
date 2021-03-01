@@ -1,7 +1,7 @@
 cub3D
 *.o
 *.a
-exe_vcxsrv.sh
-env_var.sh
+*.sh
+wsl_cmds/
 build/
 *.bmp
