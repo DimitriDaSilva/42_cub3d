@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 19:17:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 14:18:47 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/03/01 14:42:46 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,31 +28,42 @@
 */
 
 # ifndef OS
-	# define K_ESC 53
-	# define K_W 13
-	# define K_A 0
-	# define K_S 1
-	# define K_D 2
-	# define K_LEFT_ARROW 123
-	# define K_RIGHT_ARROW 124
+#  define K_ESC 53
+#  define K_W 13
+#  define K_A 0
+#  define K_S 1
+#  define K_D 2
+#  define K_LEFT_ARROW 123
+#  define K_RIGHT_ARROW 124
 # else
-	# define K_ESC 65307
-	# define K_W 122
-	# define K_A 113
-	# define K_S 115
-	# define K_D 100
-	# define K_LEFT_ARROW 65361
-	# define K_RIGHT_ARROW 65363
+#  define K_ESC 65307
+#  define K_W 122
+#  define K_A 113
+#  define K_S 115
+#  define K_D 100
+#  define K_LEFT_ARROW 65361
+#  define K_RIGHT_ARROW 65363
 # endif
 
 /*
-** X11 Events
+** X11 Events and masks
 */
 
-# define DESTROY_NOTIFY 17
-# define CLIENT_MESSAGE 33
-# define KEY_PRESS 02
-# define KEY_RELEASE 03
+# ifndef OS
+#  define DESTROY_NOTIFY 17
+#  define KEY_PRESS 02
+#  define KEY_RELEASE 03
+#  define M_DESTROY_NOTIFY 1L << 17
+#  define M_KEY_PRESS (1L<<0)
+#  define M_KEY_RELEASE (1L<<1)
+# else
+#  define DESTROY_NOTIFY 33
+#  define KEY_PRESS 02
+#  define KEY_RELEASE 03
+#  define M_DESTROY_NOTIFY 0
+#  define M_KEY_PRESS 1
+#  define M_KEY_RELEASE 2
+# endif
 
 /*
 ** iMac resolution

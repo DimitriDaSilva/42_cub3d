@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ready_game_events.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:40:31 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 14:21:04 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/03/01 14:39:00 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,13 @@ void	ready_game_events(t_game *game)
 	if (!ft_strcmp(game->mode, "SAVE"))
 		return ;
 	mlx_do_key_autorepeatoff(game->mlx.mlx_ptr);
-	mlx_hook(game->mlx.win, KEY_PRESS, 1L << 0, key_pressed, game);
-	mlx_hook(game->mlx.win, KEY_RELEASE, 1L << 1, key_released, game);
-	if (!OS)
-		mlx_hook(game->mlx.win,
-				DESTROY_NOTIFY,
-				1L << 17,
-				close_window_cross,
-				game);
-	else
-		mlx_hook(game->mlx.win,
-				CLIENT_MESSAGE,
-				0L,
-				close_window_cross,
-				game);
+	mlx_hook(game->mlx.win, KEY_PRESS, M_KEY_PRESS, key_pressed, game);
+	mlx_hook(game->mlx.win, KEY_RELEASE, M_KEY_RELEASE, key_released, game);
+	mlx_hook(game->mlx.win,
+			DESTROY_NOTIFY,
+			M_DESTROY_NOTIFY,
+			close_window_cross,
+			game);
 }
 
 /*
