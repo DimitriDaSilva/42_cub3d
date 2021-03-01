@@ -6,7 +6,7 @@
 #    By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/03/01 14:34:09 by dds              ###   ########.fr        #
+#    Updated: 2021/03/01 15:13:42 by dds              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,11 +54,11 @@ ifeq ($(OS),)
 	FLAGS_LINKINKG := -lm $(FLAG_LIBFT) $(FLAG_LIBMLX_MAC)
 else
 	FLAGS_LINKINKG := -lm $(FLAG_LIBFT) $(FLAG_LIBMLX_LINUX)
+	OS_DEFINE			:=		-D OS=$(OS)
 endif
 
 # Others commands
 RM					:=		rm -rf
-OS_DEFINE			:=		-D OS=$(OS)
 
 # Color Code and template code
 _YELLOW				:=		\e[38;5;184m
