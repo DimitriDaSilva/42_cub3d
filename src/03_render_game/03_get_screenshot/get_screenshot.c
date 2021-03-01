@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_screenshot.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
+/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 15:06:06 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 12:26:31 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/03/01 18:06:26 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	save_image_in_bmp(t_game *game)
 ** @param:	- [t_game *] root struct
 **			- [int] file descripter to write in the new file created
 ** Line-by-line comments:
+** @2			Warning requires saving return value of write
 ** @4		54 because the size of the first header is 14 bytes and the second
 **			is 40 (14 + 40 = 54)
 ** @8		Writing all at once DOES NOT WORK. C structs seems to have
@@ -96,8 +97,13 @@ void	write_bmp_header(t_game *game, int fd)
 ** @param:	- [t_game *] root struct
 **			- [int] file descripter to write in the new file created
 ** Line-by-line comments:
-** @6			Bitmap files are written with upside down data for performance
+** @2			Warning requires saving return value of write
+** @7			Bitmap files are written with upside down data for performance
 **				reasons
+** @4			Setting all to 0 that way we don't have to individually
+**				assign the fields that need to be equal to 0
+**				(compression_method, raw_bitmap_data_size, color_table,
+**				important_colors)
 ** @10-11		Source: Google. Explanation: NOT worth the effort
 */
 
@@ -106,17 +112,14 @@ void	write_dib_header(t_game *game, int fd)
 	t_dib_header	dib_header;
 	int				ret;
 
+	ft_memset(&dib_header, 0, 40);
 	dib_header.dib_header_size = 40;
 	dib_header.width = game->scene.res.width;
 	dib_header.height = -game->scene.res.height;
 	dib_header.number_color_planes = 1;
 	dib_header.bpp = game->mlx.img.bpp;
-	dib_header.compression_method = 0;
-	dib_header.raw_bitmap_data_size = 0;
 	dib_header.horizontal_resolution = 2835;
 	dib_header.vertical_resolution = 2835;
-	dib_header.color_table = 0;
-	dib_header.important_colors = 0;
 	ret = write(fd, &dib_header.dib_header_size, 4);
 	ret = write(fd, &dib_header.width, 4);
 	ret = write(fd, &dib_header.height, 4);
@@ -138,6 +141,7 @@ void	write_dib_header(t_game *game, int fd)
 ** @param:	- [t_game *] root struct
 **			- [int] file descripter to write in the new file created
 ** Line-by-line comments:
+** @5			Warning requires saving return value of write
 ** @6-7		An int is 4 bytes while a char is 1. Each char will have a value
 **			between 0 and 255
 ** @16-19	Bitwise manipulation to get the colors in reverse from ARGB
