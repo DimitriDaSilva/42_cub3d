@@ -6,18 +6,12 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:33:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 17:48:20 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/03/01 23:29:32 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-
-/*
-** Forbiddent external libraries to delete
-*/
-
-# include <string.h>
 
 /*
 ** External libraries

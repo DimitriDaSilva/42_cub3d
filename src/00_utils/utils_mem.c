@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 17:31:06 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 23:12:38 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/03/01 23:35:15 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	free_game(t_game *game)
 {
 	free_scene(&game->mlx.mlx_ptr, &game->scene);
 	free(game->rays.arr);
-	free(game->mlx.img.data);
 }
 
 void	free_scene(void *mlx_ptr, t_scene *scene)
