@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ready_game_others.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 08:49:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 10:55:21 by dds              ###   ########.fr       */
+/*   Updated: 2021/03/01 12:38:52 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,8 @@ void	set_rays(t_game *game)
 
 void	load_texture(void *mlx, t_texture *texture)
 {
-	if (check_extension(texture->path, ".png"))
-	{
-		texture->img.img_ptr = mlx_png_file_to_image(mlx, texture->path,
-				&texture->width, &texture->height);
-	}
-	else
-	{
-		texture->img.img_ptr = mlx_xpm_file_to_image(mlx, texture->path,
-				&texture->width, &texture->height);
-	}
+	texture->img.img_ptr = mlx_xpm_file_to_image(mlx, texture->path,
+			&texture->width, &texture->height);
 	texture->img.data = (int *)mlx_get_data_addr(texture->img.img_ptr,
 			&texture->img.bpp,
 			&texture->img.size_l,

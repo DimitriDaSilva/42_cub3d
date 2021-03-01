@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_scene1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/24 19:18:00 by dds              ###   ########.fr       */
+/*   Updated: 2021/03/01 12:38:07 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,9 @@ void	check_texture(char *texture_path, char *texture_name)
 					"formatted.\n", texture_name);
 		exit(EXIT_SUCCESS);
 	}
-	if (!check_extension(texture_path, ".png")
-			&& !check_extension(texture_path, ".xpm"))
+	if (!check_extension(texture_path, ".xpm"))
 	{
-		printf("Error\nWrong file extension for %s\n", texture_name);
+		printf("Error\nFile %s doesn't have xpm extension\n", texture_name);
 		exit(EXIT_SUCCESS);
 	}
 	if ((fd = open(texture_path, O_RDONLY)) == -1)

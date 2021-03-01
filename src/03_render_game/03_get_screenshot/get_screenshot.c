@@ -6,7 +6,7 @@
 /*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 15:06:06 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/23 18:31:10 by dda-silv         ###   ########.fr       */
+/*   Updated: 2021/03/01 12:26:31 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,18 @@ void	save_image_in_bmp(t_game *game)
 void	write_bmp_header(t_game *game, int fd)
 {
 	t_bmp_header	bmp_header;
+	int				ret;
 
 	ft_strncpy(bmp_header.byte_signature, "BM", 2);
 	bmp_header.size = 54 + game->scene.res.width * game->scene.res.height
 		* (game->mlx.img.bpp / 8);
 	bmp_header.reserved_bytes = 0;
 	bmp_header.byte_offset = 14 + 40;
-	write(fd, &bmp_header.byte_signature, 2);
-	write(fd, &bmp_header.size, 4);
-	write(fd, &bmp_header.reserved_bytes, 4);
-	write(fd, &bmp_header.byte_offset, 4);
+	ret = write(fd, &bmp_header.byte_signature, 2);
+	ret = write(fd, &bmp_header.size, 4);
+	ret = write(fd, &bmp_header.reserved_bytes, 4);
+	ret = write(fd, &bmp_header.byte_offset, 4);
+	(void)ret;
 }
 
 /*
@@ -102,6 +104,7 @@ void	write_bmp_header(t_game *game, int fd)
 void	write_dib_header(t_game *game, int fd)
 {
 	t_dib_header	dib_header;
+	int				ret;
 
 	dib_header.dib_header_size = 40;
 	dib_header.width = game->scene.res.width;
@@ -114,17 +117,18 @@ void	write_dib_header(t_game *game, int fd)
 	dib_header.vertical_resolution = 2835;
 	dib_header.color_table = 0;
 	dib_header.important_colors = 0;
-	write(fd, &dib_header.dib_header_size, 4);
-	write(fd, &dib_header.width, 4);
-	write(fd, &dib_header.height, 4);
-	write(fd, &dib_header.number_color_planes, 2);
-	write(fd, &dib_header.bpp, 2);
-	write(fd, &dib_header.compression_method, 4);
-	write(fd, &dib_header.raw_bitmap_data_size, 4);
-	write(fd, &dib_header.horizontal_resolution, 4);
-	write(fd, &dib_header.vertical_resolution, 4);
-	write(fd, &dib_header.color_table, 4);
-	write(fd, &dib_header.important_colors, 4);
+	ret = write(fd, &dib_header.dib_header_size, 4);
+	ret = write(fd, &dib_header.width, 4);
+	ret = write(fd, &dib_header.height, 4);
+	ret = write(fd, &dib_header.number_color_planes, 2);
+	ret = write(fd, &dib_header.bpp, 2);
+	ret = write(fd, &dib_header.compression_method, 4);
+	ret = write(fd, &dib_header.raw_bitmap_data_size, 4);
+	ret = write(fd, &dib_header.horizontal_resolution, 4);
+	ret = write(fd, &dib_header.vertical_resolution, 4);
+	ret = write(fd, &dib_header.color_table, 4);
+	ret = write(fd, &dib_header.important_colors, 4);
+	(void)ret;
 }
 
 /*
@@ -146,6 +150,7 @@ void	write_body(t_game *game, int fd)
 	int		i;
 	int		j;
 	char	*pixel_arr;
+	int		ret;
 
 	size = game->scene.res.width * game->scene.res.height
 		* (game->mlx.img.bpp / 8);
@@ -163,6 +168,7 @@ void	write_body(t_game *game, int fd)
 		pixel_arr[j++] = (game->mlx.img.data[i] & 255 << 24) >> 24;
 		i++;
 	}
-	write(fd, pixel_arr, size * 4);
+	ret = write(fd, pixel_arr, size * 4);
 	free(pixel_arr);
+	(void)ret;
 }

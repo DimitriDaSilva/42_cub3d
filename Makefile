@@ -6,7 +6,7 @@
 #    By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/03/01 12:12:47 by dda-silv         ###   ########.fr        #
+#    Updated: 2021/03/01 12:34:53 by dda-silv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,11 @@ FLAG_MEM_LEAK		:= 		-fsanitize=address
 FLAG_LIBFT			:=		-L$(PATH_LIBFT) -lft 
 FLAG_LIBMLX_MAC		:=		-L$(PATH_LIBMLX_MAC) -lmlx -framework OpenGL -framework AppKit -lz
 FLAG_LIBMLX_LINUX	:=		-L$(PATH_LIBMLX_LINUX) -lmlx -lX11 -lbsd -lXext
-FLAGS_LINKINKG		:=		-lm $(FLAG_LIBFT)
+ifeq ($(OS), mac)
+	FLAGS_LINKINKG := -lm $(FLAG_LIBFT) $(FLAG_LIBMLX_MAC)
+else
+	FLAGS_LINKINKG := -lm $(FLAG_LIBFT) $(FLAG_LIBMLX_LINUX)
+endif
 
 # Others commands
 RM					:=		rm -rf
@@ -71,10 +75,8 @@ init:
 							@ make -C $(PATH_LIBFT)
 ifeq ($(OS), mac)
 	@ make -C $(PATH_LIBMLX_MAC)
-	$(FLAGS_LINKINKG) += $(FLAG_LIBMLX_MAC)
 else
 	@ make -C $(PATH_LIBMLX_LINUX)
-	$(FLAGS_LINKINKG) += $(FLAG_LIBMLX_LINUX)
 endif
 
 $(NAME):					$(OBJS)
