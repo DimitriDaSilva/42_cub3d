@@ -6,7 +6,7 @@
 /*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 19:24:11 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 17:07:12 by dds              ###   ########.fr       */
+/*   Updated: 2021/03/01 17:21:25 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,8 @@ void	check_scene(t_scene *scene)
 
 /*
 ** The only requirements of the resolution at this stage is that they have
-** been set (different from -1) and they are greater than 0. Later in the
-** program, we'll cap the resolution to the one of the display of the user
-** resolution
+** been set (different from 0) and they are greater than 0. We'll cap the
+** resolution to the one of the display of the user resolution
 ** @param:	- [int *] array of 2 ints with the resolution value
 ** Line-by-line comments:
 ** @1		No need to check for resolution set lower than 0 because that would
