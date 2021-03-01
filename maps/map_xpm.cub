@@ -1,4 +1,4 @@
-R 1600 800
+R 500 800
 NO ./assets/textures/xpm/LavaF2.xpm
 SO ./assets/textures/xpm/Mud.xpm
 WE ./assets/textures/xpm/Sand.xpm

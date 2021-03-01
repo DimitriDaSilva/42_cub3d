@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ready_game_others.h                                :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/11 00:05:14 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 10:55:33 by dds              ###   ########.fr       */
+/*   Created: 2020/11/01 16:12:01 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/02/18 15:16:59 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef READY_GAME_OTHERS_H
-# define READY_GAME_OTHERS_H
+long long	ft_power(long long nb, long long power)
+{
+	int result;
 
-# include "cub3d.h"
-
-void	check_user_res(t_res *res);
-void	set_rays(t_game *game);
-void	load_texture(void *mlx, t_texture *texture);
-
-#endif
+	if (power == 0)
+		return (1);
+	else if (power <= 0)
+		return (0);
+	result = 1;
+	while (power--)
+		result *= nb;
+	return (result);
+}

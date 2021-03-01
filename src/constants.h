@@ -6,7 +6,7 @@
 /*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 19:17:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/24 18:28:11 by dds              ###   ########.fr       */
+/*   Updated: 2021/03/01 10:54:01 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,13 @@
 # define DESTROY_NOTIFY 17
 # define KEY_PRESS 02
 # define KEY_RELEASE 03
+
+/*
+** iMac resolution
+*/
+
+# define MAX_RES_WIDTH 2560
+# define MAX_RES_HEIGHT 1440
+
 
 #endif

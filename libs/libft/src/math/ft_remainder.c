@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ready_game_others.h                                :+:      :+:    :+:   */
+/*   ft_remainder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/11 00:05:14 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 10:55:33 by dds              ###   ########.fr       */
+/*   Created: 2021/01/23 07:41:06 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/02/14 19:23:19 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef READY_GAME_OTHERS_H
-# define READY_GAME_OTHERS_H
-
-# include "cub3d.h"
-
-void	check_user_res(t_res *res);
-void	set_rays(t_game *game);
-void	load_texture(void *mlx, t_texture *texture);
-
-#endif
+long double	ft_remainder(long double numer, long double denom)
+{
+	if (numer < 0)
+		numer *= -1;
+	return (numer - (denom * (long long)(numer / denom)));
+}

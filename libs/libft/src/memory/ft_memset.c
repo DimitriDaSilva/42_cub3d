@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ready_game_others.h                                :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/11 00:05:14 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 10:55:33 by dds              ###   ########.fr       */
+/*   Created: 2021/01/13 13:28:43 by dda-silv          #+#    #+#             */
+/*   Updated: 2021/01/13 15:42:32 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef READY_GAME_OTHERS_H
-# define READY_GAME_OTHERS_H
+#include "libft.h"
 
-# include "cub3d.h"
+void	*ft_memset(void *s, int c, size_t n)
+{
+	unsigned char	*sav_s;
 
-void	check_user_res(t_res *res);
-void	set_rays(t_game *game);
-void	load_texture(void *mlx, t_texture *texture);
-
-#endif
+	sav_s = s;
+	while (n--)
+		*sav_s++ = c;
+	return (s);
+}

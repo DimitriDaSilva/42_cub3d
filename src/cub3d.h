@@ -6,7 +6,7 @@
 /*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 12:33:13 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/24 16:36:35 by dds              ###   ########.fr       */
+/*   Updated: 2021/03/01 11:09:23 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@
 ** Static libraries
 */
 
-# include "../../libft/src/libft.h"
-# include "../../libmlx/mlx.h"
+# include "../../libs/libft/src/libft.h"
+# include "../../libs/libmlx-mac-opengl/mlx.h"
+# include "../../libs/libmlx-linux/mlx.h"
 
 /*
 ** Header files

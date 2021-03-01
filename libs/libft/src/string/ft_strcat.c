@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ready_game_others.h                                :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
+/*   By: dda-silv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/11 00:05:14 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 10:55:33 by dds              ###   ########.fr       */
+/*   Created: 2020/10/29 07:58:52 by dda-silv          #+#    #+#             */
+/*   Updated: 2020/11/05 08:42:57 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef READY_GAME_OTHERS_H
-# define READY_GAME_OTHERS_H
+char	*ft_strcat(char *dest, char *src)
+{
+	char *sav_d;
 
-# include "cub3d.h"
-
-void	check_user_res(t_res *res);
-void	set_rays(t_game *game);
-void	load_texture(void *mlx, t_texture *texture);
-
-#endif
+	sav_d = dest;
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = '\0';
+	return (sav_d);
+}

@@ -6,7 +6,7 @@
 /*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 08:49:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/27 17:01:30 by dds              ###   ########.fr       */
+/*   Updated: 2021/03/01 10:55:21 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 void	ready_game_others(t_game *game)
 {
-	check_user_res(&game->mlx, &game->scene.res);
+	check_user_res(&game->scene.res);
 	game->scene.mini_map_tile_size = game->scene.res.width / MINIMAP_RATIO;
 	set_rays(game);
 	load_texture(game->mlx.mlx_ptr, &game->scene.no_tex);
@@ -41,18 +41,12 @@ void	ready_game_others(t_game *game)
 **			- [t_res *] resolution width and height specified in the .cub file
 */
 
-void	check_user_res(t_mlx *mlx, t_res *res)
+void	check_user_res(t_res *res)
 {
-	int	user_width;
-	int	user_height;
-
-	user_width = 0;
-	user_height = 0;
-	mlx_get_screen_size(mlx->mlx_ptr, &user_width, &user_height);
-	if (user_width < res->width)
-		res->width = user_width;
-	if (user_height < res->height)
-		res->height = user_height;
+	if (MAX_RES_WIDTH < res->width)
+		res->width = MAX_RES_WIDTH;
+	if (MAX_RES_HEIGHT < res->height)
+		res->height = MAX_RES_HEIGHT;
 }
 
 /*

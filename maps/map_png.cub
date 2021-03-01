@@ -1,4 +1,4 @@
-R 1600 1000
+R 1599 1000
 NO ./assets/textures/png/LavaF2.png
 SO ./assets/textures/png/Mud.png
 WE ./assets/textures/png/Sand.png
