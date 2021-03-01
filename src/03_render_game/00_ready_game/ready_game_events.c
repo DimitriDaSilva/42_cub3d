@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ready_game_events.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:40:31 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 14:51:10 by dds              ###   ########.fr       */
+/*   Updated: 2021/03/01 17:49:55 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,10 @@ int		key_pressed(int keycode, t_game *game)
 	else if (keycode == K_RIGHT_ARROW)
 		game->player.turn_direction = 1;
 	else if (keycode == K_ESC)
+	{
+		free_game(game);
 		exit(EXIT_SUCCESS);
+	}
 	return (1);
 }
 
@@ -94,8 +97,8 @@ int		key_released(int keycode, t_game *game)
 
 int		close_window_cross(int keycode, t_game *game)
 {
-	(void)game;
 	(void)keycode;
+	free_game(game);
 	exit(EXIT_SUCCESS);
 	return (1);
 }
