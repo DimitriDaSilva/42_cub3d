@@ -1,8 +1,8 @@
-R 1599 1000
-NO ./assets/textures/png/LavaF2.png
-SO ./assets/textures/png/Mud.png
-WE ./assets/textures/png/Sand.png
-EA ./assets/textures/png/Sand.png
+R 1920 1080
+NO ./assets/textures/xpm/LavaF2.xpm
+SO ./assets/textures/xpm/Mud.xpm
+WE ./assets/textures/xpm/Sand.xpm
+EA ./assets/textures/xpm/Sand.xpm
 
 S ./assets/sprites/xpm/gun.xpm
 C 51,53,51

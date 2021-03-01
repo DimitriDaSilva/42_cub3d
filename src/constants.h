@@ -6,7 +6,7 @@
 /*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 19:17:19 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/01 15:12:15 by dds              ###   ########.fr       */
+/*   Updated: 2021/03/01 15:25:35 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,16 @@
 # endif
 
 /*
-** iMac resolution
+** Max resolutions
 */
 
-# define MAX_RES_WIDTH 2560
-# define MAX_RES_HEIGHT 1440
+# ifndef OS
+#  define MAX_RES_WIDTH 2560
+#  define MAX_RES_HEIGHT 1440
+# else
+#  define MAX_RES_WIDTH 1920
+#  define MAX_RES_HEIGHT 1080
+# endif
 
 
 #endif
