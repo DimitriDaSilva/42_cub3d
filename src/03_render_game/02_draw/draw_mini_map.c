@@ -6,7 +6,7 @@
 /*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:28:36 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/27 18:10:50 by dds              ###   ########.fr       */
+/*   Updated: 2021/03/01 16:07:41 by dds              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 void	draw_mini_map(t_game *game)
 {
+	int	height_mini_map;
+
+	height_mini_map = game->scene.mini_map_tile_size * game->scene.map.height
+					+ MINIMAP_OFFSET * 2;
+	if (height_mini_map > game->scene.res.height)
+		return ;
 	draw_map(game);
 	draw_player(game, game->scene.mini_map_tile_size);
 }

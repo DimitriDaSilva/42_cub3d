@@ -1,4 +1,4 @@
-R 1920 1080
+R 10000 10000
 NO ./assets/textures/WaterF2.xpm
 SO ./assets/textures/WaterF3.xpm
 WE ./assets/textures/WaterF4.xpm
