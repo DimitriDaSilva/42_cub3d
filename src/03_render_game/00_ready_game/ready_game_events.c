@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ready_game_events.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 19:40:31 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/03/02 09:59:39 by dds              ###   ########.fr       */
+/*   Updated: 2021/03/02 10:26:49 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,7 @@ int		key_released(int keycode, t_game *game)
 int		close_window_cross(int keycode, t_game *game)
 {
 	(void)keycode;
-	mlx_destroy_image(game->mlx.mlx_ptr, game->mlx.img.img_ptr);
-	mlx_destroy_window(game->mlx.mlx_ptr, game->mlx.win);
-	free_game(game);
+	(void)game;
 	exit(EXIT_SUCCESS);
 	return (1);
 }
