@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_scene2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+        */
+/*   By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 08:21:33 by dda-silv          #+#    #+#             */
-/*   Updated: 2021/02/24 10:52:57 by dds              ###   ########.fr       */
+/*   Updated: 2021/03/02 00:20:36 by dda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char	**cpy_map(int fd, char *line, int *height)
 			exit(EXIT_SUCCESS);
 		strs[i++] = ft_strdup(line);
 		free(line);
-		if (!get_next_line(fd, &line))
+		if (!get_next_line(fd, &line) && *line == 0)
 			break ;
 	}
 	free(line);
