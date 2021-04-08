@@ -1,4 +1,4 @@
-# 42Lisboa_cub3d
+# 42_cub3d
 
 cub3d is a 42 project that offers us to create a raycasting engine using a very minimalistic library (miniLibX).
 
