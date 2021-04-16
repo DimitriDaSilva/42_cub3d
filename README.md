@@ -13,6 +13,7 @@ make && ./cub3D maps/map_xpm.cub
 
 ### RayCasting:
 - https://courses.pikuma.com/courses/take/raycasting/lessons/7485598-introduction-and-learning-outcomes
+- https://www.youtube.com/watch?v=KjIyzJxlhzE
 - https://youtu.be/_HSJbFBkHdk
 - https://gamedev.stackexchange.com/questions/156842/how-can-i-correct-an-unwanted-fisheye-effect-when-drawing-a-scene-with-raycastin/156853#156853
 ### MiniLibX:
