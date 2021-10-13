@@ -6,7 +6,7 @@ cub3d is a 42 project that offers us to create a raycasting engine using a very 
 
 If you want to check out the result for yourself:
 ```
-make && ./cub3D maps/map_xpm.cub
+make && ./cub3D maps/1.cub
 ```
 
 ## Resources that helped me a ton through this project:

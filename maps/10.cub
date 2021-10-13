@@ -1,0 +1,17 @@
+R 10000 10000
+NO ./assets/textures/Bark.xpm
+SO ./assets/textures/Bricks.xpm
+WE ./assets/textures/Dirt.xpm
+EA ./assets/textures/Coal.xpm
+
+S ./assets/sprites/cake.xpm
+C 51,53,51
+F 36,85,1
+
+11111111
+10000N01
+11111111
+
+11111111
+10000001
+11111111

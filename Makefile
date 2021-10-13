@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dds <dda-silv@student.42lisboa.com>        +#+  +:+       +#+         #
+#    By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/03/01 15:27:41 by dds              ###   ########.fr        #
+#    Updated: 2021/10/13 09:53:49 by dda-silv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,9 @@ BMP_SCREENSHOT		:=		screenshot.bmp
 # Compiler
 CC					:=		gcc
 
+# Compiler
+OS					:=		$(shell uname)
+
 # Flags - compilation
 FLAG_WARNING		:=		-O3 -Wall -Wextra -Werror
 FLAG_INC			:= 		$(addprefix -I, $(INC_DIRS))
@@ -46,8 +49,8 @@ FLAG_MEM_LEAK		:= 		-fsanitize=address
 # Flags - linking
 FLAG_LIBFT			:=		-L$(PATH_LIBFT) -lft 
 FLAG_LIBMLX_MAC		:=		-L$(PATH_LIBMLX_MAC) -lmlx -framework OpenGL -framework AppKit -lz
-FLAG_LIBMLX_LINUX	:=		-L$(PATH_LIBMLX_LINUX) -lmlx -lX11 -lbsd -lXext
-ifeq ($(OS),)
+FLAG_LIBMLX_LINUX	:=		-L$(PATH_LIBMLX_LINUX) -lmlx -lX11 -lXext
+ifeq ($(OS), "Darwin")
 	FLAGS_LINKINKG := -lm $(FLAG_LIBFT) $(FLAG_LIBMLX_MAC)
 else
 	FLAGS_LINKINKG := -lm $(FLAG_LIBFT) $(FLAG_LIBMLX_LINUX)
@@ -66,10 +69,10 @@ _SUCCESS			:=		[$(_GREEN)SUCCESS$(_RESET)]
 
 # General functions
 all:						init $(NAME)
-							@ echo "$(_SUCCESS) Compilation done"
+							@ printf "$(_SUCCESS) Compilation done\n"
 
 init:
-							@ echo "$(_INFO) Initialize $(NAME)"
+							@ printf "$(_INFO) Initialize $(NAME)\n"
 							@ make -C $(PATH_LIBFT)
 ifeq ($(OS),)
 	@ make -C $(PATH_LIBMLX_MAC)
@@ -93,7 +96,7 @@ clean:
 							@ make -C $(PATH_LIBFT) clean
 							@ make -C $(PATH_LIBMLX_MAC) clean
 							@ make -C $(PATH_LIBMLX_LINUX) clean
-							@ echo "$(_INFO) Deleted files and directory"
+							@ printf "$(_INFO) Deleted files and directory\n"
 
 fclean:						clean
 							@ $(RM) $(NAME)
