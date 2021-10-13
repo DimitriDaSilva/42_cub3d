@@ -6,7 +6,7 @@
 #    By: dda-silv <dda-silv@student.42lisboa.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/11 09:33:15 by dda-silv          #+#    #+#              #
-#    Updated: 2021/10/13 09:53:49 by dda-silv         ###   ########.fr        #
+#    Updated: 2021/10/13 09:59:14 by dda-silv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ BMP_SCREENSHOT		:=		screenshot.bmp
 # Compiler
 CC					:=		gcc
 
-# Compiler
+# OS
 OS					:=		$(shell uname)
 
 # Flags - compilation
