@@ -1,4 +1,4 @@
-# 42Lisbon_lvl_02_cub3d
+# 42_cub3d
 
 cub3d is a 42 project that offers us to create a raycasting engine using a very minimalistic library (miniLibX).
 
@@ -13,7 +13,7 @@ make && ./cub3D maps/1.cub
 
 ### RayCasting:
 - https://courses.pikuma.com/courses/take/raycasting/lessons/7485598-introduction-and-learning-outcomes
-- https://lodev.org/cgtutor/raycasting.html
+- https://www.youtube.com/watch?v=KjIyzJxlhzE
 - https://youtu.be/_HSJbFBkHdk
 - https://gamedev.stackexchange.com/questions/156842/how-can-i-correct-an-unwanted-fisheye-effect-when-drawing-a-scene-with-raycastin/156853#156853
 ### MiniLibX:
